@@ -37,6 +37,7 @@ export default {
     },
 
     plugins: [
+      "expo-audio",
       'expo-router',
       [
         'expo-splash-screen',

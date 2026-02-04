@@ -29,6 +29,7 @@ export const Colors: Record<ColorScheme, ThemeColors> = {
     incomplete: '#FFFDF7',
     complete: '#AAFF9C',
     tabBar: '#FFFDF7',
+    
   },
   dark: {
     background: '#E5F3EF',

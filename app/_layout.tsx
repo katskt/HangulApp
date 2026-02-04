@@ -7,6 +7,7 @@ export default function Layout() {
   return (
     <Tabs
       screenOptions={{
+        headerShown: false,
         tabBarActiveTintColor: colors.tint as string,
         tabBarInactiveTintColor: colors.text as string,
         tabBarStyle: { backgroundColor: colors.tabBar },
