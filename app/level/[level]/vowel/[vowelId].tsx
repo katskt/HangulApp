@@ -1,53 +1,96 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { View, ScrollView, Dimensions, StyleSheet, Text } from "react-native";
 import { usePathname } from "expo-router";
-import LessonAudioPanel from "@/components/LessonAudioPanel";
 import { supabase } from "../../../../supabaseConfig";
+import LessonAudioPanel from "@/components/LessonAudioPanel";
+import CanvasPage from "../../../../components/TraceCanvas";
+import { useThemeColors } from "../../../../theme/useThemeColors";
 
 interface Lesson {
-  hangul: string;
-  yale_romanization: string;
-  level: string;
   category: string;
   id: string;
+  hangul: string;
+  group: string;
+  group_romanization: string;
+  order_index: number;
+  level: number;
+  hangeul: string;
+  hangeul_romanization: string;
 }
 
-export default function VowelPage() {
+const { width: screenWidth } = Dimensions.get("window");
+
+export default function LessonPage() {
   const parts = usePathname().split("/").filter(Boolean);
   const level = parts[1];
   const category = parts[2];
-  const character = parts[3]; // yale romanization from URL
+  const character = parts[3]; // group romanization from URL
 
-  const [lesson, setLesson] = useState<Lesson | null>(null);
+  const [lessons, setLessons] = useState<Lesson[]>([]);
+  const [scrollEnabled, setScrollEnabled] = useState(true);
+  const colors = useThemeColors();
 
+  // Fetch lessons
   useEffect(() => {
     if (!level || !category || !character) return;
 
-    const fetchLesson = async () => {
+    const fetchLessons = async () => {
       const { data, error } = await supabase
         .from("lessons")
         .select("*")
         .eq("level", Number(level))
         .eq("category", category)
-        .eq("yale_romanization", character)
-        .single(); // we just want one lesson
+        .eq("group_romanization", character)
+        .order("order_index", { ascending: true });
 
       if (error) {
-        console.error("Error fetching lesson:", error.message);
+        console.error("Error fetching lessons:", error.message);
         return;
       }
 
-      setLesson(data);
+      if (data) setLessons(data as Lesson[]);
     };
 
-    fetchLesson();
+    fetchLessons();
   }, [level, category, character]);
 
-  if (!lesson) return null; // or a loading indicator
+  if (!lessons.length) return <Text>Loading...</Text>;
 
   return (
-    <LessonAudioPanel
-      character={lesson.yale_romanization} // still needed for audio filename
-      hangul={lesson.hangul} // actual Hangul character
-    />
+    <ScrollView
+      horizontal
+      pagingEnabled
+      showsHorizontalScrollIndicator={true}
+      scrollEnabled={scrollEnabled}
+      style={{ flex: 1, backgroundColor: colors.background }}
+    >
+      {lessons.map((lesson) => (
+        <React.Fragment key={lesson.id}>
+          {/* Page 1: Audio Panel */}
+          <View style={[styles.page, { width: screenWidth }]}>
+            <LessonAudioPanel
+              character={lesson.hangeul_romanization}
+              hangeul={lesson.hangeul}
+            />
+          </View>
+
+          {/* Page 2: Trace Canvas */}
+          <View style={[styles.page, { width: screenWidth }]}>
+            <CanvasPage
+              character={lesson.hangeul_romanization}
+              onTouchStart={() => setScrollEnabled(false)}
+              onTouchEnd={() => setScrollEnabled(true)}
+            />
+          </View>
+        </React.Fragment>
+      ))}
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+  page: {
+    width: screenWidth,
+    flex: 1,
+  },
+});

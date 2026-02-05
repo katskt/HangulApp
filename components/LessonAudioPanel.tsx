@@ -6,10 +6,10 @@ import { useLessonAudio } from "@/hooks/useLessonAudio";
 
 export default function LessonAudioPanel({
   character,
-  hangul,
+  hangeul,
 }: {
   character: string;
-  hangul: string;
+  hangeul: string;
 }) {
   const {
     playReference,
@@ -31,7 +31,7 @@ export default function LessonAudioPanel({
       }
       bottomContent={
         <View>
-          <MyButton title={hangul} onPress={playReference} />
+          <MyButton title={hangeul} onPress={playReference} />
 
           <MyButton
             title={

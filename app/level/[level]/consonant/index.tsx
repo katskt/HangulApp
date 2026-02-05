@@ -8,17 +8,19 @@ import { ScrollView, TouchableOpacity } from "react-native";
 // import { useThemeColors } from "../theme/useThemeColors";
 
 interface Lesson {
-  level_id: string;
-  id: string;
   category: string;
+  id: string;
   hangul: string;
+  group: string;
+  group_romanization: string;
   order_index: number;
   level: number;
-  title: string;
+  hangeul: string;
+  hangeul_romanization: string;
 }
 
 import { Text, View } from "react-native";
-export default function consonantPage() {
+export default function vowelPage() {
   // check page
   const router = useRouter();
   const pathname = usePathname();
@@ -32,15 +34,17 @@ export default function consonantPage() {
     if (!level || !category) return;
     const fetchLessons = async () => {
       const { data, error } = await supabase
-        .from("lessons")
+        .from("lessons_unique_groups")
         .select("*")
         .eq("level", level)
-        .eq("category", category);
+        .eq("category", category)
+        .order("order_index", { ascending: true });
+
       if (error) console.log("error:", error);
       else {
         setLessons(data || []);
       }
-      console.log(data);
+      console.log("consonant page:", data);
     };
     fetchLessons();
   }, [level, category]);
@@ -69,18 +73,11 @@ export default function consonantPage() {
           <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
             {lessons.map((lesson) => (
               <View key={lesson.id} style={{ width: "50%", padding: 8 }}>
-                <TouchableOpacity
-                  key={lesson.id}
-                  onPress={() =>
-                    router.push(
-                      `/level/[${level}]/${category}/${lesson.hangul}`,
-                    )
-                  }
-                >
+                <TouchableOpacity key={lesson.id}>
                   <SmallButton
                     fill="#FFF"
-                    title={lesson.hangul}
-                    target={`/level/[${level}]/${category}/${lesson.hangul}`}
+                    title={lesson.group}
+                    target={`/level/${level}/${category}/${lesson.group_romanization}`}
                   ></SmallButton>
                 </TouchableOpacity>
               </View>

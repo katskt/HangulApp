@@ -10,35 +10,29 @@ import {
 import { Svg, Path } from "react-native-svg";
 import MyButton from "@/components/FunctionalButton";
 import HalfSplashTemplate from "@/components/LessonBackgroundScreen";
+import useCanvasPaths from "@/hooks/useLessonCanvas";
 const { height, width } = Dimensions.get("window");
-const imageSource = require("../assets/images/exampleStroke.png");
+
 // THIS PAGE NEEDS STROKE ORDER IMAGE.
+interface CanvasPageProps {
+  character: string;
+  onTouchStart?: () => void;
+  onTouchEnd?: () => void;
+}
 
-export default function CanvasPage() {
-  const [paths, setPaths] = useState([]);
-  const [currentPath, setCurrentPath] = useState([]);
-  const [isClearButtonClicked, setClearButtonClicked] = useState(false);
-
-  const onTouchEnd = () => {
-    setPaths((prev) => [...prev, currentPath]);
-    setCurrentPath([]);
-    setClearButtonClicked(false);
-  };
-
-  const onTouchMove = (event) => {
-    const newPath = [...currentPath];
-    const locationX = event.nativeEvent.locationX;
-    const locationY = event.nativeEvent.locationY;
-    const newPoint = `${newPath.length === 0 ? "M" : ""}${locationX.toFixed(0)},${locationY.toFixed(0)} `;
-    newPath.push(newPoint);
-    setCurrentPath(newPath);
-  };
-
-  const handleClearButtonClick = () => {
-    setPaths([]);
-    setCurrentPath([]);
-    setClearButtonClicked(true);
-  };
+export default function CanvasPage({
+  character,
+  onTouchStart,
+  onTouchEnd,
+}: CanvasPageProps) {
+  const {
+    paths,
+    currentPath,
+    onTouchMove,
+    onTouchEnd: finishStroke,
+    handleClear,
+    imageUrl,
+  } = useCanvasPaths(character);
 
   return (
     <HalfSplashTemplate
@@ -51,41 +45,55 @@ export default function CanvasPage() {
         <View style={styles.container}>
           <View
             style={styles.svgContainer}
+            onTouchStart={onTouchStart} // 🔑 disable scroll
             onTouchMove={onTouchMove}
-            onTouchEnd={onTouchEnd}
+            onTouchEnd={() => {
+              finishStroke();
+              onTouchEnd?.(); // 🔑 re-enable scroll
+            }}
           >
             <ImageBackground
               style={styles.backgroundImage}
-              source={imageSource}
+              source={
+                imageUrl
+                  ? { uri: imageUrl }
+                  : require("../assets/images/android-icon-foreground.png")
+              }
             >
-              <Svg height={height * 0.7} width={width}>
-                <Path
-                  d={paths.join("")}
-                  stroke={isClearButtonClicked ? "transparent" : "blue"}
-                  fill={"transparent"}
-                  strokeWidth={15}
-                  strokeLinejoin={"round"}
-                  strokeLinecap={"round"}
-                />
-                {paths.length > 0 &&
-                  paths.map((item, index) => (
+              <View style={{ width: width * 0.9, aspectRatio: 1 }}>
+                <Svg height={height * 0.7} width={width}>
+                  {/* Completed strokes */}
+                  {paths.map((stroke, i) => (
                     <Path
-                      key={`path-${index}`}
-                      d={currentPath.join("")}
-                      stroke={isClearButtonClicked ? "transparent" : "black"}
-                      fill={"transparent"}
+                      key={`path-${i}`}
+                      d={stroke.join("")} // ✅ convert array → string
+                      stroke="blue"
+                      fill="transparent"
                       strokeWidth={15}
-                      strokeLinejoin={"round"}
-                      strokeLinecap={"round"}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   ))}
-              </Svg>
+
+                  {currentPath.length > 0 && (
+                    <Path
+                      d={currentPath.join("")}
+                      stroke="black"
+                      fill="transparent"
+                      strokeWidth={15}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  )}
+                </Svg>
+              </View>
             </ImageBackground>
           </View>
-          <MyButton onPress={handleClearButtonClick} title={"Clear"}></MyButton>
+
+          <MyButton onPress={handleClear} title="Clear" />
         </View>
       }
-    ></HalfSplashTemplate>
+    />
   );
 }
 
@@ -108,7 +116,6 @@ const styles = StyleSheet.create({
     height: height * 0.4,
     width: width * 0.9,
     /* backgroundColor: "white", */
-    borderWidth: 1,
     borderRadius: 40,
     margin: 20,
   },
