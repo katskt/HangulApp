@@ -1,15 +1,18 @@
-import { View, Text } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 import HalfSplashTemplate from "@/components/LessonBackgroundScreen";
 import MyButton from "@/components/FunctionalButton";
 import { useLessonAudio } from "@/hooks/useLessonAudio";
+import useImage from "@/hooks/useImage";
 
 export default function LessonAudioPanel({
   character,
   hangeul,
+  image,
 }: {
   character: string;
   hangeul: string;
+  image?: boolean;
 }) {
   const {
     playReference,
@@ -20,6 +23,7 @@ export default function LessonAudioPanel({
     hasRecording,
   } = useLessonAudio(character);
 
+  const { imageUrl } = useImage(character);
   return (
     <HalfSplashTemplate
       topContent={
@@ -31,6 +35,18 @@ export default function LessonAudioPanel({
       }
       bottomContent={
         <View>
+          <View style={styles.container}>
+            {image && (
+              <Image
+                style={styles.image}
+                source={
+                  image
+                    ? { uri: imageUrl }
+                    : require("../assets/images/android-icon-foreground.png")
+                }
+              />
+            )}
+          </View>
           <MyButton title={hangeul} onPress={playReference} />
 
           <MyButton
@@ -54,3 +70,15 @@ export default function LessonAudioPanel({
     />
   );
 }
+
+const styles = StyleSheet.create({
+  image: {
+    width: 180,
+    height: 180,
+  },
+  container: {
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+  },
+});

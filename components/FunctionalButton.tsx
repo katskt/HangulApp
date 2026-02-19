@@ -9,6 +9,7 @@ type ButtonProps = {
   onPress?: () => void; // optional function
   disabled?: boolean; // new prop
   width?: number;
+  style?: string;
 };
 
 const MyButton = ({ onPress, disabled, title, color }: ButtonProps) => {
@@ -37,8 +38,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 32,
     borderRadius: 40,
     elevation: 3, // Android shadow
-    marginVertical: 20,
-    height: 100,
+    marginVertical: 10,
+    height: 80,
     margin: 10,
   },
   buttonPressed: {

@@ -3,7 +3,7 @@ import { View, ScrollView, Dimensions, StyleSheet, Text } from "react-native";
 import { usePathname } from "expo-router";
 import { supabase } from "../../../../supabaseConfig";
 import LessonAudioPanel from "@/components/LessonAudioPanel";
-import CanvasPage from "@/components/TraceCanvas";
+import CanvasPage from "../../../../components/TraceCanvas";
 import { useThemeColors } from "../../../../theme/useThemeColors";
 
 interface Lesson {
@@ -24,7 +24,6 @@ export default function LessonPage() {
   const parts = usePathname().split("/").filter(Boolean);
   const level = parts[1];
   const category = parts[2];
-  const character = parts[3]; // group romanization from URL
 
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [scrollEnabled, setScrollEnabled] = useState(true);
@@ -32,7 +31,7 @@ export default function LessonPage() {
 
   // Fetch lessons
   useEffect(() => {
-    if (!level || !category || !character) return;
+    if (!level || !category) return;
 
     const fetchLessons = async () => {
       const { data, error } = await supabase
@@ -40,7 +39,6 @@ export default function LessonPage() {
         .select("*")
         .eq("level", Number(level))
         .eq("category", category)
-        .eq("group_romanization", character)
         .order("order_index", { ascending: true });
 
       if (error) {
@@ -52,7 +50,7 @@ export default function LessonPage() {
     };
 
     fetchLessons();
-  }, [level, category, character]);
+  }, [level, category]);
 
   if (!lessons.length) return <Text>Loading...</Text>;
 
@@ -71,6 +69,7 @@ export default function LessonPage() {
             <LessonAudioPanel
               character={lesson.hangeul_romanization}
               hangeul={lesson.hangeul}
+              image={true}
             />
           </View>
 
@@ -80,6 +79,7 @@ export default function LessonPage() {
               character={lesson.hangeul_romanization}
               onTouchStart={() => setScrollEnabled(false)}
               onTouchEnd={() => setScrollEnabled(true)}
+              image={true}
             />
           </View>
         </React.Fragment>

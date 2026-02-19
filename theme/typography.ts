@@ -13,3 +13,4 @@ export const FontWeights = {
   semibold: 600 as const,
   bold: 700 as const,
 };
+// ocr 

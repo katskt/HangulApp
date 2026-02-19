@@ -6,14 +6,14 @@ export default function useCanvasPaths(character: string | null) {
 const [currentPath, setCurrentPath] = useState<string[]>([]);
 
   const [isClearButtonClicked, setClearButtonClicked] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [strokeImageUrl, setstrokeImageUrl] = useState<string | null>(null);
 
   // ------ Fetch stroke order image from Supabase ------
   useEffect(() => {
       console.log("useEffect triggered, character:", character);
 
   if (!character) {
-    setImageUrl(null);
+    setstrokeImageUrl(null);
     return;
   }
   
@@ -24,7 +24,7 @@ const [currentPath, setCurrentPath] = useState<string[]>([]);
     .getPublicUrl(path);
 
   console.log("fetched public URL:", data.publicUrl); // logs immediately
-  setImageUrl(data.publicUrl);
+  setstrokeImageUrl(data.publicUrl);
 
 }, [character]);
 
@@ -61,6 +61,6 @@ const [currentPath, setCurrentPath] = useState<string[]>([]);
     onTouchMove,
     onTouchEnd,
     handleClear,
-    imageUrl, // ✅ Return the fetched image URL
+    strokeImageUrl, 
   };
 }

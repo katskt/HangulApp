@@ -16,11 +16,30 @@ import Button from "../../../components/button";
 
 import BlueScreen from "@/components/BlueScreen";
 import { getLevelImage } from "@/lib/levelAssets";
-
+const [quizLevels, setQuizLevels] = useState<number[]>([]);
 export default function LevelPage() {
   // Type your params for TypeScript
   const params = useLocalSearchParams<{ level: string }>();
   const levelNumber = Number(params.level);
+  useEffect(() => {
+    const fetchLevels = async () => {
+      const { data, error } = await supabase
+        .from("quizzes")
+        .select("quiz")
+        .eq("level", levelNumber)
+        .order("quiz", {
+          ascending: true,
+        }); /* TODO: MAKE THIS QUIZ FETCHING DYNAMIC!!! */
+
+      if (error) {
+        console.log(error);
+      } else {
+        setQuizLevels((data ?? []).map((row) => row.quiz));
+      }
+    };
+
+    fetchLevels();
+  }, [levelNumber]);
   return (
     <BlueScreen
       header={
@@ -63,19 +82,35 @@ export default function LevelPage() {
             background={"ㄱㄴㄷㄹㅁㅂㅅ"}
             fill={"#FFF"}
           />
+          <Button
+            target={`/level/${levelNumber}/practice`}
+            title={"Practice"}
+            background={""}
+            fill={"#FFF"}
+          />
           <Text
             style={{ fontSize: FontSizes.h3, fontWeight: FontWeights.bold }}
           >
             QUIZ A
           </Text>
-          <Button title={"Quiz 1A"} background={""} fill={"#FFF"} />
+          <Button
+            target={`/level/${levelNumber}/quiz/1/A`}
+            title={"Quiz 1A"}
+            background={""}
+            fill={"#FFF"}
+          />
           <Button title={"Quiz 2A"} background={""} fill={"#FFF"} />
           <Text
             style={{ fontSize: FontSizes.h3, fontWeight: FontWeights.bold }}
           >
             QUIZ B
           </Text>
-          <Button title={"Quiz 1B"} background={""} fill={"#FFF"} />
+          <Button
+            target={`/level/${levelNumber}/quiz/1/B`}
+            title={"Quiz 1B"}
+            background={""}
+            fill={"#FFF"}
+          />
           <Button title={"Quiz 2B"} background={""} fill={"#FFF"} />
         </ScrollView>
       }
