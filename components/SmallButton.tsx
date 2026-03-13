@@ -8,7 +8,7 @@ type buttonProps = {
   target?: string;
 };
 
-import { useThemeColors } from "../theme/useThemeColors";
+import { useThemeColors } from "@/theme/useThemeColors";
 import { FontSizes, FontWeights } from "@/theme/typography";
 
 export default function SmallButton({ title, fill, target }: buttonProps) {
@@ -41,7 +41,7 @@ export default function SmallButton({ title, fill, target }: buttonProps) {
 
   return (
     <TouchableOpacity
-      onPress={() => router.push(target)}
+      onPress={() => router.push(target as RelativePathString)}
       style={[styles.container, { backgroundColor: fill }]}
     >
       <Text style={styles.title}>{title}</Text>

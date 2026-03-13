@@ -8,12 +8,14 @@ import {
   ImageBackground,
   Image,
 } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
+import { lessonStroke } from "@/lib/lessonStroke";
 import { Svg, Path } from "react-native-svg";
 import MyButton from "@/components/FunctionalButton";
 import HalfSplashTemplate from "@/components/LessonBackgroundScreen";
 import useCanvasPaths from "@/hooks/useLessonCanvas";
 import useImage from "@/hooks/useImage";
-
+import { practiceImages } from "@/lib/practiceImages";
 const { height, width } = Dimensions.get("window");
 
 // THIS PAGE NEEDS STROKE ORDER IMAGE.
@@ -37,7 +39,7 @@ export default function CanvasPage({
     onTouchMove,
     onTouchEnd: finishStroke,
     handleClear,
-    strokeImageUrl,
+    //strokeImageUrl,
   } = useCanvasPaths(character);
 
   const { imageUrl } = useImage(character);
@@ -51,15 +53,18 @@ export default function CanvasPage({
       bottomContent={
         <View style={styles.container}>
           <View style={styles.imageContainer}>
-            {image && (
+            {/*             {image && (
               <Image
                 style={styles.image}
                 source={
                   image
                     ? { uri: imageUrl }
-                    : require("../assets/images/android-icon-foreground.png")
+                    : require("@/assets/images/android-icon-foreground.png")
                 }
               />
+            )} */}
+            {image && (
+              <Image style={styles.image} source={practiceImages[character]} />
             )}
           </View>
           <View
@@ -73,11 +78,7 @@ export default function CanvasPage({
           >
             <ImageBackground
               style={styles.backgroundImage}
-              source={
-                strokeImageUrl
-                  ? { uri: strokeImageUrl }
-                  : require("../assets/images/android-icon-foreground.png")
-              }
+              source={lessonStroke[character]}
             >
               <View style={{ width: width * 0.9, aspectRatio: 1 }}>
                 <Svg height={height * 0.7} width={width}>
@@ -109,7 +110,9 @@ export default function CanvasPage({
             </ImageBackground>
           </View>
 
-          <MyButton onPress={handleClear} title="Clear" />
+          <MyButton onPress={handleClear}>
+            <Icon name="trash-outline" size={24} color="black" />
+          </MyButton>
         </View>
       }
     />

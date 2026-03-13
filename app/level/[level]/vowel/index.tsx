@@ -1,11 +1,10 @@
 import BlueScreen from "@/components/BlueScreen";
-import { FontSizes, FontWeights } from "../../../../theme/typography";
+import { FontSizes, FontWeights } from "@/theme/typography";
 import { usePathname, useRouter } from "expo-router";
-import { supabase } from "../../../../supabaseConfig"; // your supabase client
-import SmallButton from "../../../../components/SmallButton";
+import { supabase } from "@/supabaseConfig"; // your supabase client
+import SmallButton from "@/components/SmallButton";
 import { useEffect, useState } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
-// import { useThemeColors } from "../theme/useThemeColors";
 
 interface Lesson {
   category: string;

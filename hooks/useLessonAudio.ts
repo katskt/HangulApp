@@ -11,19 +11,10 @@ import {
 
 export function useLessonAudio(character: string | null) {
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
-
   const referencePlayer = useAudioPlayer();
   const recordedPlayer = useAudioPlayer();
 
-  useEffect(() => {
-  if (!audioUrl) return;
-
-  (async () => {
-    await referencePlayer.replace(audioUrl);
-  })();
-}, [audioUrl]);
-
-
+  
   const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
   const recorderState = useAudioRecorderState(recorder);
 
@@ -82,6 +73,7 @@ useEffect(() => {
     });
   }, []);
 
+  const playRecording = async () => {recordedPlayer.seekTo(0); recordedPlayer.play()}
   const stopRecording = async () => {
     // The recording will be available on `audioRecorder.uri`.
     await recorder.stop();
@@ -92,13 +84,14 @@ useEffect(() => {
       allowsRecording: false,
       playsInSilentMode: true,
     });
+    playRecording()
   };
 
   return {
     playReference,
     startRecording,
     stopRecording,
-    playRecording: () => {recordedPlayer.seekTo(0); recordedPlayer.play()}, 
+    playRecording,
     isRecording: recorderState.isRecording,
     hasRecording: !!recorder.uri,
   };

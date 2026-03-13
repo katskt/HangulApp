@@ -1,16 +1,15 @@
 import { Tabs } from "expo-router";
-import { useThemeColors } from "../theme/useThemeColors";
+import { useThemeColors } from "@/theme/useThemeColors";
+import { Ionicons } from "@expo/vector-icons";
+import { Stack } from "expo-router";
 
 export default function Layout() {
   const colors = useThemeColors();
 
   return (
-    <Tabs
+    <Stack
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.tint as string,
-        tabBarInactiveTintColor: colors.text as string,
-        tabBarStyle: { backgroundColor: colors.tabBar },
       }}
     />
   );

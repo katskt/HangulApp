@@ -8,7 +8,7 @@ type buttonProps = {
   target?: string;
 };
 
-import { useThemeColors } from "../theme/useThemeColors";
+import { useThemeColors } from "@/theme/useThemeColors";
 import { FontSizes } from "@/theme/typography";
 
 export default function Button({
@@ -42,7 +42,7 @@ export default function Button({
 
   return (
     <TouchableOpacity
-      onPress={() => router.push(target)}
+      onPress={() => router.push(target as RelativePathString)}
       style={[styles.container, { backgroundColor: fill }]}
     >
       <Text style={styles.title}>{title}</Text>

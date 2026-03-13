@@ -5,6 +5,7 @@ export const FontSizes = {
   body: 16,
   caption: 13,
   huge: 50,
+  hugeXL: 80,
 };
 
 export const FontWeights = {

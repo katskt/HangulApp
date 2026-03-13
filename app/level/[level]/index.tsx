@@ -9,27 +9,28 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { supabase } from "../../../supabaseConfig"; // your supabase client
-import { useThemeColors } from "../../../theme/useThemeColors";
-import { FontSizes, FontWeights } from "../../../theme/typography";
-import Button from "../../../components/button";
-
+import { supabase } from "@/supabaseConfig"; // your supabase client
+import { useThemeColors } from "@/theme/useThemeColors";
+import { FontSizes, FontWeights } from "@/theme/typography";
+import Button from "@/components/button";
 import BlueScreen from "@/components/BlueScreen";
 import { getLevelImage } from "@/lib/levelAssets";
-const [quizLevels, setQuizLevels] = useState<number[]>([]);
+
 export default function LevelPage() {
   // Type your params for TypeScript
+
+  const [quizLevels, setQuizLevels] = useState<number[]>([]);
   const params = useLocalSearchParams<{ level: string }>();
   const levelNumber = Number(params.level);
   useEffect(() => {
     const fetchLevels = async () => {
       const { data, error } = await supabase
-        .from("quizzes")
+        .from("quiz_unique_quiz")
         .select("quiz")
         .eq("level", levelNumber)
         .order("quiz", {
           ascending: true,
-        }); /* TODO: MAKE THIS QUIZ FETCHING DYNAMIC!!! */
+        });
 
       if (error) {
         console.log(error);
@@ -52,7 +53,10 @@ export default function LevelPage() {
           }}
         >
           <Text
-            style={{ fontSize: FontSizes.header, fontWeight: FontWeights.bold }}
+            style={{
+              fontSize: FontSizes.header,
+              fontWeight: FontWeights.bold,
+            }}
           >
             HANGEUL {levelNumber}
           </Text>
@@ -72,14 +76,14 @@ export default function LevelPage() {
           </Text>
           <Button
             target={`/level/${levelNumber}/vowel`}
-            title={"Vowels"}
+            title={"Vowel"}
             background={"아 어 오 우 으 이"}
             fill={"#FFF"}
           />
           <Button
             target={`/level/${levelNumber}/consonant`}
-            title={"Consonants"}
-            background={"ㄱㄴㄷㄹㅁㅂㅅ"}
+            title={"Consonant"}
+            background={"ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ"}
             fill={"#FFF"}
           />
           <Button
@@ -93,25 +97,31 @@ export default function LevelPage() {
           >
             QUIZ A
           </Text>
-          <Button
-            target={`/level/${levelNumber}/quiz/1/A`}
-            title={"Quiz 1A"}
-            background={""}
-            fill={"#FFF"}
-          />
-          <Button title={"Quiz 2A"} background={""} fill={"#FFF"} />
+          {quizLevels.map((quiz_level) => (
+            <View key={quiz_level}>
+              <Button
+                target={`/level/${levelNumber}/quiz/${quiz_level}/A`}
+                title={"Quiz " + quiz_level + "A"}
+                background={""}
+                fill={"#FFF"}
+              />
+            </View>
+          ))}
           <Text
             style={{ fontSize: FontSizes.h3, fontWeight: FontWeights.bold }}
           >
             QUIZ B
           </Text>
-          <Button
-            target={`/level/${levelNumber}/quiz/1/B`}
-            title={"Quiz 1B"}
-            background={""}
-            fill={"#FFF"}
-          />
-          <Button title={"Quiz 2B"} background={""} fill={"#FFF"} />
+          {quizLevels.map((quiz_level) => (
+            <View key={quiz_level}>
+              <Button
+                target={`/level/${levelNumber}/quiz/${quiz_level}/B`}
+                title={"Quiz " + quiz_level + "B"}
+                background={""}
+                fill={"#FFF"}
+              />
+            </View>
+          ))}
         </ScrollView>
       }
     />

@@ -2,9 +2,9 @@
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { supabase } from "../supabaseConfig"; // your supabase client
-import { useThemeColors } from "../theme/useThemeColors";
-import SplashTemplate from "../components/TemplateScreen"; // adjust path to your template
+import { supabase } from "@/supabaseConfig"; // your supabase client
+import { useThemeColors } from "@/theme/useThemeColors";
+import SplashTemplate from "@/components/TemplateScreen"; // adjust path to your template
 import { getLevelImage } from "@/lib/levelAssets";
 interface Level {
   created_at: string;
@@ -20,7 +20,12 @@ export default function HomeScreen() {
 
   useEffect(() => {
     const fetchLevels = async () => {
-      const { data, error } = await supabase.from("levels").select("*");
+      const { data, error } = await supabase
+        .from("levels")
+        .select("*")
+        .order("level_number", {
+          ascending: true,
+        });
       if (error) console.log(error);
       else {
         setLevels(data || []);

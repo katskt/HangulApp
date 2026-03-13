@@ -1,21 +1,32 @@
 import React from "react";
 import { Pressable, Text, StyleSheet, TouchableOpacity } from "react-native";
-import { useThemeColors } from "../theme/useThemeColors";
+import { useThemeColors } from "@/theme/useThemeColors";
 import { FontSizes, FontWeights } from "@/theme/typography";
 
 type ButtonProps = {
-  title: any;
+  children: React.ReactNode;
   color?: string;
-  onPress?: () => void; // optional function
-  disabled?: boolean; // new prop
+  onPress?: () => void;
+  onPressIn?: () => void;
+  onPressOut?: () => void;
+  disabled?: boolean;
   width?: number;
   style?: string;
 };
 
-const MyButton = ({ onPress, disabled, title, color }: ButtonProps) => {
+const MyButton = ({
+  onPress,
+  onPressIn,
+  onPressOut,
+  disabled,
+  children,
+  color,
+}: ButtonProps) => {
   return (
     <Pressable
       onPress={onPress}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
       disabled={disabled}
       style={({ pressed }) => [
         styles.button,
@@ -25,7 +36,7 @@ const MyButton = ({ onPress, disabled, title, color }: ButtonProps) => {
         pressed && styles.buttonPressed,
       ]}
     >
-      <Text style={styles.text}>{title}</Text>
+      {children}
     </Pressable>
   );
 };
@@ -39,7 +50,7 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     elevation: 3, // Android shadow
     marginVertical: 10,
-    height: 80,
+    minHeight: 80,
     margin: 10,
   },
   buttonPressed: {

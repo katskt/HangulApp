@@ -7,14 +7,21 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  Image,
 } from "react-native";
+import AnimatedImage from "@components/AnimatedImage";
+import Loading from "@components/Loading";
 import { useQuizLessons } from "@/hooks/useQuizLessons";
 import { useLessonAudio } from "@/hooks/useLessonAudio";
 import Icon from "react-native-vector-icons/Ionicons";
 import Button from "@/components/FunctionalButton";
 import SmallButton from "@components/SmallButton";
+import { useThemeColors } from "@/theme/useThemeColors";
+
 import { FontSizes, FontWeights } from "@/theme/typography";
 const Quiz = () => {
+  const imagey = require("@/assets/images/sejong.png");
+  const colors = useThemeColors();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [shuffledAnswer, setShuffledAnswers] = useState(0); // Shuffles answers
@@ -27,7 +34,6 @@ const Quiz = () => {
   const correct_audio = currentQuiz?.correct_audio ?? null;
   const wrong_audio = currentQuiz?.wrong_audio ?? null;
 
-  console.log("PEEPEEPOOPOO", quizQuestion);
   useEffect(() => {
     if (!currentQuiz) return;
 
@@ -47,7 +53,7 @@ const Quiz = () => {
     if (selectedOption === quizQuestion[currentQuestion].correct_audio) {
       setScore(score + 1);
 
-      // Move to next question after a short delay (so user can see red highlight)
+      // Move to next question after a short delay (so user can see correct highlight)
       setTimeout(() => {
         if (currentQuestion < quizQuestion.length - 1) {
           setCurrentQuestion(currentQuestion + 1);
@@ -56,6 +62,9 @@ const Quiz = () => {
           setQuizCompleted(true);
         }
       }, 500); // 500ms delay
+    }
+    if (selectedOption != quizQuestion[currentQuestion].correct_audio) {
+      console.log("wrong");
     }
   };
 
@@ -67,21 +76,19 @@ const Quiz = () => {
   };
 
   // handle when data hasnt loaded yet
-  if (quizQuestion.length === 0) {
-    return (
-      <View>
-        <Text>Loading...</Text>
-      </View>
-    );
-  }
+
+  if (!quizQuestion.length) return <Loading />;
   return (
     <View>
       {quizCompleted ? (
         // DISPLAY RESULT PAGE
-        <ScrollView>
-          <Text>Good Job!</Text>
-          <Button title={"Retest"} onPress={handleRetest}></Button>
-        </ScrollView>
+        <View style={{ alignItems: "center" }}>
+          <Text style={{ fontSize: FontSizes.header }}>참 잘했어요</Text>
+          <AnimatedImage source={imagey} size={120} />
+          <Button onPress={handleRetest}>
+            <Icon name="refresh" size={24} color="black" />
+          </Button>
+        </View>
       ) : (
         // DISPLAY QUIZ QUESTION
         <View>
@@ -93,30 +100,30 @@ const Quiz = () => {
               {/* WRONG, RIGHT */}
               <View style={styles.containerSideBySide}>
                 <View style={styles.itemSideBySide}>
-                  <Button
-                    title={<Icon name="volume-high" size={40} />}
-                    onPress={playWrongAudio}
-                  ></Button>
+                  <Button onPress={playWrongAudio}>
+                    {<Icon name="volume-high" size={40} />}
+                  </Button>
                 </View>
                 <View style={styles.itemSideBySide}>
                   <Button
-                    title={""}
                     onPress={() => handleAnswer(currentQuiz!.wrong_audio)}
-                  ></Button>
+                  >
+                    <Text></Text>
+                  </Button>
                 </View>
               </View>
               <View style={styles.containerSideBySide}>
                 <View style={styles.itemSideBySide}>
-                  <Button
-                    title={<Icon name="volume-high" size={40} />}
-                    onPress={playCorrectAudio}
-                  ></Button>
+                  <Button onPress={playCorrectAudio}>
+                    {<Icon name="volume-high" size={40} />}
+                  </Button>
                 </View>
                 <View style={styles.itemSideBySide}>
                   <Button
-                    title={""}
                     onPress={() => handleAnswer(currentQuiz!.correct_audio)}
-                  ></Button>
+                  >
+                    <Text></Text>
+                  </Button>
                 </View>
               </View>
             </View>
@@ -125,30 +132,30 @@ const Quiz = () => {
               {/* RIGHT, WRONG */}
               <View style={styles.containerSideBySide}>
                 <View style={styles.itemSideBySide}>
-                  <Button
-                    title={<Icon name="volume-high" size={40} />}
-                    onPress={playCorrectAudio}
-                  ></Button>
+                  <Button onPress={playCorrectAudio}>
+                    {<Icon name="volume-high" size={40} />}
+                  </Button>
                 </View>
                 <View style={styles.itemSideBySide}>
                   <Button
-                    title={" "}
                     onPress={() => handleAnswer(currentQuiz!.correct_audio)}
-                  />
+                  >
+                    <Text></Text>
+                  </Button>
                 </View>
               </View>
               <View style={styles.containerSideBySide}>
                 <View style={styles.itemSideBySide}>
-                  <Button
-                    title={<Icon name="volume-high" size={40} />}
-                    onPress={playWrongAudio}
-                  />
+                  <Button onPress={playWrongAudio}>
+                    {<Icon name="volume-high" size={40} />}
+                  </Button>
                 </View>
                 <View style={styles.itemSideBySide}>
                   <Button
-                    title={" "}
                     onPress={() => handleAnswer(currentQuiz!.wrong_audio)}
-                  />
+                  >
+                    <Text></Text>
+                  </Button>
                 </View>
               </View>
             </View>
@@ -170,7 +177,7 @@ const Quiz = () => {
 
 const styles = StyleSheet.create({
   question: {
-    fontSize: FontSizes.huge,
+    fontSize: FontSizes.hugeXL,
     margin: "auto",
     padding: 10,
   },

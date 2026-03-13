@@ -7,7 +7,7 @@ const [currentPath, setCurrentPath] = useState<string[]>([]);
 
   const [isClearButtonClicked, setClearButtonClicked] = useState(false);
   const [strokeImageUrl, setstrokeImageUrl] = useState<string | null>(null);
-
+/* 
   // ------ Fetch stroke order image from Supabase ------
   useEffect(() => {
       console.log("useEffect triggered, character:", character);
@@ -26,7 +26,7 @@ const [currentPath, setCurrentPath] = useState<string[]>([]);
   console.log("fetched public URL:", data.publicUrl); // logs immediately
   setstrokeImageUrl(data.publicUrl);
 
-}, [character]);
+}, [character]); */
 
 
   // ------ Touch Logic ------
@@ -61,6 +61,6 @@ const [currentPath, setCurrentPath] = useState<string[]>([]);
     onTouchMove,
     onTouchEnd,
     handleClear,
-    strokeImageUrl, 
+    //strokeImageUrl, 
   };
 }

@@ -1,14 +1,17 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
-
-import { useThemeColors } from "../theme/useThemeColors";
-
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { Stack, useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { sharedStyles } from "@/theme/sharedStyles";
+import { useThemeColors } from "@/theme/useThemeColors";
 type BlueScreenProps = {
   header?: React.ReactNode; // header
   content?: React.ReactNode;
 };
 
 export default function BlueScreen({ header, content }: BlueScreenProps) {
+  const router = useRouter();
+
   const colors = useThemeColors();
   const styles = StyleSheet.create({
     container: {
@@ -32,9 +35,28 @@ export default function BlueScreen({ header, content }: BlueScreenProps) {
   });
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>{header}</View>
-      <View style={styles.content}>{content}</View>
-    </View>
+    <>
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTransparent: true,
+          headerTitle: "",
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => {
+                router.back();
+              }}
+              style={sharedStyles.iconButton}
+            >
+              <Ionicons name="close" size={20} color="white" />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <View style={styles.container}>
+        <View style={styles.header}>{header}</View>
+        <View style={styles.content}>{content}</View>
+      </View>
+    </>
   );
 }

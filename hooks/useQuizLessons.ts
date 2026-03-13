@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "expo-router";
-import { supabase } from "../supabaseConfig";
+import { supabase } from "@/supabaseConfig";
 
 interface Quiz {
     level: number;
@@ -18,7 +18,7 @@ export function useQuizLessons() {
   const category = parts[2];
   const quizNum = parts[3];
   const [quizQuestion, setQuizQuestion] = useState<Quiz[]>([]);
-
+  console.log("POOP", quizNum)
   useEffect(() => {
     if (!level || !category) return;
 

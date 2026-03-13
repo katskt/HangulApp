@@ -8,7 +8,7 @@ type SplashTemplateProps = {
   topHeightRatio?: number; // Fraction of screen for top (default 1/3)
 };
 
-import { useThemeColors } from "../theme/useThemeColors";
+import { useThemeColors } from "@/theme/useThemeColors";
 
 export default function HalfSplashTemplate({
   topContent,
@@ -59,7 +59,7 @@ export default function HalfSplashTemplate({
       {/* Top Splash Section */}
       <View style={[styles.top, { flex: topHeightRatio }]}>
         <Image
-          source={require("../assets/images/halfWhiteSplash.png")}
+          source={require("@/assets/images/halfWhiteSplash.png")}
           style={styles.image}
           resizeMode="cover"
         />

@@ -1,11 +1,15 @@
 import BlueScreen from "@/components/BlueScreen";
-import { FontSizes, FontWeights } from "../../../../theme/typography";
+import { FontSizes, FontWeights } from "@/theme/typography";
 import { usePathname, useRouter } from "expo-router";
-import { supabase } from "../../../../supabaseConfig"; // your supabase client
-import SmallButton from "../../../../components/SmallButton";
+import { supabase } from "@/supabaseConfig"; // your supabase client
+import SmallButton from "@/components/SmallButton";
 import { useEffect, useState } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
-// import { useThemeColors } from "../theme/useThemeColors";
+
+// Go back button
+import { Stack } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { sharedStyles } from "@/theme/sharedStyles";
 
 interface Lesson {
   category: string;
@@ -69,21 +73,38 @@ export default function vowelPage() {
         </View>
       }
       content={
-        <ScrollView>
-          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-            {lessons.map((lesson) => (
-              <View key={lesson.id} style={{ width: "50%", padding: 8 }}>
-                <TouchableOpacity key={lesson.id}>
+        <>
+          <Stack.Screen
+            options={{
+              headerShown: true,
+              headerTransparent: true,
+              headerTitle: "",
+              headerLeft: () => (
+                <TouchableOpacity
+                  onPress={() => {
+                    router.back();
+                  }}
+                  style={sharedStyles.iconButton}
+                >
+                  <Ionicons name="close" size={20} color="white" />
+                </TouchableOpacity>
+              ),
+            }}
+          />
+          <ScrollView>
+            <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+              {lessons.map((lesson) => (
+                <View key={lesson.id} style={{ width: "50%", padding: 8 }}>
                   <SmallButton
                     fill="#FFF"
                     title={lesson.group}
                     target={`/level/${level}/${category}/${lesson.group_romanization}`}
                   ></SmallButton>
-                </TouchableOpacity>
-              </View>
-            ))}
-          </View>
-        </ScrollView>
+                </View>
+              ))}
+            </View>
+          </ScrollView>
+        </>
       }
     />
   );

@@ -1,10 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { View, ScrollView, Dimensions, StyleSheet, Text } from "react-native";
-import { usePathname } from "expo-router";
-import { supabase } from "../../../../supabaseConfig";
+import {
+  TouchableOpacity,
+  View,
+  ScrollView,
+  Dimensions,
+  StyleSheet,
+  Text,
+} from "react-native";
+import { usePathname, useRouter } from "expo-router";
+import { supabase } from "@/supabaseConfig";
 import LessonAudioPanel from "@/components/LessonAudioPanel";
-import CanvasPage from "../../../../components/TraceCanvas";
-import { useThemeColors } from "../../../../theme/useThemeColors";
+import CanvasPage from "@/components/TraceCanvas";
+import { useThemeColors } from "@/theme/useThemeColors";
+import { Stack } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { router } from "expo-router";
+import { sharedStyles } from "@/theme/sharedStyles";
+import Loading from "@/components/Loading";
 
 interface Lesson {
   category: string;
@@ -21,12 +34,14 @@ interface Lesson {
 const { width: screenWidth } = Dimensions.get("window");
 
 export default function LessonPage() {
+  const router = useRouter();
   const parts = usePathname().split("/").filter(Boolean);
   const level = parts[1];
   const category = parts[2];
 
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [scrollEnabled, setScrollEnabled] = useState(true);
+
   const colors = useThemeColors();
 
   // Fetch lessons
@@ -52,39 +67,57 @@ export default function LessonPage() {
     fetchLessons();
   }, [level, category]);
 
-  if (!lessons.length) return <Text>Loading...</Text>;
-
+  if (!lessons.length) return <Loading />;
   return (
-    <ScrollView
-      horizontal
-      pagingEnabled
-      showsHorizontalScrollIndicator={true}
-      scrollEnabled={scrollEnabled}
-      style={{ flex: 1, backgroundColor: colors.background }}
-    >
-      {lessons.map((lesson) => (
-        <React.Fragment key={lesson.id}>
-          {/* Page 1: Audio Panel */}
-          <View style={[styles.page, { width: screenWidth }]}>
-            <LessonAudioPanel
-              character={lesson.hangeul_romanization}
-              hangeul={lesson.hangeul}
-              image={true}
-            />
-          </View>
+    <>
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTransparent: true,
+          headerTitle: "",
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => {
+                router.back();
+              }}
+              style={sharedStyles.iconButton}
+            >
+              <Ionicons name="close" size={20} color="white" />
+            </TouchableOpacity>
+          ),
+        }}
+      />
+      <ScrollView
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={true}
+        scrollEnabled={scrollEnabled}
+        style={{ flex: 1, backgroundColor: colors.background }}
+      >
+        {lessons.map((lesson) => (
+          <React.Fragment key={lesson.id}>
+            {/* Page 1: Audio Panel */}
+            <View style={[styles.page, { width: screenWidth }]}>
+              <LessonAudioPanel
+                character={lesson.hangeul_romanization}
+                hangeul={lesson.hangeul}
+                image={true}
+              />
+            </View>
 
-          {/* Page 2: Trace Canvas */}
-          <View style={[styles.page, { width: screenWidth }]}>
-            <CanvasPage
-              character={lesson.hangeul_romanization}
-              onTouchStart={() => setScrollEnabled(false)}
-              onTouchEnd={() => setScrollEnabled(true)}
-              image={true}
-            />
-          </View>
-        </React.Fragment>
-      ))}
-    </ScrollView>
+            {/* Page 2: Trace Canvas */}
+            <View style={[styles.page, { width: screenWidth }]}>
+              <CanvasPage
+                character={lesson.hangeul_romanization}
+                onTouchStart={() => setScrollEnabled(false)}
+                onTouchEnd={() => setScrollEnabled(true)}
+                image={true}
+              />
+            </View>
+          </React.Fragment>
+        ))}
+      </ScrollView>
+    </>
   );
 }
 

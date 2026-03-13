@@ -14,7 +14,12 @@ const App = () => {
   return (
     <BlueScreen
       header={
-        <Text style={styles.heading}>Listen and Select the Correct Answer</Text>
+        <View>
+          <Text style={styles.grayed}>{parts.join(" ").toUpperCase()}</Text>
+          <Text style={styles.heading}>
+            Listen and Select the Correct Answer{" "}
+          </Text>
+        </View>
       }
       content={<QuizB />}
     />
@@ -28,5 +33,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     fontWeight: "bold",
     color: "black",
+  },
+  grayed: {
+    fontSize: 25,
+    paddingHorizontal: 10,
+    fontWeight: "bold",
+    color: "gray",
   },
 });

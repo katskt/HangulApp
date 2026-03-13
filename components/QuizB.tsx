@@ -7,13 +7,20 @@ import {
   TouchableOpacity,
   StyleSheet,
   ScrollView,
+  Image,
 } from "react-native";
+import AnimatedImage from "@/components/AnimatedImage";
 import { useQuizLessons } from "@/hooks/useQuizLessons";
 import { useLessonAudio } from "@/hooks/useLessonAudio";
 import Icon from "react-native-vector-icons/Ionicons";
 import Button from "@/components/FunctionalButton";
 import { FontSizes, FontWeights } from "@/theme/typography";
+import { useThemeColors } from "@/theme/useThemeColors";
+import Loading from "@components/Loading";
 const Quiz = () => {
+  const imagey = require("@/assets/images/sejong.png");
+
+  const colors = useThemeColors();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [shuffledAnswer, setShuffledAnswers] = useState(0); // Shuffles answers
@@ -63,52 +70,45 @@ const Quiz = () => {
   };
 
   // handle when data hasnt loaded yet
-  if (quizQuestion.length === 0) {
-    return (
-      <View>
-        <Text>Loading...</Text>
-      </View>
-    );
-  }
+  if (!quizQuestion.length) return <Loading />;
   return (
     <View>
       {quizCompleted ? (
         // DISPLAY RESULT PAGE
-        <ScrollView>
-          <Text>Good Job!</Text>
-          <Button title={"Retest"} onPress={handleRetest}></Button>
-        </ScrollView>
+        <View style={{ alignItems: "center" }}>
+          <Text style={{ fontSize: FontSizes.header }}>참 잘했어요</Text>
+          <AnimatedImage source={imagey} size={120} />
+          <Button onPress={handleRetest}>
+            <Icon name="refresh" size={24} color="black" />
+          </Button>
+        </View>
       ) : (
         // DISPLAY QUIZ QUESTION
         <View>
           {currentQuiz && (
-            <Button
-              onPress={playReference}
-              title={<Icon name="volume-high" size={40} />}
-            ></Button>
+            <Button onPress={playReference}>
+              <Icon name="volume-high" size={40} />
+            </Button>
           )}
           {shuffledAnswer == 1 ? (
             <View>
-              <Button
-                title={currentQuiz?.correct_hangeul}
-                onPress={() => handleAnswer(currentQuiz!.correct_audio)}
-              ></Button>
+              <Button onPress={() => handleAnswer(currentQuiz!.correct_audio)}>
+                {currentQuiz?.correct_hangeul}
+              </Button>
 
-              <Button
-                title={currentQuiz?.wrong_hangeul}
-                onPress={() => handleAnswer(currentQuiz!.wrong_audio)}
-              ></Button>
+              <Button onPress={() => handleAnswer(currentQuiz!.wrong_audio)}>
+                currentQuiz?.wrong_hangeul
+              </Button>
             </View>
           ) : (
             <View>
-              <Button
-                title={currentQuiz?.wrong_hangeul}
-                onPress={() => handleAnswer(currentQuiz!.wrong_audio)}
-              ></Button>
-              <Button
-                title={currentQuiz?.correct_hangeul}
-                onPress={() => handleAnswer(currentQuiz!.correct_audio)}
-              ></Button>
+              <Button onPress={() => handleAnswer(currentQuiz!.wrong_audio)}>
+                {" "}
+                {currentQuiz?.wrong_hangeul}
+              </Button>
+              <Button onPress={() => handleAnswer(currentQuiz!.correct_audio)}>
+                currentQuiz?.correct_hangeul
+              </Button>
             </View>
           )}
           <Text style={styles.displayMessage}>
