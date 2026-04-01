@@ -1,7 +1,5 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
-import { Dimensions } from "react-native";
-import MyButton from "./FunctionalButton";
+import { Dimensions, Image, StyleSheet, View } from "react-native";
 type SplashTemplateProps = {
   topContent?: React.ReactNode; // Content over the whiteSplash
   bottomContent?: React.ReactNode; // Content over the Color.background

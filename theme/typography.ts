@@ -1,17 +1,33 @@
-export const FontSizes = {
-  header: 28,
-  h2: 22,
-  h3: 18,
-  body: 16,
-  caption: 13,
-  huge: 50,
-  hugeXL: 80,
+import { Dimensions, PixelRatio } from "react-native";
+
+const { width } = Dimensions.get("window");
+
+// base width is 390 (iPhone 14 size)
+const scale = width / 390;
+
+const normalize = (size: number) => {
+  return Math.round(PixelRatio.roundToNearestPixel(size * scale));
 };
 
+export const FontSizes = {
+  header: normalize(28),
+  h2: normalize(22),
+  h3: normalize(18),
+  body: normalize(16),
+  caption: normalize(13),
+  huge: normalize(50),
+  hugeXL: normalize(80),
+  character: normalize(120),
+};
+
+export const Typography = {
+  default: "Jua",
+  english: "AsapCondensedSemiBold",
+};
 export const FontWeights = {
   regular: 400 as const,
   medium: 500 as const,
   semibold: 600 as const,
   bold: 700 as const,
 };
-// ocr 
+// ocr

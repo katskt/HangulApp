@@ -1,23 +1,22 @@
+import LessonAudioPanel from "@/components/LessonAudioPanel";
+import Loading from "@/components/Loading";
+import ProgressBar from "@/components/ProgressBar";
+import CanvasPage from "@/components/TraceCanvas";
+import { supabase } from "@/supabaseConfig";
+import { sharedStyles } from "@/theme/sharedStyles";
+import { useThemeColors } from "@/theme/useThemeColors";
+import { useResponsive } from "@/utils/responsive";
+import { Ionicons } from "@expo/vector-icons";
+import { Stack, usePathname, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
+
 import {
+  Dimensions,
+  ScrollView,
+  StyleSheet,
   TouchableOpacity,
   View,
-  ScrollView,
-  Dimensions,
-  StyleSheet,
-  Text,
 } from "react-native";
-import { usePathname, useRouter } from "expo-router";
-import { supabase } from "@/supabaseConfig";
-import LessonAudioPanel from "@/components/LessonAudioPanel";
-import CanvasPage from "@/components/TraceCanvas";
-import { useThemeColors } from "@/theme/useThemeColors";
-import { Stack } from "expo-router";
-import { useLocalSearchParams } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
-import { sharedStyles } from "@/theme/sharedStyles";
-import Loading from "@/components/Loading";
 
 interface Lesson {
   category: string;
@@ -34,6 +33,7 @@ interface Lesson {
 const { width: screenWidth } = Dimensions.get("window");
 
 export default function LessonPage() {
+  const { wp, hp } = useResponsive();
   const router = useRouter();
   const parts = usePathname().split("/").filter(Boolean);
   const level = parts[1];
@@ -43,6 +43,9 @@ export default function LessonPage() {
   const [scrollEnabled, setScrollEnabled] = useState(true);
 
   const colors = useThemeColors();
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const totalPages = lessons.length * 2; // 2 pages per lesson
 
   // Fetch lessons
   useEffect(() => {
@@ -88,16 +91,22 @@ export default function LessonPage() {
         }}
       />
       <ScrollView
+        // Add onScroll to ScrollView:
+        onScroll={(e) => {
+          const page = Math.round(e.nativeEvent.contentOffset.x / screenWidth);
+          setCurrentPage(page);
+        }}
+        scrollEventThrottle={16}
         horizontal
         pagingEnabled
-        showsHorizontalScrollIndicator={true}
+        showsHorizontalScrollIndicator={false}
         scrollEnabled={scrollEnabled}
         style={{ flex: 1, backgroundColor: colors.background }}
       >
         {lessons.map((lesson) => (
           <React.Fragment key={lesson.id}>
             {/* Page 1: Audio Panel */}
-            <View style={[styles.page, { width: screenWidth }]}>
+            <View style={[styles.page, { width: wp(100) }]}>
               <LessonAudioPanel
                 character={lesson.hangeul_romanization}
                 hangeul={lesson.hangeul}
@@ -106,7 +115,7 @@ export default function LessonPage() {
             </View>
 
             {/* Page 2: Trace Canvas */}
-            <View style={[styles.page, { width: screenWidth }]}>
+            <View style={[styles.page, { width: wp(100) }]}>
               <CanvasPage
                 character={lesson.hangeul_romanization}
                 onTouchStart={() => setScrollEnabled(false)}
@@ -117,6 +126,19 @@ export default function LessonPage() {
           </React.Fragment>
         ))}
       </ScrollView>
+
+      <View
+        style={{
+          paddingHorizontal: 16,
+          paddingVertical: 10,
+          backgroundColor: colors.background,
+        }}
+      >
+        <ProgressBar
+          currentQuestionNumber={currentPage + 1}
+          totalQuizNumber={totalPages}
+        ></ProgressBar>
+      </View>
     </>
   );
 }

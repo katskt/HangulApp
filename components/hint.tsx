@@ -1,6 +1,7 @@
-import { View, Text } from "react-native";
-
+import { useResponsive } from "@/utils/responsive";
+import { Text, View } from "react-native";
 export default function Hint({ children }: { children: React.ReactNode }) {
+  const { wp, hp } = useResponsive();
   return (
     <View
       style={{
@@ -18,7 +19,7 @@ export default function Hint({ children }: { children: React.ReactNode }) {
           textAlign: "center",
           color: "white",
           backgroundColor: "gray",
-          padding: 16,
+          padding: wp(2),
           opacity: 0.9,
           borderRadius: 10,
         }}

@@ -1,17 +1,17 @@
+import { RelativePathString, useRouter } from "expo-router";
 import React from "react";
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
-import { ExternalPathString, RelativePathString, useRouter } from "expo-router";
+import { StyleSheet, TouchableOpacity } from "react-native";
 type buttonProps = {
-  title?: string;
+  children: React.ReactNode;
   background?: string; // Content over the Color.background
   fill?: string; // Fraction of screen for top (default 1/3)
   target?: string;
 };
 
-import { useThemeColors } from "@/theme/useThemeColors";
 import { FontSizes, FontWeights } from "@/theme/typography";
+import { useThemeColors } from "@/theme/useThemeColors";
 
-export default function SmallButton({ title, fill, target }: buttonProps) {
+export default function SmallButton({ children, fill, target }: buttonProps) {
   const router = useRouter();
   const colors = useThemeColors();
   const styles = StyleSheet.create({
@@ -36,6 +36,8 @@ export default function SmallButton({ title, fill, target }: buttonProps) {
       overflow: "hidden",
       justifyContent: "center", // Vertical centering
       alignItems: "center",
+      borderWidth: 5,
+      borderColor: colors.tint,
     },
   });
 
@@ -44,7 +46,7 @@ export default function SmallButton({ title, fill, target }: buttonProps) {
       onPress={() => router.push(target as RelativePathString)}
       style={[styles.container, { backgroundColor: fill }]}
     >
-      <Text style={styles.title}>{title}</Text>
+      {children}
     </TouchableOpacity>
   );
 }

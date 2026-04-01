@@ -1,15 +1,15 @@
 import BlueScreen from "@/components/BlueScreen";
-import { FontSizes, FontWeights } from "@/theme/typography";
-import { usePathname, useRouter } from "expo-router";
-import { supabase } from "@/supabaseConfig"; // your supabase client
 import SmallButton from "@/components/SmallButton";
+import { supabase } from "@/supabaseConfig"; // your supabase client
+import { FontSizes, FontWeights, Typography } from "@/theme/typography";
+import { usePathname, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
 
 // Go back button
-import { Stack } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 import { sharedStyles } from "@/theme/sharedStyles";
+import { Ionicons } from "@expo/vector-icons";
+import { Stack } from "expo-router";
 
 interface Lesson {
   category: string;
@@ -23,16 +23,17 @@ interface Lesson {
   hangeul_romanization: string;
 }
 
+import { useThemeColors } from "@/theme/useThemeColors";
 import { Text, View } from "react-native";
 export default function vowelPage() {
   // check page
   const router = useRouter();
+  const colors = useThemeColors();
   const pathname = usePathname();
   const parts = pathname.split("/").filter(Boolean);
   const level = parts[1];
   const category = parts[2];
   const [lessons, setLessons] = useState<Lesson[]>([]);
-  console.log(pathname);
 
   useEffect(() => {
     if (!level || !category) return;
@@ -48,12 +49,10 @@ export default function vowelPage() {
       else {
         setLessons(data || []);
       }
-      console.log("consonant page:", data);
     };
     fetchLessons();
   }, [level, category]);
 
-  console.log(pathname); /* Do this for path!!! */
   return (
     <BlueScreen
       header={
@@ -66,9 +65,14 @@ export default function vowelPage() {
           }}
         >
           <Text
-            style={{ fontSize: FontSizes.header, fontWeight: FontWeights.bold }}
+            style={{
+              fontSize: FontSizes.huge,
+              fontWeight: FontWeights.bold,
+              fontFamily: Typography.english,
+              color: colors.text,
+            }}
           >
-            Consonant
+            CONSONANT
           </Text>
         </View>
       }
@@ -97,9 +101,18 @@ export default function vowelPage() {
                 <View key={lesson.id} style={{ width: "50%", padding: 8 }}>
                   <SmallButton
                     fill="#FFF"
-                    title={lesson.group}
                     target={`/level/${level}/${category}/${lesson.group_romanization}`}
-                  ></SmallButton>
+                  >
+                    <Text
+                      style={{
+                        fontSize: FontSizes.huge,
+                        fontWeight: FontWeights.semibold,
+                        fontFamily: Typography.default,
+                      }}
+                    >
+                      {lesson.group}
+                    </Text>
+                  </SmallButton>
                 </View>
               ))}
             </View>

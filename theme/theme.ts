@@ -1,47 +1,50 @@
 // theme.ts
-import { ColorValue } from 'react-native';
+import { ColorValue } from "react-native";
 
-export type ColorScheme = 'light' | 'dark';
+export type ColorScheme = "light" | "dark";
 
 export interface ThemeColors {
   background: ColorValue;
   foreground: ColorValue;
   text: ColorValue;
   tint: ColorValue;
+  select: ColorValue;
+  unselect: ColorValue;
   button: ColorValue;
   buttonText: ColorValue;
   navBar: ColorValue;
   incomplete: ColorValue;
   complete: ColorValue;
   tabBar: ColorValue;
-
 }
 
 export const Colors: Record<ColorScheme, ThemeColors> = {
   light: {
-    background: '#E5F3EF',
-    foreground: '#FFF9E7',
-    text: '#000',
-    tint: '#007AFF',
-    button: '#FFFDF7',
-    buttonText: '#000',
-    navBar: '#FFFDF7',
-    incomplete: '#FFFDF7',
-    complete: '#AAFF9C',
-    tabBar: '#FFFDF7',
-    
+    background: "#f8fffd",
+    foreground: "#FFF9E7",
+    text: "#000",
+    tint: "#d5d5d5",
+    select: "#4c4c4c",
+    unselect: "rgb(236, 236, 255)",
+    button: "#FFFDF7",
+    buttonText: "#000",
+    navBar: "#FFFDF7",
+    incomplete: "#FFFDF7",
+    complete: "#AAFF9C",
+    tabBar: "#FFFDF7",
   },
   dark: {
-    background: '#E5F3EF',
-    foreground: '#FFF9E7',
-    text: '#000',
-    tint: '#0af',
-    button: '#FFFDF7',
-    buttonText: '#000',
-    navBar: '#FFFDF7',
-    incomplete: '#FFFDF7',
-    complete: '#AAFF9C',
-    tabBar: '#FFFDF7',
-
+    background: "#256a56",
+    foreground: "#FFF9E7",
+    text: "#ffffff",
+    tint: "rgb(214, 214, 214)",
+    select: "#71b4ff",
+    unselect: "rgb(236, 236, 255)",
+    button: "#FFFDF7",
+    buttonText: "#000",
+    navBar: "#FFFDF7",
+    incomplete: "#FFFDF7",
+    complete: "#AAFF9C",
+    tabBar: "#FFFDF7",
   },
 };

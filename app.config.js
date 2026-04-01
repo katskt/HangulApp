@@ -1,14 +1,14 @@
-import 'dotenv/config';
+import "dotenv/config";
 
 export default {
   expo: {
-    name: 'hangulapp',
-    slug: 'hangulapp',
-    version: '1.0.0',
-    orientation: 'portrait',
-    icon: './assets/images/icon.png',
-    scheme: 'hangulapp',
-    userInterfaceStyle: 'automatic',
+    name: "hangulapp",
+    slug: "hangulapp",
+    version: "1.0.0",
+    orientation: "portrait",
+    icon: "./assets/images/icon.png",
+    scheme: "hangulapp",
+    userInterfaceStyle: "automatic",
     newArchEnabled: true,
 
     extra: {
@@ -22,32 +22,33 @@ export default {
 
     android: {
       adaptiveIcon: {
-        backgroundColor: '#E6F4FE',
-        foregroundImage: './assets/images/android-icon-foreground.png',
-        backgroundImage: './assets/images/android-icon-background.png',
-        monochromeImage: './assets/images/android-icon-monochrome.png',
+        backgroundColor: "#E6F4FE",
+        foregroundImage: "./assets/images/android-icon-foreground.png",
+        backgroundImage: "./assets/images/android-icon-background.png",
+        monochromeImage: "./assets/images/android-icon-monochrome.png",
       },
       edgeToEdgeEnabled: true,
       predictiveBackGestureEnabled: false,
     },
 
     web: {
-      output: 'static',
-      favicon: './assets/images/favicon.png',
+      output: "static",
+      favicon: "./assets/images/favicon.png",
     },
 
     plugins: [
       "expo-audio",
-      'expo-router',
+      "expo-router",
+      "expo-font",
       [
-        'expo-splash-screen',
+        "expo-splash-screen",
         {
-          image: './assets/images/splash-icon.png',
+          image: "./assets/images/splash-icon.png",
           imageWidth: 200,
-          resizeMode: 'contain',
-          backgroundColor: '#ffffff',
+          resizeMode: "contain",
+          backgroundColor: "#ffffff",
           dark: {
-            backgroundColor: '#000000',
+            backgroundColor: "#000000",
           },
         },
       ],

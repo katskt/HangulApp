@@ -1,11 +1,15 @@
 // app/index.tsx
-import { useRouter } from "expo-router";
-import { useEffect, useState } from "react";
-import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { supabase } from "@/supabaseConfig"; // your supabase client
-import { useThemeColors } from "@/theme/useThemeColors";
+import MyButton from "@/components/FunctionalButton";
 import SplashTemplate from "@/components/TemplateScreen"; // adjust path to your template
 import { getLevelImage } from "@/lib/levelAssets";
+import { supabase } from "@/supabaseConfig"; // your supabase client
+import { FontSizes, FontWeights, Typography } from "@/theme/typography";
+import { useThemeColors } from "@/theme/useThemeColors";
+import { useResponsive } from "@/utils/responsive";
+import { useRouter } from "expo-router";
+import { useEffect, useState } from "react";
+import { Image, StyleSheet, Text, View } from "react-native";
+
 interface Level {
   created_at: string;
   id: string; // UUID
@@ -14,6 +18,7 @@ interface Level {
 }
 
 export default function HomeScreen() {
+  const { wp, hp } = useResponsive();
   const router = useRouter();
   const colors = useThemeColors();
   const [levels, setLevels] = useState<Level[]>([]);
@@ -34,12 +39,40 @@ export default function HomeScreen() {
 
     fetchLevels();
   }, []);
+
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "space-between",
+    },
+    buttonImage: {
+      position: "absolute",
+      width: "100%",
+      height: "100%",
+      opacity: 0.9,
+    },
+    buttonText: {
+      padding: 20,
+      fontSize: 18,
+      opacity: 0.5,
+      fontFamily: Typography.english,
+    },
+  });
+
   return (
     <SplashTemplate
       // Top 1/3 content: put text, logo, etc.
       topContent={
         <View style={{ alignItems: "center" }}>
-          <Text style={{ fontSize: 28, fontWeight: "bold" }}>
+          <Text
+            style={{
+              fontSize: FontSizes.header,
+              fontWeight: FontWeights.bold,
+              fontFamily: Typography.default,
+            }}
+          >
             안녕하세요 Katie!
           </Text>
         </View>
@@ -50,48 +83,27 @@ export default function HomeScreen() {
           style={[styles.container, { backgroundColor: colors.background }]}
         >
           {levels.map((level) => (
-            <TouchableOpacity
+            <MyButton
               key={level.id}
-              style={[styles.button]}
+              style={{
+                width: wp(38),
+                height: wp(38),
+                justifyContent: "flex-start",
+                alignItems: "center",
+                borderRadius: 20,
+              }}
               onPress={() => router.push(`/level/${level.level_number}`)}
             >
               <Image
                 source={getLevelImage(level.level_number)}
                 style={styles.buttonImage}
-                resizeMode="contain"
+                resizeMode="cover"
               />
               <Text style={styles.buttonText}>{level.title}</Text>
-            </TouchableOpacity>
+            </MyButton>
           ))}
         </View>
       }
     />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    padding: 20,
-  },
-  button: {
-    width: "48%",
-    height: 160,
-    justifyContent: "flex-start",
-    alignItems: "center",
-  },
-  buttonImage: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    opacity: 0.9,
-  },
-  buttonText: {
-    padding: 20,
-    fontSize: 18,
-    opacity: 0.5,
-  },
-});

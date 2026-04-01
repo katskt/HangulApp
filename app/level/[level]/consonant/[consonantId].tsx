@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  ScrollView,
-  Dimensions,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { router } from "expo-router";
+import ProgressBar from "@/components/ProgressBar";
 import { sharedStyles } from "@/theme/sharedStyles";
-import { Stack } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { router, Stack } from "expo-router";
+import React, { useEffect, useState } from "react";
 
-import { usePathname } from "expo-router";
-import { supabase } from "@/supabaseConfig";
+import {
+  Dimensions,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+} from "react-native";
+
 import LessonAudioPanel from "@/components/LessonAudioPanel";
 import CanvasPage from "@/components/TraceCanvas";
+import { supabase } from "@/supabaseConfig";
 import { useThemeColors } from "@/theme/useThemeColors";
-import { useLocalSearchParams } from "expo-router";
+import { useResponsive } from "@/utils/responsive";
 import Loading from "@components/Loading";
-
+import { useLocalSearchParams, usePathname } from "expo-router";
 interface Lesson {
   category: string;
   id: string;
@@ -35,6 +34,7 @@ interface Lesson {
 const { width: screenWidth } = Dimensions.get("window");
 
 export default function LessonPage() {
+  const { wp, hp } = useResponsive();
   const { level, consonantId } = useLocalSearchParams();
   const pathname = usePathname();
   const category = pathname.split("/")[3]; // gets "consonant"
@@ -114,7 +114,7 @@ export default function LessonPage() {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         scrollEnabled={scrollEnabled}
-        style={{ flex: 1, backgroundColor: colors.background }}
+        style={{ width: wp(100), flex: 1, backgroundColor: colors.background }}
       >
         {lessons.map((lesson) => (
           <React.Fragment key={lesson.id}>
@@ -137,27 +137,18 @@ export default function LessonPage() {
           </React.Fragment>
         ))}
       </ScrollView>
+
       <View
         style={{
-          flexDirection: "row",
-          justifyContent: "center",
+          paddingHorizontal: 16,
           paddingVertical: 10,
           backgroundColor: colors.background,
         }}
       >
-        {Array.from({ length: totalPages }).map((_, i) => (
-          <View
-            key={i}
-            style={{
-              width: i === currentPage ? 16 : 8,
-              height: 8,
-              borderRadius: 4,
-              backgroundColor: i === currentPage ? colors.tint : "gray",
-              marginHorizontal: 4,
-              marginBottom: "10%",
-            }}
-          />
-        ))}
+        <ProgressBar
+          currentQuestionNumber={currentPage + 1}
+          totalQuizNumber={totalPages}
+        ></ProgressBar>
       </View>
     </>
   );

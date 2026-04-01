@@ -37,4 +37,3 @@ export default function useImage(character: string | null) {
 }
 
  */
-

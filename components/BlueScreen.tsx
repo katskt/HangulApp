@@ -1,9 +1,9 @@
-import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { Stack, useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 import { sharedStyles } from "@/theme/sharedStyles";
 import { useThemeColors } from "@/theme/useThemeColors";
+import { Ionicons } from "@expo/vector-icons";
+import { Stack, useRouter } from "expo-router";
+import React from "react";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 type BlueScreenProps = {
   header?: React.ReactNode; // header
   content?: React.ReactNode;
@@ -11,11 +11,10 @@ type BlueScreenProps = {
 
 export default function BlueScreen({ header, content }: BlueScreenProps) {
   const router = useRouter();
-
   const colors = useThemeColors();
   const styles = StyleSheet.create({
     container: {
-      paddingTop: "20%",
+      paddingTop: "15%",
       flex: 1,
       position: "relative",
       backgroundColor: colors.background,
@@ -23,13 +22,9 @@ export default function BlueScreen({ header, content }: BlueScreenProps) {
       borderColor: "red", */
     },
     header: {
-      height: "10%",
-      position: "relative",
-      marginVertical: 20,
       flexDirection: "row",
-      flex: 1,
-      justifyContent: "space-evenly",
-      alignItems: "center",
+      justifyContent: "flex-end",
+      paddingHorizontal: 15,
     },
     content: { height: "80%", paddingHorizontal: 15 },
   });

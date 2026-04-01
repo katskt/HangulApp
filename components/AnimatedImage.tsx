@@ -1,33 +1,43 @@
 import { useEffect, useRef } from "react";
-import { Animated } from "react-native";
+import { Animated, ImageStyle, StyleProp } from "react-native";
 
 export default function AnimatedImage({
+  style,
   source,
   size = 120,
 }: {
+  style?: StyleProp<ImageStyle>;
   source: any;
   size?: number;
 }) {
   const scaleAnim = useRef(new Animated.Value(0.3)).current;
   const opacityAnim = useRef(new Animated.Value(0)).current;
   const rotateAnim = useRef(new Animated.Value(0)).current;
-
   useEffect(() => {
-    Animated.parallel([
+    Animated.sequence([
+      Animated.parallel([
+        Animated.spring(scaleAnim, {
+          toValue: 3.15, // pop bigger
+          friction: 4,
+          tension: 120,
+          useNativeDriver: true,
+        }),
+        Animated.timing(opacityAnim, {
+          toValue: 1,
+          duration: 250, // quick fade
+          useNativeDriver: true,
+        }),
+        Animated.timing(rotateAnim, {
+          toValue: 3,
+          duration: 1050, // spin
+          useNativeDriver: true,
+        }),
+      ]),
+
       Animated.spring(scaleAnim, {
-        toValue: 1,
+        toValue: 1, // settle back
         friction: 6,
-        tension: 40,
-        useNativeDriver: true,
-      }),
-      Animated.timing(opacityAnim, {
-        toValue: 1,
-        duration: 1200,
-        useNativeDriver: true,
-      }),
-      Animated.timing(rotateAnim, {
-        toValue: 1,
-        duration: 1200,
+        tension: 80,
         useNativeDriver: true,
       }),
     ]).start();
@@ -42,12 +52,15 @@ export default function AnimatedImage({
     <Animated.Image
       source={source}
       resizeMode="contain"
-      style={{
-        width: size,
-        height: size,
-        transform: [{ scale: scaleAnim }, { rotate }],
-        opacity: opacityAnim,
-      }}
+      style={[
+        style,
+        {
+          width: size,
+          height: size,
+          transform: [{ scale: scaleAnim }, { rotate }],
+          opacity: opacityAnim,
+        },
+      ]}
     />
   );
 }

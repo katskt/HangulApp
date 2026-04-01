@@ -1,6 +1,7 @@
+import { useResponsive } from "@/utils/responsive";
+import { RelativePathString, useRouter } from "expo-router";
 import React from "react";
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
-import { ExternalPathString, RelativePathString, useRouter } from "expo-router";
+import { StyleSheet, Text, TouchableOpacity } from "react-native";
 type buttonProps = {
   title?: string;
   background?: string; // Content over the Color.background
@@ -8,8 +9,8 @@ type buttonProps = {
   target?: string;
 };
 
+import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
-import { FontSizes } from "@/theme/typography";
 
 export default function Button({
   title,
@@ -17,25 +18,26 @@ export default function Button({
   fill,
   target,
 }: buttonProps) {
+  const { wp, hp } = useResponsive();
   const router = useRouter();
   const colors = useThemeColors();
   const styles = StyleSheet.create({
     title: {
       fontSize: FontSizes.header,
+      fontWeight: FontWeights.semibold,
       padding: 15,
     },
     background: {
       fontSize: FontSizes.huge,
+      backgroundColor: colors.button,
       margin: -10,
-      opacity: 0.1,
       textAlign: "center",
     },
     container: {
-      height: 130,
+      height: hp(10),
       margin: 10,
-      marginVertical: 20,
       position: "relative",
-      borderRadius: 40,
+      borderRadius: 10,
       overflow: "hidden",
     },
   });
@@ -45,7 +47,9 @@ export default function Button({
       onPress={() => router.push(target as RelativePathString)}
       style={[styles.container, { backgroundColor: fill }]}
     >
-      <Text style={styles.title}>{title}</Text>
+      <Text style={[styles.title, { fontFamily: Typography.english }]}>
+        {title}
+      </Text>
       <Text style={styles.background}>{background}</Text>
     </TouchableOpacity>
   );

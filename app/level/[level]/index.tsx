@@ -1,24 +1,20 @@
 // app/index.tsx
-import { useRouter, useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
-import {
-  ScrollView,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { supabase } from "@/supabaseConfig"; // your supabase client
-import { useThemeColors } from "@/theme/useThemeColors";
-import { FontSizes, FontWeights } from "@/theme/typography";
-import Button from "@/components/button";
 import BlueScreen from "@/components/BlueScreen";
+import MyButton from "@/components/FunctionalButton";
 import { getLevelImage } from "@/lib/levelAssets";
-
+import { supabase } from "@/supabaseConfig"; // your supabase client
+import { FontSizes, FontWeights, Typography } from "@/theme/typography";
+import { useThemeColors } from "@/theme/useThemeColors";
+import { useResponsive } from "@/utils/responsive";
+import { useLocalSearchParams, useRouter } from "expo-router";
+import { useEffect, useState } from "react";
+import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 export default function LevelPage() {
-  // Type your params for TypeScript
+  const colors = useThemeColors();
+  const router = useRouter();
 
+  // Type your params for TypeScript
+  const { wp, hp } = useResponsive();
   const [quizLevels, setQuizLevels] = useState<number[]>([]);
   const params = useLocalSearchParams<{ level: string }>();
   const levelNumber = Number(params.level);
@@ -41,6 +37,45 @@ export default function LevelPage() {
 
     fetchLevels();
   }, [levelNumber]);
+
+  const styles = StyleSheet.create({
+    buttonText: {
+      fontSize: FontSizes.header,
+      fontWeight: FontWeights.semibold,
+      padding: hp(2),
+      fontFamily: Typography.english,
+    },
+    button: {
+      justifyContent: "center",
+      alignItems: "center",
+      display: "flex",
+      borderBottomWidth: wp(2),
+      borderBottomColor: "#8e8e8e",
+    },
+    containerSideBySide: {
+      justifyContent: "space-evenly",
+      flexDirection: "row",
+      flexWrap: "wrap",
+      width: "100%",
+    },
+    itemSideBySide: {
+      flex: 1,
+    },
+    title: {
+      fontSize: FontSizes.huge,
+      fontWeight: FontWeights.bold,
+      color: colors.text,
+      fontFamily: Typography.english,
+    },
+    header: {
+      marginVertical: hp(2),
+      fontSize: FontSizes.header,
+      fontWeight: FontWeights.bold,
+      color: colors.text,
+      fontFamily: Typography.english,
+    },
+  });
+
   return (
     <BlueScreen
       header={
@@ -52,111 +87,75 @@ export default function LevelPage() {
             alignItems: "center",
           }}
         >
-          <Text
-            style={{
-              fontSize: FontSizes.header,
-              fontWeight: FontWeights.bold,
-            }}
-          >
-            HANGEUL {levelNumber}
-          </Text>
+          <Text style={styles.title}>HANGEUL {levelNumber}</Text>
           <Image
             source={getLevelImage(levelNumber)}
             resizeMode="cover"
-            style={styles.icon}
+            style={{
+              borderRadius: wp(10),
+              width: wp(20),
+              height: wp(20),
+              borderWidth: 2,
+            }}
           />
         </View>
       }
       content={
         <ScrollView style={{ height: "80%" }}>
-          <Text
-            style={{ fontSize: FontSizes.h3, fontWeight: FontWeights.bold }}
+          <Text style={styles.header}>LESSON</Text>
+          <MyButton
+            style={styles.button}
+            onPress={() => router.push(`/level/${levelNumber}/vowel`)}
           >
-            LESSON{" "}
-          </Text>
-          <Button
-            target={`/level/${levelNumber}/vowel`}
-            title={"Vowel"}
-            background={"아 어 오 우 으 이"}
-            fill={"#FFF"}
-          />
-          <Button
-            target={`/level/${levelNumber}/consonant`}
-            title={"Consonant"}
-            background={"ㄱ ㄴ ㄷ ㄹ ㅁ ㅂ ㅅ"}
-            fill={"#FFF"}
-          />
-          <Button
-            target={`/level/${levelNumber}/practice`}
-            title={"Practice"}
-            background={""}
-            fill={"#FFF"}
-          />
-          <Text
-            style={{ fontSize: FontSizes.h3, fontWeight: FontWeights.bold }}
+            <Text style={styles.buttonText}>VOWEL</Text>
+          </MyButton>
+
+          <MyButton
+            style={styles.button}
+            onPress={() => router.push(`/level/${levelNumber}/consonant`)}
           >
-            QUIZ A
-          </Text>
+            <Text style={styles.buttonText}>CONSONANT</Text>
+          </MyButton>
+
+          <Text style={styles.header}>PRACTICE</Text>
+          <MyButton
+            style={styles.button}
+            onPress={() => router.push(`/level/${levelNumber}/practice`)}
+          >
+            <Text style={styles.buttonText}>PRACTICE</Text>
+          </MyButton>
+
+          <Text style={styles.header}>QUIZ A</Text>
+
           {quizLevels.map((quiz_level) => (
-            <View key={quiz_level}>
-              <Button
-                target={`/level/${levelNumber}/quiz/${quiz_level}/A`}
-                title={"Quiz " + quiz_level + "A"}
-                background={""}
-                fill={"#FFF"}
-              />
-            </View>
+            <MyButton
+              key={quiz_level}
+              style={styles.button}
+              onPress={() =>
+                router.push(`/level/${levelNumber}/quiz/${quiz_level}/A`)
+              }
+            >
+              <Text style={styles.buttonText}>
+                {"QUIZ " + quiz_level + "A"}
+              </Text>
+            </MyButton>
           ))}
-          <Text
-            style={{ fontSize: FontSizes.h3, fontWeight: FontWeights.bold }}
-          >
-            QUIZ B
-          </Text>
+          <Text style={styles.header}>QUIZ B</Text>
           {quizLevels.map((quiz_level) => (
-            <View key={quiz_level}>
-              <Button
-                target={`/level/${levelNumber}/quiz/${quiz_level}/B`}
-                title={"Quiz " + quiz_level + "B"}
-                background={""}
-                fill={"#FFF"}
-              />
-            </View>
+            <MyButton
+              key={quiz_level}
+              style={styles.button}
+              onPress={() =>
+                router.push(`/level/${levelNumber}/quiz/${quiz_level}/B`)
+              }
+            >
+              <Text style={styles.buttonText}>
+                {"QUIZ " + quiz_level + "B"}
+              </Text>
+            </MyButton>
           ))}
         </ScrollView>
       }
     />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-    padding: 20,
-  },
-  button: {
-    width: "50%",
-    height: 160,
-    justifyContent: "flex-start",
-    alignItems: "center",
-  },
-  buttonImage: {
-    position: "absolute",
-    width: "100%",
-    height: "100%",
-    opacity: 0.9,
-  },
-  buttonText: {
-    padding: 20,
-    fontSize: 18,
-    opacity: 0.5,
-  },
-  icon: {
-    borderRadius: 40,
-    width: 75,
-    height: 75,
-    borderWidth: 2,
-  },
-});

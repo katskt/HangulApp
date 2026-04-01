@@ -1,20 +1,19 @@
-import { useEffect, useState } from "react";
 import { supabase } from "@/supabaseConfig";
 import {
-  useAudioPlayer,
-  useAudioRecorder,
+  AudioModule,
   RecordingPresets,
   setAudioModeAsync,
-  AudioModule,
+  useAudioPlayer,
+  useAudioRecorder,
   useAudioRecorderState,
 } from "expo-audio";
+import { useEffect, useRef, useState } from "react";
 
 export function useLessonAudio(character: string | null) {
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const referencePlayer = useAudioPlayer();
   const recordedPlayer = useAudioPlayer();
 
-  
   const recorder = useAudioRecorder(RecordingPresets.HIGH_QUALITY);
   const recorderState = useAudioRecorderState(recorder);
 
@@ -24,26 +23,25 @@ export function useLessonAudio(character: string | null) {
 
     const load = async () => {
       const path = `${character}.mp3`;
-      const { data } = supabase.storage
-        .from("lessonAudio")
-        .getPublicUrl(path);
+      const { data } = supabase.storage.from("lessonAudio").getPublicUrl(path);
 
       setAudioUrl(data.publicUrl);
-
     };
 
     load();
   }, [character]);
 
   // ---- Attach audio to player ----
-useEffect(() => {
-  if (!audioUrl) {
-    // nothing to do — player just remains empty
-    return;
-  }
+  const shouldPlay = useRef(false);
 
-  referencePlayer.replace(audioUrl);
-}, [audioUrl]);
+  useEffect(() => {
+    if (!audioUrl) return;
+    referencePlayer.replace(audioUrl);
+    if (shouldPlay.current) {
+      referencePlayer.play();
+      shouldPlay.current = false;
+    }
+  }, [audioUrl]);
 
   // ---- Permissions ----
   useEffect(() => {
@@ -53,9 +51,12 @@ useEffect(() => {
 
   // ---- Controls ----
   const playReference = () => {
-    if (!referencePlayer.isLoaded) return;
-    referencePlayer.seekTo(0);
-    referencePlayer.play();
+    if (referencePlayer.isLoaded) {
+      referencePlayer.seekTo(0);
+      referencePlayer.play();
+    } else {
+      shouldPlay.current = true; // play once loaded
+    }
   };
 
   const startRecording = async () => {
@@ -73,7 +74,10 @@ useEffect(() => {
     });
   }, []);
 
-  const playRecording = async () => {recordedPlayer.seekTo(0); recordedPlayer.play()}
+  const playRecording = async () => {
+    recordedPlayer.seekTo(0);
+    recordedPlayer.play();
+  };
   const stopRecording = async () => {
     // The recording will be available on `audioRecorder.uri`.
     await recorder.stop();
@@ -84,10 +88,15 @@ useEffect(() => {
       allowsRecording: false,
       playsInSilentMode: true,
     });
-    playRecording()
+    playRecording();
+  };
+
+  const playOnLoad = () => {
+    shouldPlay.current = true;
   };
 
   return {
+    playOnLoad,
     playReference,
     startRecording,
     stopRecording,

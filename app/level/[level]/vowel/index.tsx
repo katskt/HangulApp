@@ -1,8 +1,9 @@
 import BlueScreen from "@/components/BlueScreen";
-import { FontSizes, FontWeights } from "@/theme/typography";
-import { usePathname, useRouter } from "expo-router";
-import { supabase } from "@/supabaseConfig"; // your supabase client
 import SmallButton from "@/components/SmallButton";
+import { supabase } from "@/supabaseConfig"; // your supabase client
+import { FontSizes, FontWeights, Typography } from "@/theme/typography";
+import { useThemeColors } from "@/theme/useThemeColors";
+import { usePathname, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
 
@@ -22,6 +23,7 @@ import { Text, View } from "react-native";
 export default function vowelPage() {
   // check page
   const router = useRouter();
+  const colors = useThemeColors();
   const pathname = usePathname();
   const parts = pathname.split("/").filter(Boolean);
   const level = parts[1];
@@ -43,12 +45,10 @@ export default function vowelPage() {
       else {
         setLessons(data || []);
       }
-      console.log("vowel page:", data);
     };
     fetchLessons();
   }, [level, category]);
 
-  console.log(pathname); /* Do this for path!!! */
   return (
     <BlueScreen
       header={
@@ -61,9 +61,14 @@ export default function vowelPage() {
           }}
         >
           <Text
-            style={{ fontSize: FontSizes.header, fontWeight: FontWeights.bold }}
+            style={{
+              fontSize: FontSizes.huge,
+              fontWeight: FontWeights.bold,
+              fontFamily: Typography.english,
+              color: colors.text,
+            }}
           >
-            Vowel
+            VOWEL
           </Text>
         </View>
       }
@@ -75,9 +80,18 @@ export default function vowelPage() {
                 <TouchableOpacity key={lesson.id}>
                   <SmallButton
                     fill="#FFF"
-                    title={lesson.group}
                     target={`/level/${level}/${category}/${lesson.group_romanization}`}
-                  ></SmallButton>
+                  >
+                    <Text
+                      style={{
+                        fontSize: FontSizes.huge,
+                        fontWeight: FontWeights.regular,
+                        fontFamily: Typography.default,
+                      }}
+                    >
+                      {lesson.group}
+                    </Text>
+                  </SmallButton>
                 </TouchableOpacity>
               </View>
             ))}
