@@ -1,5 +1,5 @@
-import { supabase } from "@/supabaseConfig";
-import { usePathname } from "expo-router";
+import quizData from "@/app/data/quizzes_rows.json";
+import { useRouteParams } from "@/hooks/useRouteParams";
 import { useEffect, useState } from "react";
 
 interface Quiz {
@@ -11,30 +11,22 @@ interface Quiz {
   wrong_audio: string;
 }
 export function useQuizLessons() {
-  const pathname = usePathname();
-  const parts = pathname.split("/").filter(Boolean);
+  const { level, category, id } = useRouteParams();
 
-  const level = parts[1];
-  const category = parts[2];
-  const quizNum = parts[3];
   const [quizQuestion, setQuizQuestion] = useState<Quiz[]>([]);
+
   useEffect(() => {
     if (!level || !category) return;
 
     const fetchQuizzes = async () => {
-      const { data, error } = await supabase
-        .from("quizzes")
-        .select("*")
-        .eq("level", Number(level))
-        .eq("quiz", quizNum);
+      const quizzes = quizData
+        .filter((q) => Number(q.level) === Number(level))
+        .filter((q) => Number(q.quiz) === Number(id))
+        .sort();
 
-      if (error) {
-        console.error(error.message);
-        return;
-      }
-      if (data) {
+      if (quizzes) {
         // Shuffle the data
-        const shuffledData = [...data]; // create a copy
+        const shuffledData = [...quizzes]; // create a copy
         for (let i = shuffledData.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [shuffledData[i], shuffledData[j]] = [
@@ -50,5 +42,5 @@ export function useQuizLessons() {
     fetchQuizzes();
   }, [level]);
 
-  return { level, category, quizNum, quizQuestion };
+  return { level, category, id, quizQuestion };
 }

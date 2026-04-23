@@ -2,7 +2,7 @@
 import MyButton from "@/components/FunctionalButton";
 import SplashTemplate from "@/components/TemplateScreen"; // adjust path to your template
 import { getLevelImage } from "@/lib/levelAssets";
-import { supabase } from "@/supabaseConfig"; // your supabase client
+import { supabase } from "@/supabaseConfig";
 import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
@@ -11,8 +11,6 @@ import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
 interface Level {
-  created_at: string;
-  id: string; // UUID
   level_number: number;
   title: string;
 }
@@ -21,23 +19,33 @@ export default function HomeScreen() {
   const { wp, hp } = useResponsive();
   const router = useRouter();
   const colors = useThemeColors();
-  const [levels, setLevels] = useState<Level[]>([]);
+  const [name, setName] = useState("");
+
+  const levels = [
+    { level_number: 1, title: "HANGEUL 1" },
+    { level_number: 2, title: "HANGEUL 2" },
+    { level_number: 3, title: "HANGEUL 3" },
+    { level_number: 4, title: "HANGEUL 4" },
+  ];
 
   useEffect(() => {
-    const fetchLevels = async () => {
+    const loadProfile = async () => {
+      const { data: userData } = await supabase.auth.getUser();
+
+      if (!userData?.user) return;
+
       const { data, error } = await supabase
-        .from("levels")
-        .select("*")
-        .order("level_number", {
-          ascending: true,
-        });
-      if (error) console.log(error);
-      else {
-        setLevels(data || []);
+        .from("profiles")
+        .select("first_name")
+        .eq("id", userData.user.id)
+        .single();
+
+      if (data) {
+        setName(data.first_name);
       }
     };
 
-    fetchLevels();
+    loadProfile();
   }, []);
 
   const styles = StyleSheet.create({
@@ -71,37 +79,44 @@ export default function HomeScreen() {
               fontSize: FontSizes.header,
               fontWeight: FontWeights.bold,
               fontFamily: Typography.default,
+              color: colors.text,
             }}
           >
-            안녕하세요 Katie!
+            안녕하세요 {name}!
           </Text>
         </View>
       }
       // Bottom 2/3 content: buttons, forms, other components
       bottomContent={
-        <View
-          style={[styles.container, { backgroundColor: colors.background }]}
-        >
-          {levels.map((level) => (
-            <MyButton
-              key={level.id}
-              style={{
-                width: wp(38),
-                height: wp(38),
-                justifyContent: "flex-start",
-                alignItems: "center",
-                borderRadius: 20,
-              }}
-              onPress={() => router.push(`/level/${level.level_number}`)}
-            >
-              <Image
-                source={getLevelImage(level.level_number)}
-                style={styles.buttonImage}
-                resizeMode="cover"
-              />
-              <Text style={styles.buttonText}>{level.title}</Text>
-            </MyButton>
-          ))}
+        <View>
+          <MyButton onPress={() => router.push("/activity")}>
+            <Text style={styles.buttonText}>ACTIVITY</Text>
+          </MyButton>
+
+          <View
+            style={[styles.container, { backgroundColor: colors.background }]}
+          >
+            {levels.map((level) => (
+              <MyButton
+                key={level.level_number}
+                style={{
+                  width: wp(38),
+                  height: wp(38),
+                  justifyContent: "flex-start",
+                  alignItems: "center",
+                  borderRadius: 20,
+                }}
+                onPress={() => router.push(`/level/${level.level_number}`)}
+              >
+                <Image
+                  source={getLevelImage(level.level_number)}
+                  style={styles.buttonImage}
+                  resizeMode="cover"
+                />
+                <Text style={styles.buttonText}>{level.title}</Text>
+              </MyButton>
+            ))}
+          </View>
         </View>
       }
     />

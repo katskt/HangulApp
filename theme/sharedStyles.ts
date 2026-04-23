@@ -5,7 +5,7 @@ export const sharedStyles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.2)",
     borderRadius: 20,
     padding: 6,
-  }
+  },
 });
 /* 
 // usage:

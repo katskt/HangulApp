@@ -5,8 +5,8 @@ import FlashCards from "@/components/FlashCards";
 import Button from "@/components/FunctionalButton";
 import ProgressBar from "@/components/ProgressBar";
 import { useLessonAudio } from "@/hooks/useLessonAudio";
-
 import { useQuizLessons } from "@/hooks/useQuizLessons";
+import { useQuizProgress } from "@/hooks/useQuizProgress";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
@@ -27,7 +27,7 @@ const Quiz = () => {
   const [shuffledAnswer, setShuffledAnswers] = useState(0); // Shuffles answers
   const [score, setScore] = useState(0); // counts # correct
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const { quizQuestion } = useQuizLessons();
+  const { level, id: quizNum, quizQuestion } = useQuizLessons();
   const [selectedCheck, setSelectedCheck] = useState(false);
   const [wrongAnswers, setWrongAnswers] = useState<number[]>([]);
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
@@ -36,16 +36,21 @@ const Quiz = () => {
     currentQuestion !== undefined ? quizQuestion[currentQuestion] : null;
   const correct_audio = currentQuiz?.correct_audio ?? null;
 
+  const { saveProgress } = useQuizProgress(Number(level), Number(quizNum), "B");
+
   useEffect(() => {
     if (quizCompleted) {
+      saveProgress();
       playFinished();
     }
   }, [quizCompleted]);
 
+  // play reference audio upon new question
   useEffect(() => {
-    playReference();
+    playCurrentAudio();
   }, [score]);
 
+  // shuffle answers mechanism
   useEffect(() => {
     if (!currentQuiz) return;
 
@@ -55,17 +60,12 @@ const Quiz = () => {
   }, [currentQuestion, currentQuiz]);
 
   // Fetch Question Audio
-  const { playReference } = useLessonAudio(currentAudio);
+  const { playCurrentAudio } = useLessonAudio(currentAudio);
 
-  // HANDLE USER ANSWER SELCTION
-  const handleAnswer = (selectedOption: string) => {
-    setSelectedCheck(false);
-    setSelectedAnswer(selectedOption);
-  };
-
-  const handleCheck = () => {
+  const handleCheck = (selectedOption: string) => {
     setSelectedCheck(true);
-    if (selectedAnswer === quizQuestion[currentQuestion].correct_audio) {
+    setSelectedAnswer(selectedOption);
+    if (selectedOption === quizQuestion[currentQuestion].correct_audio) {
       playCorrect();
       setScore(score + 1);
 
@@ -80,7 +80,7 @@ const Quiz = () => {
         setSelectedCheck(false);
       }, 1000); // 1000ms delay
     }
-    if (selectedAnswer === quizQuestion[currentQuestion].wrong_audio) {
+    if (selectedOption === quizQuestion[currentQuestion].wrong_audio) {
       playWrong();
       setWrongAnswers((prev) =>
         prev.includes(currentQuestion) ? prev : [...prev, currentQuestion],
@@ -89,7 +89,7 @@ const Quiz = () => {
   };
   useEffect(() => {
     setCurrentAudio(correct_audio);
-    playReference();
+    playCurrentAudio();
   }, [currentQuestion, currentQuiz]);
   // HANDLE CLICK RETEST
   const handleRetest = () => {
@@ -101,7 +101,7 @@ const Quiz = () => {
   };
 
   useEffect(() => {
-    playReference();
+    playCurrentAudio();
   }, [currentAudio]);
 
   // handle when data hasnt loaded yet
@@ -189,6 +189,7 @@ const Quiz = () => {
             Score: {quizQuestion.length - wrongAnswers.length}/
             {quizQuestion.length}
           </Text>
+
           <Text
             style={[
               styles.displayMessage,
@@ -197,6 +198,7 @@ const Quiz = () => {
                 alignSelf: "center",
                 color: colors.text,
                 fontSize: FontSizes.body,
+                padding: 10,
               },
             ]}
           >
@@ -225,7 +227,7 @@ const Quiz = () => {
             <Button
               onPress={() => {
                 setCurrentAudio(correct_audio);
-                playReference();
+                playCurrentAudio();
               }}
               style={{
                 backgroundColor: "#FFF9E7",
@@ -239,74 +241,51 @@ const Quiz = () => {
               <Icon name="volume-high" size={40} />
             </Button>
           )}
-          {shuffledAnswer == 1 ? (
-            <View>
-              <Button
-                style={[
-                  styles.option,
-                  {
-                    borderColor:
-                      selectedAnswer === currentQuiz!.correct_audio
-                        ? colors.select
-                        : colors.unselect,
-                  },
-                ]}
-                onPress={() => handleAnswer(currentQuiz!.correct_audio)}
-              >
-                <Text style={styles.answers}>
-                  {currentQuiz?.correct_hangeul}
-                </Text>
-              </Button>
+          <View>
+            <Button
+              style={[
+                styles.option,
+                {
+                  borderColor: colors.unselect,
+                },
+              ]}
+              onPress={() => {
+                handleCheck(
+                  shuffledAnswer == 1
+                    ? currentQuiz!.correct_audio
+                    : currentQuiz!.wrong_audio,
+                );
+              }}
+            >
+              <Text style={styles.answers}>
+                {shuffledAnswer == 1
+                  ? currentQuiz!.correct_hangeul
+                  : currentQuiz!.wrong_hangeul}
+              </Text>
+            </Button>
 
-              <Button
-                style={[
-                  styles.option,
-                  {
-                    borderColor:
-                      selectedAnswer === currentQuiz!.wrong_audio
-                        ? colors.select
-                        : colors.unselect,
-                  },
-                ]}
-                onPress={() => handleAnswer(currentQuiz!.wrong_audio)}
-              >
-                <Text style={styles.answers}>{currentQuiz?.wrong_hangeul}</Text>
-              </Button>
-            </View>
-          ) : (
-            <View>
-              <Button
-                style={[
-                  styles.option,
-                  {
-                    borderColor:
-                      selectedAnswer === currentQuiz!.wrong_audio
-                        ? colors.select
-                        : colors.unselect,
-                  },
-                ]}
-                onPress={() => handleAnswer(currentQuiz!.wrong_audio)}
-              >
-                <Text style={styles.answers}>{currentQuiz?.wrong_hangeul}</Text>
-              </Button>
-              <Button
-                style={[
-                  styles.option,
-                  {
-                    borderColor:
-                      selectedAnswer === currentQuiz!.correct_audio
-                        ? colors.select
-                        : colors.unselect,
-                  },
-                ]}
-                onPress={() => handleAnswer(currentQuiz!.correct_audio)}
-              >
-                <Text style={styles.answers}>
-                  {currentQuiz?.correct_hangeul}
-                </Text>
-              </Button>
-            </View>
-          )}
+            <Button
+              style={[
+                styles.option,
+                {
+                  borderColor: colors.unselect,
+                },
+              ]}
+              onPress={() => {
+                handleCheck(
+                  shuffledAnswer == 1
+                    ? currentQuiz!.wrong_audio
+                    : currentQuiz!.correct_audio,
+                );
+              }}
+            >
+              <Text style={styles.answers}>
+                {shuffledAnswer == 1
+                  ? currentQuiz!.wrong_hangeul
+                  : currentQuiz!.correct_hangeul}
+              </Text>
+            </Button>
+          </View>
           <Text style={styles.displayMessage}>
             {selectedAnswer && selectedCheck
               ? selectedAnswer === currentQuiz!.correct_audio
@@ -316,14 +295,6 @@ const Quiz = () => {
                   : null
               : null}
           </Text>
-          <Button
-            style={{ marginTop: "auto", bottom: 0, left: 0, right: 0 }}
-            onPress={() => {
-              handleCheck();
-            }}
-          >
-            <Text style={styles.buttonText}>CHECK</Text>
-          </Button>
         </View>
       )}
     </View>

@@ -14,12 +14,10 @@ export default function BlueScreen({ header, content }: BlueScreenProps) {
   const colors = useThemeColors();
   const styles = StyleSheet.create({
     container: {
-      paddingTop: "15%",
+      paddingTop: header ? "12%" : 0,
       flex: 1,
       position: "relative",
       backgroundColor: colors.background,
-      /*       borderWidth: 2,
-      borderColor: "red", */
     },
     header: {
       flexDirection: "row",
@@ -49,7 +47,7 @@ export default function BlueScreen({ header, content }: BlueScreenProps) {
         }}
       />
       <View style={styles.container}>
-        <View style={styles.header}>{header}</View>
+        {header && <View style={styles.header}>{header}</View>}
         <View style={styles.content}>{content}</View>
       </View>
     </>

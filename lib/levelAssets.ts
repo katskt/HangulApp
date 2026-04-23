@@ -14,4 +14,3 @@ const levelImages: Record<number, any> = {
 export function getLevelImage(levelNumber: number) {
   return levelImages[levelNumber];
 }
-

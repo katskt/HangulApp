@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Image, StyleSheet } from "react-native";
-import { Dimensions } from "react-native";
 
 type SplashTemplateProps = {
   topContent?: React.ReactNode; // Content over the whiteSplash
@@ -13,18 +12,10 @@ import { useThemeColors } from "@/theme/useThemeColors";
 export default function SplashTemplate({
   topContent,
   bottomContent,
-  topHeightRatio = 0.4,
+  topHeightRatio = 0.3,
 }: SplashTemplateProps) {
   const colors = useThemeColors();
-  const { height: SCREEN_HEIGHT } = Dimensions.get("window");
   const styles = StyleSheet.create({
-    image: {
-      width: "100%",
-      height: SCREEN_HEIGHT * 0.4,
-      zIndex: 1,
-      position: "absolute",
-    },
-
     container: {
       flex: 1,
       position: "relative",
@@ -55,11 +46,6 @@ export default function SplashTemplate({
     <View style={styles.container}>
       {/* Top Splash Section */}
       <View style={[styles.top, { flex: topHeightRatio }]}>
-        <Image
-          source={require("@/assets/images/whiteSplash.png")}
-          style={styles.image}
-          resizeMode="cover"
-        />
         <View style={styles.topContent}>
           {
             <View

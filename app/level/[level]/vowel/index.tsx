@@ -1,27 +1,27 @@
+import lessonsData from "@/app/data/lessons_rows.json";
 import BlueScreen from "@/components/BlueScreen";
-import SmallButton from "@/components/SmallButton";
-import { supabase } from "@/supabaseConfig"; // your supabase client
+import MyButton from "@/components/FunctionalButton";
 import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { usePathname, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { ScrollView, TouchableOpacity } from "react-native";
-
+import { useResponsive } from "@/utils/responsive";
 interface Lesson {
   category: string;
-  id: string;
-  hangul: string;
-  group: string;
-  group_romanization: string;
+  hangeul: string;
   order_index: number;
   level: number;
-  hangeul: string;
   hangeul_romanization: string;
+  group: string | number;
+  group_romanization: string | number;
+  group_order: number;
 }
 
 import { Text, View } from "react-native";
 export default function vowelPage() {
   // check page
+  const { wp, hp } = useResponsive();
   const router = useRouter();
   const colors = useThemeColors();
   const pathname = usePathname();
@@ -29,24 +29,21 @@ export default function vowelPage() {
   const level = parts[1];
   const category = parts[2];
   const [lessons, setLessons] = useState<Lesson[]>([]);
-  console.log(pathname);
 
   useEffect(() => {
     if (!level || !category) return;
-    const fetchLessons = async () => {
-      const { data, error } = await supabase
-        .from("lessons_unique_groups")
-        .select("*")
-        .eq("level", level)
-        .eq("category", category)
-        .order("order_index", { ascending: true });
 
-      if (error) console.log("error:", error);
-      else {
-        setLessons(data || []);
-      }
-    };
-    fetchLessons();
+    const seen = new Set();
+    const data = lessonsData
+      .filter((l) => l.level === Number(level) && l.category === category)
+      .filter((l) => {
+        if (seen.has(l.group)) return false;
+        seen.add(l.group);
+        return true;
+      })
+      .sort((a, b) => Number(a.group_order) - Number(b.group_order));
+
+    setLessons(data);
   }, [level, category]);
 
   return (
@@ -74,13 +71,25 @@ export default function vowelPage() {
       }
       content={
         <ScrollView>
-          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+          <View
+            style={{
+              flexDirection: "row",
+              flexWrap: "wrap",
+            }}
+          >
             {lessons.map((lesson) => (
-              <View key={lesson.id} style={{ width: "50%", padding: 8 }}>
-                <TouchableOpacity key={lesson.id}>
-                  <SmallButton
-                    fill="#FFF"
-                    target={`/level/${level}/${category}/${lesson.group_romanization}`}
+              <View
+                key={lesson.order_index}
+                style={{ width: "50%", alignItems: "center" }}
+              >
+                <TouchableOpacity key={lesson.order_index}>
+                  <MyButton
+                    style={{ height: wp(35), width: wp(35) }}
+                    onPress={() =>
+                      router.push(
+                        `/level/${level}/${category}/${lesson.group_romanization}`,
+                      )
+                    }
                   >
                     <Text
                       style={{
@@ -91,7 +100,7 @@ export default function vowelPage() {
                     >
                       {lesson.group}
                     </Text>
-                  </SmallButton>
+                  </MyButton>
                 </TouchableOpacity>
               </View>
             ))}

@@ -1,14 +1,17 @@
 // app/index.tsx
+import lessonData from "@/app/data/lessons_rows.json";
+import quizData from "@/app/data/quizzes_rows.json";
 import BlueScreen from "@/components/BlueScreen";
 import MyButton from "@/components/FunctionalButton";
 import { getLevelImage } from "@/lib/levelAssets";
-import { supabase } from "@/supabaseConfig"; // your supabase client
 import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useRouter } from "expo-router";
+import { useRouteParams } from "@/hooks/useRouteParams";
 import { useEffect, useState } from "react";
 import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+
 export default function LevelPage() {
   const colors = useThemeColors();
   const router = useRouter();
@@ -16,27 +19,26 @@ export default function LevelPage() {
   // Type your params for TypeScript
   const { wp, hp } = useResponsive();
   const [quizLevels, setQuizLevels] = useState<number[]>([]);
-  const params = useLocalSearchParams<{ level: string }>();
-  const levelNumber = Number(params.level);
+  const [practiceLevels, setPracticeLevels] = useState<(string | number)[]>([]);
+  const { level } = useRouteParams();
+
   useEffect(() => {
-    const fetchLevels = async () => {
-      const { data, error } = await supabase
-        .from("quiz_unique_quiz")
-        .select("quiz")
-        .eq("level", levelNumber)
-        .order("quiz", {
-          ascending: true,
-        });
+    const quizzes = quizData
+      .filter((q) => q.level === Number(level))
+      .map((q) => q.quiz)
+      .filter((v, i, a) => a.indexOf(v) === i) // unique values
+      .sort();
+    setQuizLevels(quizzes);
+  }, [Number(level)]);
 
-      if (error) {
-        console.log(error);
-      } else {
-        setQuizLevels((data ?? []).map((row) => row.quiz));
-      }
-    };
-
-    fetchLevels();
-  }, [levelNumber]);
+  useEffect(() => {
+    const practices = lessonData
+      .filter((q) => q.level === Number(level) && q.category === "practice")
+      .map((q) => q.group_order)
+      .filter((v, i, a) => a.indexOf(v) === i) // unique values
+      .sort();
+    setPracticeLevels(practices);
+  }, [Number(level)]);
 
   const styles = StyleSheet.create({
     buttonText: {
@@ -49,8 +51,6 @@ export default function LevelPage() {
       justifyContent: "center",
       alignItems: "center",
       display: "flex",
-      borderBottomWidth: wp(2),
-      borderBottomColor: "#8e8e8e",
     },
     containerSideBySide: {
       justifyContent: "space-evenly",
@@ -87,9 +87,9 @@ export default function LevelPage() {
             alignItems: "center",
           }}
         >
-          <Text style={styles.title}>HANGEUL {levelNumber}</Text>
+          <Text style={styles.title}>HANGEUL {Number(level)}</Text>
           <Image
-            source={getLevelImage(levelNumber)}
+            source={getLevelImage(Number(level))}
             resizeMode="cover"
             style={{
               borderRadius: wp(10),
@@ -101,29 +101,42 @@ export default function LevelPage() {
         </View>
       }
       content={
-        <ScrollView style={{ height: "80%" }}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={{ height: "80%" }}
+        >
           <Text style={styles.header}>LESSON</Text>
           <MyButton
             style={styles.button}
-            onPress={() => router.push(`/level/${levelNumber}/vowel`)}
+            onPress={() => router.push(`/level/${Number(level)}/vowel`)}
           >
             <Text style={styles.buttonText}>VOWEL</Text>
           </MyButton>
 
           <MyButton
             style={styles.button}
-            onPress={() => router.push(`/level/${levelNumber}/consonant`)}
+            onPress={() => router.push(`/level/${Number(level)}/consonant`)}
           >
             <Text style={styles.buttonText}>CONSONANT</Text>
           </MyButton>
 
           <Text style={styles.header}>PRACTICE</Text>
-          <MyButton
-            style={styles.button}
-            onPress={() => router.push(`/level/${levelNumber}/practice`)}
-          >
-            <Text style={styles.buttonText}>PRACTICE</Text>
-          </MyButton>
+
+          {practiceLevels.map((practice_level) => (
+            <MyButton
+              key={practice_level}
+              style={styles.button}
+              onPress={() =>
+                router.push(
+                  `/level/${Number(level)}/practice/${practice_level}`,
+                )
+              }
+            >
+              <Text style={styles.buttonText}>
+                {"Practice " + practice_level}
+              </Text>
+            </MyButton>
+          ))}
 
           <Text style={styles.header}>QUIZ A</Text>
 
@@ -132,7 +145,7 @@ export default function LevelPage() {
               key={quiz_level}
               style={styles.button}
               onPress={() =>
-                router.push(`/level/${levelNumber}/quiz/${quiz_level}/A`)
+                router.push(`/level/${Number(level)}/quiz/${quiz_level}/A`)
               }
             >
               <Text style={styles.buttonText}>
@@ -146,7 +159,7 @@ export default function LevelPage() {
               key={quiz_level}
               style={styles.button}
               onPress={() =>
-                router.push(`/level/${levelNumber}/quiz/${quiz_level}/B`)
+                router.push(`/level/${Number(level)}/quiz/${quiz_level}/B`)
               }
             >
               <Text style={styles.buttonText}>

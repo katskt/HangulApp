@@ -1,89 +1,67 @@
+import lessonsData from "@/app/data/lessons_rows.json";
 import ProgressBar from "@/components/ProgressBar";
+import { useLessonProgress } from "@/hooks/useLessonProgress";
 import { sharedStyles } from "@/theme/sharedStyles";
+import Loading from "@components/Loading";
 import { Ionicons } from "@expo/vector-icons";
 import { router, Stack } from "expo-router";
 import React, { useEffect, useState } from "react";
-
+import { useRouteParams } from "@/hooks/useRouteParams";
 import {
-  Dimensions,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
+  Text,
 } from "react-native";
 
 import LessonAudioPanel from "@/components/LessonAudioPanel";
 import CanvasPage from "@/components/TraceCanvas";
-import { supabase } from "@/supabaseConfig";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
-import Loading from "@components/Loading";
-import { useLocalSearchParams, usePathname } from "expo-router";
 interface Lesson {
   category: string;
-  id: string;
-  hangul: string;
-  group: string;
-  group_romanization: string;
+  hangeul: string;
   order_index: number;
   level: number;
-  hangeul: string;
   hangeul_romanization: string;
+  group: string;
+  group_romanization: string;
+  group_order: number;
 }
 
-const { width: screenWidth } = Dimensions.get("window");
-
 export default function LessonPage() {
-  const { wp, hp } = useResponsive();
-  const { level, consonantId } = useLocalSearchParams();
-  const pathname = usePathname();
-  const category = pathname.split("/")[3]; // gets "consonant"
+  const { wp } = useResponsive();
+  const { level, category, id } = useRouteParams();
 
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const colors = useThemeColors();
-  /* DOTS FOR SCROLLING BEHAVIOR */
-  const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = lessons.length * 2; // 2 pages per lesson
-  /* END */
+  const totalPages = lessons.length; // 1 page per lesson
+
+  // in consonant, vowel, practice pages - all the same:
+  const { markComplete, completedCount } = useLessonProgress(
+    lessons,
+    level,
+    category, // "consonant", "vowel", or "practice"
+  );
 
   // Fetch lessons
   useEffect(() => {
-    if (!level || !category || !consonantId) return;
+    if (!level || !category || !id) return;
+    const data = lessonsData
+      .filter(
+        (l) =>
+          Number(l.level) === Number(level) &&
+          l.category === category &&
+          l.group_romanization === id,
+      )
+      .sort((a, b) => a.order_index - b.order_index);
+    setLessons(data);
+  }, [level, category, id]);
 
-    const fetchLessons = async () => {
-      const { data, error } = await supabase
-        .from("lessons")
-        .select("*")
-        .eq("level", Number(level))
-        .eq("category", category)
-        .eq("group_romanization", consonantId)
-        .order("order_index", { ascending: true });
+  if (!lessons.length) return <Loading />;
 
-      if (error) {
-        console.error("Error fetching lessons:", error.message);
-        return;
-      }
-
-      if (data) setLessons(data as Lesson[]);
-    };
-
-    fetchLessons();
-  }, [level, category, consonantId]);
-
-  if (!lessons.length)
-    return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: colors.background,
-        }}
-      >
-        <Loading />
-      </View>
-    );
   return (
     <>
       <Stack.Screen
@@ -103,12 +81,25 @@ export default function LessonPage() {
           ),
         }}
       />
+      <View
+        style={{
+          alignItems: "flex-end",
+          backgroundColor: colors.background,
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 25,
+            paddingHorizontal: 10,
+            fontWeight: "bold",
+            color: "gray",
+          }}
+        >
+          LISTEN & COMPARE
+        </Text>
+      </View>
       <ScrollView
         // Add onScroll to ScrollView:
-        onScroll={(e) => {
-          const page = Math.round(e.nativeEvent.contentOffset.x / screenWidth);
-          setCurrentPage(page);
-        }}
         scrollEventThrottle={16}
         horizontal
         pagingEnabled
@@ -117,21 +108,24 @@ export default function LessonPage() {
         style={{ width: wp(100), flex: 1, backgroundColor: colors.background }}
       >
         {lessons.map((lesson) => (
-          <React.Fragment key={lesson.id}>
+          <React.Fragment key={lesson.order_index}>
             {/* Page 1: Audio Panel */}
-            <View style={[styles.page, { width: screenWidth }]}>
+            <View style={[styles.page, { width: wp(100) }]}>
               <LessonAudioPanel
                 character={lesson.hangeul_romanization}
-                hangeul={lesson.hangeul}
-              />
-            </View>
-
-            {/* Page 2: Trace Canvas */}
-            <View style={[styles.page, { width: screenWidth }]}>
-              <CanvasPage
-                character={lesson.hangeul_romanization}
-                onTouchStart={() => setScrollEnabled(false)}
-                onTouchEnd={() => setScrollEnabled(true)}
+                canvas={
+                  <CanvasPage
+                    character={lesson.hangeul_romanization}
+                    onTouchStart={() => setScrollEnabled(false)}
+                    onTouchEnd={() => {
+                      setScrollEnabled(true);
+                      markComplete(lesson.hangeul_romanization, "trace");
+                    }}
+                  />
+                }
+                onAudioPlayed={() =>
+                  markComplete(lesson.hangeul_romanization, "audio")
+                }
               />
             </View>
           </React.Fragment>
@@ -146,7 +140,7 @@ export default function LessonPage() {
         }}
       >
         <ProgressBar
-          currentQuestionNumber={currentPage + 1}
+          currentQuestionNumber={completedCount}
           totalQuizNumber={totalPages}
         ></ProgressBar>
       </View>
@@ -156,7 +150,6 @@ export default function LessonPage() {
 
 const styles = StyleSheet.create({
   page: {
-    width: screenWidth,
     flex: 1,
   },
 });

@@ -1,23 +1,52 @@
-import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { Stack, useRouter } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
-import { sharedStyles } from "@/theme/sharedStyles";
 import { useThemeColors } from "@/theme/useThemeColors";
-import { ActivityIndicator } from "react-native";
+import { useResponsive } from "@/utils/responsive";
+import React, { useEffect, useRef } from "react";
+import { Animated, StyleSheet, View, ViewStyle, StyleProp } from "react-native";
 
-export default function Loading() {
+type LoadingProps = {
+  style?: StyleProp<ViewStyle>;
+};
+
+export default function Loading(style: LoadingProps) {
+  const spin = useRef(new Animated.Value(0)).current;
+  const { wp, hp } = useResponsive();
   const colors = useThemeColors();
+  useEffect(() => {
+    Animated.loop(
+      Animated.timing(spin, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+    ).start();
+  }, []);
+
+  const styles = StyleSheet.create({
+    container: {
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: colors.background,
+      zIndex: 10,
+    },
+    image: {
+      width: wp(50),
+      height: wp(50),
+      borderRadius: wp(50),
+      resizeMode: "contain",
+    },
+  });
+
+  const rotate = spin.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["0deg", "360deg"],
+  });
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: colors.background,
-      }}
-    >
-      <ActivityIndicator size="large" color={colors.tint} />
+    <View style={[styles.container]}>
+      <Animated.Image
+        source={require("@/assets/images/storke.png")}
+        style={[styles.image, { transform: [{ rotate }] }]}
+      />
     </View>
   );
 }

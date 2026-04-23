@@ -1,79 +1,83 @@
 import MyButton from "@/components/FunctionalButton";
-import Hint from "@/components/hint";
-import HalfSplashTemplate from "@/components/LessonBackgroundScreen";
+import Hint from "@/components/Hint";
 import { useLessonAudio } from "@/hooks/useLessonAudio";
 import { practiceImages } from "@/lib/practiceImages";
-import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
+import BlueScreen from "./BlueScreen";
 export default function LessonAudioPanel({
   character,
-  hangeul,
+  canvas,
   image,
+  onAudioPlayed,
 }: {
   character: string;
-  hangeul: string;
+  canvas: React.ReactNode;
   image?: boolean;
+  onAudioPlayed?: () => void;
 }) {
   const {
-    playReference,
+    playCurrentAudio,
     startRecording,
     stopRecording,
     playRecording,
-    isRecording,
     hasRecording,
   } = useLessonAudio(character);
-  const colors = useThemeColors();
   const { wp, hp } = useResponsive();
+  const colors = useThemeColors();
   const [showRecordHint, setShowRecordHint] = useState(false);
   const [showListenHint, setShowListenHint] = useState(true);
   const [pressListenHint, setPressListenHint] = useState(false);
+  const [hasListened, setHasListened] = useState(false);
+  const [hasRecorded, setHasRecorded] = useState(false);
+  const [hasPlayedRecording, setHasPlayedRecording] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
   const recordingStart = useRef<number>(0);
 
   const handlePressIn = async () => {
+    setIsPressed(true);
     recordingStart.current = Date.now();
     await startRecording();
   };
 
   const handlePressOut = async () => {
+    setIsPressed(false);
+
     const duration = Date.now() - recordingStart.current;
     await stopRecording();
     if (duration < 500) {
       // less than 0.5 seconds
       setShowRecordHint(true);
       setTimeout(() => setShowRecordHint(false), 1800);
+    } else {
+      setHasRecorded(true);
     }
     setShowListenHint(false);
   };
 
+  useEffect(() => {
+    if (hasListened && hasRecorded && hasPlayedRecording) {
+      onAudioPlayed?.();
+    }
+  }, [hasListened, hasRecorded, hasPlayedRecording]);
+
   return (
-    <HalfSplashTemplate
-      topContent={
-        <View style={{ alignItems: "center" }}>
-          <Text
-            style={{
-              fontSize: FontSizes.header,
-              fontWeight: FontWeights.bold,
-              fontFamily: Typography.english,
-            }}
-          >
-            LISTEN & COMPARE
-          </Text>
-        </View>
-      }
-      bottomContent={
-        <View style={{ width: wp(90), height: hp(70) }}>
+    <BlueScreen
+      content={
+        <View style={{ height: hp(70) }}>
           <View style={[styles.containerSideBySide, { marginBottom: "auto" }]}>
             {image && (
               <View style={styles.container}>
                 {
                   <Image
                     style={{
-                      width: wp(30),
-                      height: wp(30),
+                      width: wp(20),
+                      height: wp(20),
+                      margin: wp(2),
+                      borderRadius: wp(1),
                     }}
                     source={practiceImages[character]}
                   />
@@ -87,53 +91,59 @@ export default function LessonAudioPanel({
                 height: hp(10),
                 alignSelf: "center",
                 borderWidth: 10,
-                borderColor: "#ded2ad63",
+                borderColor:
+                  hasListened == true ? colors.select : colors.unselect,
                 borderRadius: 50,
               }}
-              onPress={() => playReference()}
+              onPress={() => {
+                playCurrentAudio();
+                setHasListened(true);
+              }}
             >
               {<Icon name="volume-high" size={40} />}
             </MyButton>
           </View>
           <View>
-            <Text
-              style={[
-                {
-                  color: colors.text,
-                  fontSize: FontSizes.character,
-                  margin: "auto",
-                  fontFamily: Typography.default,
-                },
-              ]}
-            >
-              {hangeul}
-            </Text>
+            <Text style={{ alignSelf: "center" }}> {canvas}</Text>
           </View>
           <View style={[styles.containerSideBySide, { marginTop: "auto" }]}>
             <View style={styles.itemSideBySide}>
               <MyButton
-                style={{ height: hp(15) }}
+                style={{
+                  height: hp(15),
+                  borderColor:
+                    hasRecorded == true ? colors.select : colors.unselect,
+                }}
                 onPressIn={handlePressIn}
                 onPressOut={handlePressOut}
               >
-                {isRecording ? (
-                  <Icon name="square" size={40} color="red" />
+                {isPressed ? (
+                  <Icon name="square" size={100} color="red" />
                 ) : (
-                  <Icon name="mic" size={40} color="red" />
+                  <Icon name="mic" size={100} color="red" />
                 )}
               </MyButton>
             </View>
             <View style={styles.itemSideBySide}>
               <MyButton
-                style={{ height: hp(15) }}
+                style={{
+                  height: hp(15),
+                  borderColor:
+                    hasPlayedRecording == true
+                      ? colors.select
+                      : colors.unselect,
+                }}
                 onPressIn={() => {
                   playRecording();
                   setPressListenHint(true);
+                  if (hasRecorded) {
+                    setHasPlayedRecording(true);
+                  }
                 }}
                 onPressOut={() => setPressListenHint(false)}
                 disabled={!hasRecording}
               >
-                {<Icon name="happy" size={40} />}
+                {<Icon name="happy" size={100} />}
               </MyButton>
             </View>
           </View>

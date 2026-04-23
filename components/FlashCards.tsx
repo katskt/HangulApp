@@ -2,18 +2,9 @@
 import { useLessonAudio } from "@/hooks/useLessonAudio";
 import { useResponsive } from "@/utils/responsive";
 import React, { useEffect, useRef, useState } from "react";
-import {
-  Animated,
-  Dimensions,
-  PanResponder,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { Animated, PanResponder, StyleSheet, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
-const { width } = Dimensions.get("window");
-const SWIPE_THRESHOLD = width * 0.25;
 interface Card {
   hangeul: string;
   audio: string;
@@ -26,13 +17,14 @@ interface FlashCardsProps {
 
 export default function FlashCards({ cards }: FlashCardsProps) {
   const { wp, hp } = useResponsive();
+  const SWIPE_THRESHOLD = wp(25);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextIndex, setNextIndex] = useState(1);
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
-  const { playReference } = useLessonAudio(currentAudio);
+  const { playCurrentAudio } = useLessonAudio(currentAudio);
 
   useEffect(() => {
-    playReference();
+    playCurrentAudio();
   }, [currentAudio]);
 
   const translateX = useRef(new Animated.Value(0)).current;
@@ -42,7 +34,7 @@ export default function FlashCards({ cards }: FlashCardsProps) {
   const isAnimating = useRef(false);
 
   const rotate = translateX.interpolate({
-    inputRange: [-width, 0, width],
+    inputRange: [-wp(100), 0, wp(100)],
     outputRange: ["-12deg", "0deg", "12deg"],
   });
   const cardOpacity = useRef(new Animated.Value(1)).current;
@@ -62,7 +54,7 @@ export default function FlashCards({ cards }: FlashCardsProps) {
           isAnimating.current = true;
           Animated.parallel([
             Animated.timing(translateX, {
-              toValue: gesture.dx > 0 ? width * 1.5 : -width * 1.5,
+              toValue: gesture.dx > 0 ? wp(100) * 1.5 : -wp(100) * 1.5,
               duration: 200,
               useNativeDriver: true,
             }),
@@ -112,11 +104,11 @@ export default function FlashCards({ cards }: FlashCardsProps) {
   ).current;
 
   const styles = StyleSheet.create({
-    container: { flex: 1, alignItems: "center", justifyContent: "center" },
+    container: { flex: 1, alignItems: "center", justifyContent: "flex-start" },
     card: {
       position: "absolute",
-      width: Math.min(wp(50), hp(25)),
-      height: Math.min(wp(50), hp(25)),
+      width: wp(80),
+      height: hp(20),
       backgroundColor: "#fff",
       borderRadius: 20,
       alignItems: "center",
@@ -170,7 +162,7 @@ export default function FlashCards({ cards }: FlashCardsProps) {
         <Icon
           onPress={() => {
             setCurrentAudio(cards[currentIndex].audio);
-            playReference();
+            playCurrentAudio();
           }}
           name="volume-high"
           size={40}

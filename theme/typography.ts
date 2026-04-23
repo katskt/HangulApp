@@ -17,7 +17,7 @@ export const FontSizes = {
   caption: normalize(13),
   huge: normalize(50),
   hugeXL: normalize(80),
-  character: normalize(120),
+  character: normalize(110),
 };
 
 export const Typography = {

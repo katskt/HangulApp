@@ -5,7 +5,6 @@ export default function useCanvasPaths(character: string | null) {
   const [currentPath, setCurrentPath] = useState<string[]>([]);
 
   const [isClearButtonClicked, setClearButtonClicked] = useState(false);
-  const [strokeImageUrl, setstrokeImageUrl] = useState<string | null>(null);
 
   // ------ Touch Logic ------
   const onTouchMove = (event: any) => {
@@ -37,6 +36,5 @@ export default function useCanvasPaths(character: string | null) {
     onTouchMove,
     onTouchEnd,
     handleClear,
-    //strokeImageUrl,
   };
 }

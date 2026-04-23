@@ -1,7 +1,8 @@
+import lessonsData from "@/app/data/lessons_rows.json";
 import LessonAudioPanel from "@/components/LessonAudioPanel";
 import ProgressBar from "@/components/ProgressBar";
 import CanvasPage from "@/components/TraceCanvas";
-import { supabase } from "@/supabaseConfig";
+import { useLessonProgress } from "@/hooks/useLessonProgress";
 import { sharedStyles } from "@/theme/sharedStyles";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
@@ -9,68 +10,55 @@ import Loading from "@components/Loading";
 import { Ionicons } from "@expo/vector-icons";
 import { router, Stack, usePathname } from "expo-router";
 import React, { useEffect, useState } from "react";
-
+import { useRouteParams } from "@/hooks/useRouteParams";
 import {
-  Dimensions,
   ScrollView,
   StyleSheet,
   TouchableOpacity,
   View,
+  Text,
 } from "react-native";
 interface Lesson {
   category: string;
-  id: string;
-  hangul: string;
-  group: string;
-  group_romanization: string;
+  hangeul: string;
   order_index: number;
   level: number;
-  hangeul: string;
   hangeul_romanization: string;
+  group: string;
+  group_romanization: string;
+  group_order: number;
 }
-
-const { width: screenWidth } = Dimensions.get("window");
 
 export default function LessonPage() {
   const parts = usePathname().split("/").filter(Boolean);
 
   const { wp, hp } = useResponsive();
-  const level = parts[1];
-  const category = parts[2];
-  const character = parts[3]; // group romanization from URL
+  const { level, category, id } = useRouteParams();
 
   const [lessons, setLessons] = useState<Lesson[]>([]);
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const colors = useThemeColors();
+  const totalPages = lessons.length; // 1 page per lesson
 
-  /* DOTS FOR SCROLLING BEHAVIOR */
-  const [currentPage, setCurrentPage] = useState(0);
-  const totalPages = lessons.length * 2; // 2 pages per lesson
-  /* END */
+  const { markComplete, completedCount } = useLessonProgress(
+    lessons,
+    level,
+    category, // "consonant", "vowel", or "practice"
+  );
 
   // Fetch lessons
   useEffect(() => {
-    if (!level || !category || !character) return;
-
-    const fetchLessons = async () => {
-      const { data, error } = await supabase
-        .from("lessons")
-        .select("*")
-        .eq("level", Number(level))
-        .eq("category", category)
-        .eq("group_romanization", character)
-        .order("order_index", { ascending: true });
-
-      if (error) {
-        console.error("Error fetching lessons:", error.message);
-        return;
-      }
-
-      if (data) setLessons(data as Lesson[]);
-    };
-
-    fetchLessons();
-  }, [level, category, character]);
+    if (!level || !category || !id) return;
+    const data = lessonsData
+      .filter(
+        (l) =>
+          Number(l.level) === Number(level) &&
+          l.category === category &&
+          l.hangeul_romanization === id,
+      )
+      .sort((a, b) => a.order_index - b.order_index);
+    setLessons(data);
+  }, [level, category, id]);
 
   if (!lessons.length) return <Loading />;
   return (
@@ -92,12 +80,24 @@ export default function LessonPage() {
           ),
         }}
       />
-      <ScrollView
-        // Add onScroll to ScrollView:
-        onScroll={(e) => {
-          const page = Math.round(e.nativeEvent.contentOffset.x / screenWidth);
-          setCurrentPage(page);
+      <View
+        style={{
+          alignItems: "flex-end",
+          backgroundColor: colors.background,
         }}
+      >
+        <Text
+          style={{
+            fontSize: 25,
+            paddingHorizontal: 10,
+            fontWeight: "bold",
+            color: "gray",
+          }}
+        >
+          LISTEN & COMPARE
+        </Text>
+      </View>
+      <ScrollView
         scrollEventThrottle={16}
         horizontal
         pagingEnabled
@@ -106,21 +106,24 @@ export default function LessonPage() {
         style={{ width: wp(100), flex: 1, backgroundColor: colors.background }}
       >
         {lessons.map((lesson) => (
-          <React.Fragment key={lesson.id}>
+          <React.Fragment key={lesson.order_index}>
             {/* Page 1: Audio Panel */}
-            <View style={[styles.page, { width: screenWidth }]}>
+            <View style={[styles.page, { width: wp(100) }]}>
               <LessonAudioPanel
                 character={lesson.hangeul_romanization}
-                hangeul={lesson.hangeul}
-              />
-            </View>
-
-            {/* Page 2: Trace Canvas */}
-            <View style={[styles.page, { width: screenWidth }]}>
-              <CanvasPage
-                character={lesson.hangeul_romanization}
-                onTouchStart={() => setScrollEnabled(false)}
-                onTouchEnd={() => setScrollEnabled(true)}
+                canvas={
+                  <CanvasPage
+                    character={lesson.hangeul_romanization}
+                    onTouchStart={() => setScrollEnabled(false)}
+                    onTouchEnd={() => {
+                      setScrollEnabled(true);
+                      markComplete(lesson.hangeul_romanization, "trace");
+                    }}
+                  />
+                }
+                onAudioPlayed={() =>
+                  markComplete(lesson.hangeul_romanization, "audio")
+                }
               />
             </View>
           </React.Fragment>
@@ -135,7 +138,7 @@ export default function LessonPage() {
         }}
       >
         <ProgressBar
-          currentQuestionNumber={currentPage + 1}
+          currentQuestionNumber={completedCount}
           totalQuizNumber={totalPages}
         ></ProgressBar>
       </View>
@@ -145,7 +148,6 @@ export default function LessonPage() {
 
 const styles = StyleSheet.create({
   page: {
-    width: screenWidth,
     flex: 1,
   },
 });

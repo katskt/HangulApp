@@ -21,7 +21,7 @@ export interface ThemeColors {
 export const Colors: Record<ColorScheme, ThemeColors> = {
   light: {
     background: "#f8fffd",
-    foreground: "#FFF9E7",
+    foreground: "#ffffff",
     text: "#000",
     tint: "#d5d5d5",
     select: "#4c4c4c",
@@ -35,7 +35,7 @@ export const Colors: Record<ColorScheme, ThemeColors> = {
   },
   dark: {
     background: "#256a56",
-    foreground: "#FFF9E7",
+    foreground: "#e7ffe7",
     text: "#ffffff",
     tint: "rgb(214, 214, 214)",
     select: "#71b4ff",

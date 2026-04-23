@@ -31,12 +31,11 @@ const MyButton = ({
       justifyContent: "center",
       borderWidth: wp(1),
       borderColor: colors.tint,
-      elevation: 3, // Android shadow
+      elevation: 3,
       margin: 10,
       borderRadius: 10,
     },
     buttonPressed: {
-      // Dim the button slightly when pressed
       opacity: 0.7,
     },
     text: {
@@ -44,7 +43,7 @@ const MyButton = ({
       lineHeight: 0,
       fontWeight: FontWeights.semibold,
       letterSpacing: 0.25,
-      color: "#000", // Text is always white for a standard button look
+      color: "#000",
     },
   });
   return (

@@ -5,6 +5,7 @@ import Button from "@/components/FunctionalButton";
 import ProgressBar from "@/components/ProgressBar";
 import { useLessonAudio } from "@/hooks/useLessonAudio";
 import { useQuizLessons } from "@/hooks/useQuizLessons";
+import { useQuizProgress } from "@/hooks/useQuizProgress";
 import { useSoundEffects } from "@/hooks/useSoundEffects";
 import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
@@ -16,34 +17,35 @@ import { StyleSheet, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 const Quiz = () => {
   const { wp, hp } = useResponsive();
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const { playCorrect, playWrong, playFinished } = useSoundEffects();
   const colors = useThemeColors();
   const imagey = require("@/assets/images/sejong.png");
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [shuffledAnswer, setShuffledAnswers] = useState(0); // Shuffles answers
   const [score, setScore] = useState(0); // counts # correct
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const { quizQuestion } = useQuizLessons();
-  const [selectedCheck, setSelectedCheck] = useState(false);
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
   const [wrongAnswers, setWrongAnswers] = useState<number[]>([]);
 
   // Fetch Question Audio
-  const { playOnLoad, playReference } = useLessonAudio(currentAudio);
-
+  const { playOnLoad, playCurrentAudio } = useLessonAudio(currentAudio);
+  const { level, id: quizNum, quizQuestion } = useQuizLessons();
   const currentQuiz =
     currentQuestion !== undefined ? quizQuestion[currentQuestion] : null;
 
   useEffect(() => {
+    playCurrentAudio();
+  }, [score]);
+
+  const { saveProgress } = useQuizProgress(Number(level), Number(quizNum), "A");
+
+  useEffect(() => {
     if (quizCompleted) {
+      saveProgress();
       playFinished();
     }
   }, [quizCompleted]);
-
-  useEffect(() => {
-    playReference();
-  }, [score]);
 
   useEffect(() => {
     if (!currentQuiz) return;
@@ -54,29 +56,25 @@ const Quiz = () => {
   }, [currentQuestion, currentQuiz]);
 
   // HANDLE USER ANSWER SELCTION
-  const handleAnswer = (selectedOption: string) => {
-    setSelectedCheck(false);
-    setSelectedAnswer(selectedOption);
-  };
 
-  const handleCheck = () => {
-    setSelectedCheck(true);
-    if (selectedAnswer === quizQuestion[currentQuestion].correct_audio) {
+  const handleCheck = (selectedOption: string) => {
+    setSelectedAnswer(selectedOption);
+    if (selectedOption === quizQuestion[currentQuestion].correct_audio) {
       playCorrect();
+      setCurrentAudio(currentQuiz!.correct_audio);
       setScore(score + 1);
 
       // Move to next question after a short delay (so user can see correct highlight)
       setTimeout(() => {
         if (currentQuestion < quizQuestion.length - 1) {
           setCurrentQuestion(currentQuestion + 1);
-          setSelectedAnswer(null); // reset selection for next question
         } else {
           setQuizCompleted(true);
         }
-        setSelectedCheck(false);
+        setSelectedAnswer(null);
       }, 1000); // 1000ms delay
     }
-    if (selectedAnswer === quizQuestion[currentQuestion].wrong_audio) {
+    if (selectedOption === quizQuestion[currentQuestion].wrong_audio) {
       playWrong();
       setWrongAnswers((prev) =>
         prev.includes(currentQuestion) ? prev : [...prev, currentQuestion],
@@ -89,66 +87,20 @@ const Quiz = () => {
     setCurrentQuestion(0);
     setScore(0);
     setQuizCompleted(false);
-    setSelectedAnswer(null);
     setWrongAnswers([]);
   };
 
   // handle when data hasnt loaded yet
 
-  const styles = StyleSheet.create({
-    displayMessage: {
-      color: colors.text,
-      fontSize: FontSizes.header,
-      alignSelf: "center",
-      fontFamily: Typography.english,
-    },
-    wrongAnswers: {
-      color: "#000000",
-      fontSize: FontSizes.header,
-      alignSelf: "center",
-      fontFamily: Typography.english,
-    },
-    containerSideBySide: {
-      flexDirection: "row",
-      flexWrap: "wrap",
-      width: "100%",
-    },
-    itemSideBySide: {
-      flex: 1,
-      width: "45%",
-    },
-    reviewAudio: {
-      marginHorizontal: 0,
-      margin: 0,
-      flexDirection: "row",
-      borderRadius: 1,
-      borderWidth: 1,
-      borderColor: "#EEE",
-      padding: wp(2),
-    },
-    option: {
-      height: hp(20),
-      width: "90%",
-      borderWidth: 6,
-    },
-    word: {
-      fontSize: FontSizes.hugeXL,
-      fontFamily: Typography.default,
-      color: colors.text,
-      alignSelf: "center",
-      height: hp(20),
-    },
-    buttonText: {
-      fontSize: FontSizes.header,
-      fontWeight: FontWeights.bold,
-      fontFamily: Typography.english,
-      alignSelf: "center",
-      padding: hp(2),
-    },
-  });
   if (!quizQuestion.length) return <Loading />;
   return (
-    <View>
+    <View
+      style={{
+        height: hp(85),
+        width: wp(90),
+        alignSelf: "center",
+      }}
+    >
       {quizCompleted ? (
         // DISPLAY RESULT PAGE
         <View
@@ -166,18 +118,32 @@ const Quiz = () => {
             onPress={handleRetest}
           >
             <Icon style={{ flex: 1 }} name="refresh" size={40} color="black" />
-            <Text style={styles.buttonText}>Test Again</Text>
+            <Text style={[styles.buttonText, { padding: hp(2) }]}>
+              Test Again
+            </Text>
           </Button>
-          <Text style={styles.displayMessage}>Quiz Complete!</Text>
+          <Text
+            style={[
+              {
+                color: colors.text,
+                alignSelf: "center",
+                fontFamily: Typography.english,
+              },
+              styles.displayMessage,
+            ]}
+          >
+            Quiz Complete!
+          </Text>
           <AnimatedImage
             style={{ zIndex: 4, alignSelf: "center" }}
             source={imagey}
-            size={250}
+            size={wp(20)}
           />
           <Text
             style={[
-              { alignSelf: "center", color: colors.text },
+              ,
               styles.displayMessage,
+              { alignSelf: "center", color: colors.text, padding: hp(2) },
             ]}
           >
             Score: {quizQuestion.length - wrongAnswers.length}/
@@ -191,6 +157,7 @@ const Quiz = () => {
                 alignSelf: "center",
                 color: colors.text,
                 fontSize: FontSizes.body,
+                padding: 10,
               },
             ]}
           >
@@ -213,104 +180,105 @@ const Quiz = () => {
             currentQuestionNumber={currentQuestion}
             totalQuizNumber={quizQuestion.length}
           ></ProgressBar>
-          <Text style={styles.displayMessage}>Choose the Correct Audio</Text>
-
+          <Text
+            style={[
+              {
+                color: colors.text,
+                alignSelf: "center",
+                fontFamily: Typography.english,
+              },
+              styles.displayMessage,
+            ]}
+          >
+            Choose the Correct Audio
+          </Text>
           {currentQuiz && (
-            <Text style={styles.word}>{currentQuiz.correct_hangeul}</Text>
+            <Text style={[styles.word, { color: colors.text, height: hp(20) }]}>
+              {currentQuiz.correct_hangeul}
+            </Text>
           )}
-          {shuffledAnswer == 1 ? (
-            <View style={styles.containerSideBySide}>
-              {/* WRONG, RIGHT */}
-              <View style={styles.itemSideBySide}>
-                <Button
-                  style={[
-                    styles.option,
-                    {
-                      borderColor:
-                        selectedAnswer === currentQuiz!.wrong_audio
-                          ? colors.select
-                          : colors.unselect,
-                    },
-                  ]}
-                  onPress={() => {
-                    setCurrentAudio(currentQuiz!.wrong_audio);
-                    playOnLoad();
-                    handleAnswer(currentQuiz!.wrong_audio);
-                  }}
-                >
-                  {<Icon name="volume-high" size={40} />}
-                </Button>
-              </View>
-              <View style={styles.itemSideBySide}>
-                <Button
-                  style={[
-                    styles.option,
-                    {
-                      borderColor:
-                        selectedAnswer === currentQuiz!.correct_audio
-                          ? colors.select
-                          : colors.unselect,
-                    },
-                  ]}
-                  onPress={() => {
-                    setCurrentAudio(currentQuiz!.correct_audio);
-                    playOnLoad();
-                    handleAnswer(currentQuiz!.correct_audio);
-                  }}
-                >
-                  {<Icon name="volume-high" size={40} />}
-                </Button>
-              </View>
+          <View style={styles.containerSideBySide}>
+            {/* RIGHT, WRONG */}
+            <View style={styles.itemSideBySide}>
+              <Button
+                style={[
+                  styles.option,
+                  {
+                    borderColor: colors.unselect,
+                    height: hp(20),
+                  },
+                ]}
+                onPress={() => {
+                  setCurrentAudio(
+                    shuffledAnswer == 1
+                      ? currentQuiz!.correct_audio
+                      : currentQuiz!.wrong_audio,
+                  );
+                  playOnLoad();
+                }}
+              >
+                {<Icon name="volume-high" size={40} />}
+              </Button>
+              <Button
+                style={styles.option}
+                onPress={() => {
+                  handleCheck(
+                    shuffledAnswer == 1
+                      ? currentQuiz!.correct_audio
+                      : currentQuiz!.wrong_audio,
+                  );
+                }}
+              >
+                <Text style={[styles.buttonText, { padding: hp(2) }]}></Text>
+              </Button>
             </View>
-          ) : (
-            <View style={styles.containerSideBySide}>
-              {/* RIGHT, WRONG */}
-
-              <View style={styles.itemSideBySide}>
-                <Button
-                  style={[
-                    styles.option,
-                    {
-                      borderColor:
-                        selectedAnswer === currentQuiz!.correct_audio
-                          ? colors.select
-                          : colors.unselect,
-                    },
-                  ]}
-                  onPress={() => {
-                    setCurrentAudio(currentQuiz!.correct_audio);
-                    playOnLoad();
-                    handleAnswer(currentQuiz!.correct_audio);
-                  }}
-                >
-                  {<Icon name="volume-high" size={40} />}
-                </Button>
-              </View>
-              <View style={styles.itemSideBySide}>
-                <Button
-                  style={[
-                    styles.option,
-                    {
-                      borderColor:
-                        selectedAnswer === currentQuiz!.wrong_audio
-                          ? colors.select
-                          : colors.unselect,
-                    },
-                  ]}
-                  onPress={() => {
-                    setCurrentAudio(currentQuiz!.wrong_audio);
-                    playOnLoad();
-                    handleAnswer(currentQuiz!.wrong_audio);
-                  }}
-                >
-                  {<Icon name="volume-high" size={40} />}
-                </Button>
-              </View>
+            <View style={styles.itemSideBySide}>
+              <Button
+                style={[
+                  styles.option,
+                  {
+                    borderColor: colors.unselect,
+                    height: hp(20),
+                  },
+                ]}
+                onPress={() => {
+                  setCurrentAudio(
+                    shuffledAnswer == 1
+                      ? currentQuiz!.wrong_audio
+                      : currentQuiz!.correct_audio,
+                  );
+                  playOnLoad();
+                }}
+              >
+                {<Icon name="volume-high" size={40} />}
+              </Button>
+              <Button
+                style={styles.option}
+                onPress={() => {
+                  handleCheck(
+                    shuffledAnswer == 1
+                      ? currentQuiz!.wrong_audio
+                      : currentQuiz!.correct_audio,
+                  );
+                }}
+              >
+                <Text style={[styles.buttonText, { padding: hp(2) }]}></Text>
+              </Button>
             </View>
-          )}
+          </View>
 
-          <Text style={styles.displayMessage}>
-            {selectedAnswer && selectedCheck
+          <Text
+            style={[
+              {
+                color: colors.text,
+                alignSelf: "center",
+                fontFamily: Typography.english,
+              },
+              ,
+              styles.displayMessage,
+            ]}
+          >
+            {selectedAnswer
               ? selectedAnswer === currentQuiz!.correct_audio
                 ? "Nice!"
                 : selectedAnswer === currentQuiz!.wrong_audio
@@ -318,22 +286,49 @@ const Quiz = () => {
                   : null
               : null}
           </Text>
-
-          <Button
-            style={{
-              marginHorizontal: 0,
-              marginTop: "auto",
-            }}
-            onPress={() => {
-              handleCheck();
-            }}
-          >
-            <Text style={styles.buttonText}>CHECK</Text>
-          </Button>
         </View>
       )}
     </View>
   );
 };
 
+const styles = StyleSheet.create({
+  displayMessage: {
+    alignSelf: "center",
+    fontFamily: Typography.english,
+    fontSize: FontSizes.header,
+  },
+  wrongAnswers: {
+    color: "#000000",
+    fontSize: FontSizes.header,
+    alignSelf: "center",
+    fontFamily: Typography.english,
+  },
+  containerSideBySide: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    width: "100%",
+  },
+  itemSideBySide: {
+    flex: 1,
+    width: "45%",
+  },
+
+  option: {
+    width: "90%",
+    borderWidth: 6,
+  },
+
+  word: {
+    fontSize: FontSizes.hugeXL,
+    fontFamily: Typography.default,
+    alignSelf: "center",
+  },
+  buttonText: {
+    fontSize: FontSizes.header,
+    fontWeight: FontWeights.bold,
+    fontFamily: Typography.english,
+    alignSelf: "center",
+  },
+});
 export default Quiz;

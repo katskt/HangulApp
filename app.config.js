@@ -2,15 +2,14 @@ import "dotenv/config";
 
 export default {
   expo: {
-    name: "hangulapp",
-    slug: "hangulapp",
+    name: "UCSB Hangeul",
+    slug: "UCSB Hangeul",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/images/icon.png",
-    scheme: "hangulapp",
+    scheme: "ucsbhangeul",
     userInterfaceStyle: "automatic",
     newArchEnabled: true,
-
     extra: {
       supabaseUrl: process.env.SUPABASE_URL,
       supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
