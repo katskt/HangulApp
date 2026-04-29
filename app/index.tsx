@@ -10,11 +10,6 @@ import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
-interface Level {
-  level_number: number;
-  title: string;
-}
-
 export default function HomeScreen() {
   const { wp, hp } = useResponsive();
   const router = useRouter();
@@ -34,7 +29,7 @@ export default function HomeScreen() {
 
       if (!userData?.user) return;
 
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("profiles")
         .select("first_name")
         .eq("id", userData.user.id)
@@ -88,7 +83,7 @@ export default function HomeScreen() {
       }
       // Bottom 2/3 content: buttons, forms, other components
       bottomContent={
-        <View>
+        <View style={{ height: "95%" }}>
           <MyButton onPress={() => router.push("/activity")}>
             <Text style={styles.buttonText}>ACTIVITY</Text>
           </MyButton>
@@ -100,8 +95,8 @@ export default function HomeScreen() {
               <MyButton
                 key={level.level_number}
                 style={{
-                  width: wp(38),
-                  height: wp(38),
+                  width: wp(35),
+                  height: wp(35),
                   justifyContent: "flex-start",
                   alignItems: "center",
                   borderRadius: 20,
@@ -110,12 +105,30 @@ export default function HomeScreen() {
               >
                 <Image
                   source={getLevelImage(level.level_number)}
-                  style={styles.buttonImage}
+                  style={{
+                    position: "absolute",
+                    width: "100%",
+                    height: "100%",
+                  }}
                   resizeMode="cover"
                 />
                 <Text style={styles.buttonText}>{level.title}</Text>
               </MyButton>
             ))}
+          </View>
+          <View style={{ flexDirection: "row" }}>
+            <MyButton
+              style={{ flex: 1 }}
+              onPress={() => router.push("/finalQuizA")}
+            >
+              <Text style={styles.buttonText}>Final Quiz A</Text>
+            </MyButton>
+            <MyButton
+              style={{ flex: 1 }}
+              onPress={() => router.push("/finalQuizB")}
+            >
+              <Text style={styles.buttonText}>Final Quiz B</Text>
+            </MyButton>
           </View>
         </View>
       }

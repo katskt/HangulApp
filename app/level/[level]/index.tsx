@@ -88,16 +88,6 @@ export default function LevelPage() {
           }}
         >
           <Text style={styles.title}>HANGEUL {Number(level)}</Text>
-          <Image
-            source={getLevelImage(Number(level))}
-            resizeMode="cover"
-            style={{
-              borderRadius: wp(10),
-              width: wp(20),
-              height: wp(20),
-              borderWidth: 2,
-            }}
-          />
         </View>
       }
       content={

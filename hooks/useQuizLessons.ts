@@ -1,15 +1,7 @@
 import quizData from "@/app/data/quizzes_rows.json";
 import { useRouteParams } from "@/hooks/useRouteParams";
 import { useEffect, useState } from "react";
-
-interface Quiz {
-  level: number;
-  quiz: number;
-  correct_hangeul: string;
-  wrong_hangeul: string;
-  correct_audio: string;
-  wrong_audio: string;
-}
+import { Quiz } from "@/types/quiz";
 export function useQuizLessons() {
   const { level, category, id } = useRouteParams();
 

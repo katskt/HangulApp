@@ -3,7 +3,7 @@ import "dotenv/config";
 export default {
   expo: {
     name: "UCSB Hangeul",
-    slug: "UCSB Hangeul",
+    slug: "ucsbhangeul",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/images/icon.png",

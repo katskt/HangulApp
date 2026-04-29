@@ -101,7 +101,7 @@ export default function ActivityPage() {
         <Text
           style={[
             styles.sectionTitle,
-            { fontSize: FontSizes.caption, color: colors.select },
+            { fontSize: FontSizes.caption, color: colors.text },
           ]}
         >
           {title}
@@ -173,7 +173,7 @@ export default function ActivityPage() {
           )}
           {progress.length === 0 && (
             <Text style={[styles.empty, { color: colors.text }]}>
-              No activity yet. Start a lesson!
+              Fetching...
             </Text>
           )}
         </ScrollView>

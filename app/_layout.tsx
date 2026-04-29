@@ -1,15 +1,13 @@
+import Loading from "@/components/Loading";
 import { supabase } from "@/supabaseConfig";
+import { useThemeColors } from "@/theme/useThemeColors";
 import { Session } from "@supabase/supabase-js";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import * as Linking from "expo-linking";
-import Loading from "@/components/Loading";
-import { router } from "expo-router";
+import { router, Stack } from "expo-router";
 import { useEffect, useState } from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { View } from "react-native";
-import { useThemeColors } from "@/theme/useThemeColors";
 export default function Layout() {
   const insets = useSafeAreaInsets();
   const colors = useThemeColors();
@@ -32,7 +30,6 @@ export default function Layout() {
       .eq("id", userId)
       .single();
     if (userError || !user?.class_code) return false;
-
     const { data: classRow, error: classError } = await supabase
       .from("classes")
       .select("*")
@@ -44,11 +41,12 @@ export default function Layout() {
 
     const start = new Date(classRow.start_date).getTime();
     const end = new Date(classRow.end_date).getTime();
+
     return now >= start && now <= end;
   };
 
   // -----------------------------
-  // AUTH INIT (FIXED)
+  // AUTH INIT
   // -----------------------------
   useEffect(() => {
     const init = async () => {

@@ -72,7 +72,6 @@ export default function Login() {
     const end = new Date(data.end_date).getTime();
 
     const isActive = now >= start && now <= end;
-
     if (!isActive) {
       Alert.alert(
         "Class expired",
@@ -121,8 +120,7 @@ export default function Login() {
       Alert.alert("Error", error.message);
       return;
     }
-
-    // THIS is the important part
+    console.log("SIGNUP RESPONSE:", { data, error });
     if (!data.user) {
       Alert.alert(
         "Account already exists",

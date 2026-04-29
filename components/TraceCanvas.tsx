@@ -16,10 +16,8 @@ interface CanvasPageProps {
   image?: boolean;
 }
 
-const STROKEWIDTH = 10;
 export default function CanvasPage({
   character,
-  image,
   onTouchStart,
   onTouchEnd,
 }: CanvasPageProps) {
@@ -33,6 +31,8 @@ export default function CanvasPage({
   } = useCanvasPaths(character);
 
   const { wp, hp } = useResponsive();
+  const strokeWidth = wp(2);
+
   const colors = useThemeColors();
   return (
     <View
@@ -70,7 +70,7 @@ export default function CanvasPage({
                   d={stroke.join("")} // convert array → string
                   stroke="blue"
                   fill="transparent"
-                  strokeWidth={STROKEWIDTH}
+                  strokeWidth={strokeWidth}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -81,7 +81,7 @@ export default function CanvasPage({
                   d={currentPath.join("")}
                   stroke="black"
                   fill="transparent"
-                  strokeWidth={STROKEWIDTH}
+                  strokeWidth={strokeWidth}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />

@@ -2,7 +2,7 @@
   {
     "quiz": 1,
     "correct_hangeul": "아이돌",
-    "wrong_hangeul": " 아이들",
+    "wrong_hangeul": "아이들",
     "correct_audio": "aitol",
     "wrong_audio": "aitul",
     "level": 2
@@ -10,7 +10,7 @@
   {
     "quiz": 1,
     "correct_hangeul": "여름",
-    "wrong_hangeul": " 어른",
+    "wrong_hangeul": "어른",
     "correct_audio": "yelum",
     "wrong_audio": "elun",
     "level": 2
@@ -18,7 +18,7 @@
   {
     "quiz": 1,
     "correct_hangeul": "바지",
-    "wrong_hangeul": " 비자",
+    "wrong_hangeul": "비자",
     "correct_audio": "paci",
     "wrong_audio": "pica",
     "level": 2
@@ -34,7 +34,7 @@
   {
     "quiz": 1,
     "correct_hangeul": "의자",
-    "wrong_hangeul": " 의사",
+    "wrong_hangeul": "의사",
     "correct_audio": "uyca",
     "wrong_audio": "uysa",
     "level": 2
@@ -58,7 +58,7 @@
   {
     "quiz": 1,
     "correct_hangeul": "고기",
-    "wrong_hangeul": " 거기",
+    "wrong_hangeul": "거기",
     "correct_audio": "koki",
     "wrong_audio": "keki",
     "level": 2
@@ -106,7 +106,7 @@
   {
     "quiz": 1,
     "correct_hangeul": "가을",
-    "wrong_hangeul": " 가음",
+    "wrong_hangeul": "가음",
     "correct_audio": "kaul",
     "wrong_audio": "kaum",
     "level": 2
@@ -114,7 +114,7 @@
   {
     "quiz": 1,
     "correct_hangeul": "손님",
-    "wrong_hangeul": " 산님",
+    "wrong_hangeul": "산님",
     "correct_audio": "sonnim",
     "wrong_audio": "sannim",
     "level": 2
@@ -122,7 +122,7 @@
   {
     "quiz": 1,
     "correct_hangeul": "가방",
-    "wrong_hangeul": " 가랑",
+    "wrong_hangeul": "가랑",
     "correct_audio": "kapang",
     "wrong_audio": "kalang",
     "level": 2
@@ -130,7 +130,7 @@
   {
     "quiz": 1,
     "correct_hangeul": "서울",
-    "wrong_hangeul": " 서운",
+    "wrong_hangeul": "서운",
     "correct_audio": "sewul",
     "wrong_audio": "sewun",
     "level": 2
@@ -138,7 +138,7 @@
   {
     "quiz": 1,
     "correct_hangeul": "서점",
-    "wrong_hangeul": " 서섬",
+    "wrong_hangeul": "서섬",
     "correct_audio": "secem",
     "wrong_audio": "sesem",
     "level": 2
@@ -210,7 +210,7 @@
   {
     "quiz": 2,
     "correct_hangeul": "강아지",
-    "wrong_hangeul": " 장아지",
+    "wrong_hangeul": "장아지",
     "correct_audio": "kangaci",
     "wrong_audio": "cangaci",
     "level": 2
@@ -218,7 +218,7 @@
   {
     "quiz": 2,
     "correct_hangeul": "고양이",
-    "wrong_hangeul": " 고용이",
+    "wrong_hangeul": "고용이",
     "correct_audio": "koyangi",
     "wrong_audio": "koyongi",
     "level": 2
@@ -226,7 +226,7 @@
   {
     "quiz": 2,
     "correct_hangeul": "이야기",
-    "wrong_hangeul": " 이요기",
+    "wrong_hangeul": "이요기",
     "correct_audio": "iyaki",
     "wrong_audio": "iyoki",
     "level": 2
@@ -234,7 +234,7 @@
   {
     "quiz": 2,
     "correct_hangeul": "양말",
-    "wrong_hangeul": " 양볼",
+    "wrong_hangeul": "양볼",
     "correct_audio": "yangmal",
     "wrong_audio": "yangpol",
     "level": 2
@@ -242,7 +242,7 @@
   {
     "quiz": 2,
     "correct_hangeul": "아버지",
-    "wrong_hangeul": " 아버수",
+    "wrong_hangeul": "아버수",
     "correct_audio": "apeci",
     "wrong_audio": "apeswu",
     "level": 2
@@ -250,7 +250,7 @@
   {
     "quiz": 2,
     "correct_hangeul": "사람",
-    "wrong_hangeul": " 사랑",
+    "wrong_hangeul": "사랑",
     "correct_audio": "salam",
     "wrong_audio": "salang",
     "level": 2
@@ -258,7 +258,7 @@
   {
     "quiz": 2,
     "correct_hangeul": "봄",
-    "wrong_hangeul": " 본",
+    "wrong_hangeul": "본",
     "correct_audio": "pom",
     "wrong_audio": "pon",
     "level": 2
@@ -266,7 +266,7 @@
   {
     "quiz": 2,
     "correct_hangeul": "아이",
-    "wrong_hangeul": " 야이",
+    "wrong_hangeul": "야이",
     "correct_audio": "ai",
     "wrong_audio": "yai",
     "level": 2
@@ -274,7 +274,7 @@
   {
     "quiz": 2,
     "correct_hangeul": "아시아",
-    "wrong_hangeul": " 아지야",
+    "wrong_hangeul": "아지야",
     "correct_audio": "asia",
     "wrong_audio": "aciya",
     "level": 2
@@ -282,7 +282,7 @@
   {
     "quiz": 2,
     "correct_hangeul": "수영장",
-    "wrong_hangeul": " 수영송",
+    "wrong_hangeul": "수영송",
     "correct_audio": "swuyengcang",
     "wrong_audio": "swuyengsong",
     "level": 2
@@ -290,7 +290,7 @@
   {
     "quiz": 3,
     "correct_hangeul": "가을",
-    "wrong_hangeul": " 거울",
+    "wrong_hangeul": "거울",
     "correct_audio": "kaul",
     "wrong_audio": "kewul",
     "level": 2
@@ -298,7 +298,7 @@
   {
     "quiz": 3,
     "correct_hangeul": "자기",
-    "wrong_hangeul": " 저기",
+    "wrong_hangeul": "저기",
     "correct_audio": "caki",
     "wrong_audio": "ceki",
     "level": 2
@@ -306,7 +306,7 @@
   {
     "quiz": 3,
     "correct_hangeul": "의미",
-    "wrong_hangeul": " 아미",
+    "wrong_hangeul": "아미",
     "correct_audio": "uymi",
     "wrong_audio": "ami",
     "level": 2
@@ -314,7 +314,7 @@
   {
     "quiz": 3,
     "correct_hangeul": "바람",
-    "wrong_hangeul": " 바망",
+    "wrong_hangeul": "바망",
     "correct_audio": "palam",
     "wrong_audio": "pamang",
     "level": 2
@@ -322,7 +322,7 @@
   {
     "quiz": 3,
     "correct_hangeul": "유리",
-    "wrong_hangeul": " 우리",
+    "wrong_hangeul": "우리",
     "correct_audio": "yuli",
     "wrong_audio": "wuli",
     "level": 2
@@ -330,7 +330,7 @@
   {
     "quiz": 3,
     "correct_hangeul": "이름",
-    "wrong_hangeul": " 이람",
+    "wrong_hangeul": "이람",
     "correct_audio": "ilum",
     "wrong_audio": "ilam",
     "level": 2
@@ -338,7 +338,7 @@
   {
     "quiz": 3,
     "correct_hangeul": "구름",
-    "wrong_hangeul": " 가름",
+    "wrong_hangeul": "가름",
     "correct_audio": "kwulum",
     "wrong_audio": "karum",
     "level": 2
@@ -346,7 +346,7 @@
   {
     "quiz": 3,
     "correct_hangeul": "발",
-    "wrong_hangeul": " 방",
+    "wrong_hangeul": "방",
     "correct_audio": "pal",
     "wrong_audio": "pang",
     "level": 2
@@ -354,7 +354,7 @@
   {
     "quiz": 3,
     "correct_hangeul": "두부",
-    "wrong_hangeul": " 두무",
+    "wrong_hangeul": "두무",
     "correct_audio": "twupwu",
     "wrong_audio": "twumwu",
     "level": 2
@@ -362,7 +362,7 @@
   {
     "quiz": 3,
     "correct_hangeul": "유명",
-    "wrong_hangeul": " 유병",
+    "wrong_hangeul": "유병",
     "correct_audio": "yumyeng",
     "wrong_audio": "yupyeng",
     "level": 2
@@ -1086,5 +1086,245 @@
     "correct_audio": "kwaca",
     "wrong_audio": "kwica",
     "level": 4
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "바지",
+    "wrong_hangeul": "비자",
+    "correct_audio": "paci",
+    "wrong_audio": "pica",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "서울",
+    "wrong_hangeul": "서운",
+    "correct_audio": "sewul",
+    "wrong_audio": "sewun",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "가을",
+    "wrong_hangeul": "가음",
+    "correct_audio": "kaul",
+    "wrong_audio": "kaum",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "고양이",
+    "wrong_hangeul": "고용이",
+    "correct_audio": "koyangi",
+    "wrong_audio": "koyongi",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "너",
+    "wrong_hangeul": "노",
+    "correct_audio": "ne",
+    "wrong_audio": "no",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "사람",
+    "wrong_hangeul": "사랑",
+    "correct_audio": "salam",
+    "wrong_audio": "salang",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "가을",
+    "wrong_hangeul": "거울",
+    "correct_audio": "kaul",
+    "wrong_audio": "kewul",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "뚜껑",
+    "wrong_hangeul": "뚜컵",
+    "correct_audio": "ttwukkeng",
+    "wrong_audio": "ttwukhep",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "화장실",
+    "wrong_hangeul": "휘장실",
+    "correct_audio": "hwacangsil",
+    "wrong_audio": "hwicangsil",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "유리",
+    "wrong_hangeul": "우리",
+    "correct_audio": "yuli",
+    "wrong_audio": "wuli",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "발",
+    "wrong_hangeul": "방",
+    "correct_audio": "pal",
+    "wrong_audio": "pang",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "책",
+    "wrong_hangeul": "챙",
+    "correct_audio": "chayk",
+    "wrong_audio": "chayng",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "공항",
+    "wrong_hangeul": "고향",
+    "correct_audio": "konghang",
+    "wrong_audio": "kohyang",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "학교",
+    "wrong_hangeul": "항교",
+    "correct_audio": "hakkyo",
+    "wrong_audio": "hangkyo",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "필통",
+    "wrong_hangeul": "핀동",
+    "correct_audio": "philthong",
+    "wrong_audio": "phintong",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "작가",
+    "wrong_hangeul": "잠가",
+    "correct_audio": "cakka",
+    "wrong_audio": "camka",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "아이",
+    "wrong_hangeul": "오이",
+    "correct_audio": "ai",
+    "wrong_audio": "oi",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "복숭아",
+    "wrong_hangeul": "봉숭아",
+    "correct_audio": "pokswunga",
+    "wrong_audio": "pongswunga",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "우리",
+    "wrong_hangeul": "오리",
+    "correct_audio": "wuli",
+    "wrong_audio": "oli",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "나무",
+    "wrong_hangeul": "너무",
+    "correct_audio": "namwu",
+    "wrong_audio": "nemwu",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "후추",
+    "wrong_hangeul": "푸추",
+    "correct_audio": "hwuchwu",
+    "wrong_audio": "phwuchwu",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "쌀",
+    "wrong_hangeul": "살",
+    "correct_audio": "ssal",
+    "wrong_audio": "sal",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "이모",
+    "wrong_hangeul": "이모",
+    "correct_audio": "imo",
+    "wrong_audio": "imo",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "어머니",
+    "wrong_hangeul": "오마니",
+    "correct_audio": "emeni",
+    "wrong_audio": "omani",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "오리",
+    "wrong_hangeul": "오리",
+    "correct_audio": "oli",
+    "wrong_audio": "oli",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "머리",
+    "wrong_hangeul": "모리",
+    "correct_audio": "meli",
+    "wrong_audio": "moli",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "뜨거워요",
+    "wrong_hangeul": "두꺼워요",
+    "correct_audio": "ttukeweyo",
+    "wrong_audio": "twukkeweyo",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "공장",
+    "wrong_hangeul": "공짜",
+    "correct_audio": "kongcang",
+    "wrong_audio": "kongcca",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "토기",
+    "wrong_hangeul": "토끼",
+    "correct_audio": "thoki",
+    "wrong_audio": "thokki",
+    "level": 5
+  },
+  {
+    "quiz": 1,
+    "correct_hangeul": "자요",
+    "wrong_hangeul": "짜요",
+    "correct_audio": "cayo",
+    "wrong_audio": "ccayo",
+    "level": 5
   }
 ]

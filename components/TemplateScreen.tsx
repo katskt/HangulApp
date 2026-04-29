@@ -12,7 +12,7 @@ import { useThemeColors } from "@/theme/useThemeColors";
 export default function SplashTemplate({
   topContent,
   bottomContent,
-  topHeightRatio = 0.3,
+  topHeightRatio = 0.2,
 }: SplashTemplateProps) {
   const colors = useThemeColors();
   const styles = StyleSheet.create({

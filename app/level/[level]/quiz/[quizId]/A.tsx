@@ -3,12 +3,13 @@ import QuizA from "@/components/QuizA";
 import { usePathname } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-
+import { useQuizLessons } from "@/hooks/useQuizLessons";
 import BlueScreen from "@/components/BlueScreen";
 
 const App = () => {
   // fetch path:
   const parts = usePathname().split("/").filter(Boolean);
+  const { level, id: quizNum, quizQuestion } = useQuizLessons();
 
   return (
     <BlueScreen
@@ -17,7 +18,9 @@ const App = () => {
           <Text style={styles.grayed}>{parts.join(" ").toUpperCase()}</Text>
         </View>
       }
-      content={<QuizA />}
+      content={
+        <QuizA level={level} quizNum={quizNum} quizQuestion={quizQuestion} />
+      }
     />
   );
 };

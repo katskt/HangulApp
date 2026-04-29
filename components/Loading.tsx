@@ -1,7 +1,7 @@
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import React, { useEffect, useRef } from "react";
-import { Animated, StyleSheet, View, ViewStyle, StyleProp } from "react-native";
+import { Animated, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
 
 type LoadingProps = {
   style?: StyleProp<ViewStyle>;

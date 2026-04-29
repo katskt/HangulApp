@@ -44,7 +44,7 @@ export default function AnimatedImage({
   }, []);
 
   const rotate = rotateAnim.interpolate({
-    inputRange: [0, 3],
+    inputRange: [0, 1],
     outputRange: ["180deg", "0deg"],
   });
 
