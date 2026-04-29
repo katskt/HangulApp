@@ -1,0 +1,3153 @@
+[
+  {
+    "category": "consonant",
+    "hangeul": "나",
+    "order_index": 1,
+    "level": 1,
+    "hangeul_romanization": "na",
+    "group": "ㄴ",
+    "group_romanization": "n",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "너",
+    "order_index": 2,
+    "level": 1,
+    "hangeul_romanization": "ne",
+    "group": "ㄴ",
+    "group_romanization": "n",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "노",
+    "order_index": 3,
+    "level": 1,
+    "hangeul_romanization": "no",
+    "group": "ㄴ",
+    "group_romanization": "n",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "누",
+    "order_index": 4,
+    "level": 1,
+    "hangeul_romanization": "nwu",
+    "group": "ㄴ",
+    "group_romanization": "n",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "느",
+    "order_index": 5,
+    "level": 1,
+    "hangeul_romanization": "nu",
+    "group": "ㄴ",
+    "group_romanization": "n",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "니",
+    "order_index": 6,
+    "level": 1,
+    "hangeul_romanization": "ni",
+    "group": "ㄴ",
+    "group_romanization": "n",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "라",
+    "order_index": 1,
+    "level": 1,
+    "hangeul_romanization": "la",
+    "group": "ㄹ",
+    "group_romanization": "l",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "러",
+    "order_index": 2,
+    "level": 1,
+    "hangeul_romanization": "le",
+    "group": "ㄹ",
+    "group_romanization": "l",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "로",
+    "order_index": 3,
+    "level": 1,
+    "hangeul_romanization": "lo",
+    "group": "ㄹ",
+    "group_romanization": "l",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "루",
+    "order_index": 4,
+    "level": 1,
+    "hangeul_romanization": "lwu",
+    "group": "ㄹ",
+    "group_romanization": "l",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "르",
+    "order_index": 5,
+    "level": 1,
+    "hangeul_romanization": "lu",
+    "group": "ㄹ",
+    "group_romanization": "l",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "리",
+    "order_index": 6,
+    "level": 1,
+    "hangeul_romanization": "li",
+    "group": "ㄹ",
+    "group_romanization": "l",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "마",
+    "order_index": 1,
+    "level": 1,
+    "hangeul_romanization": "ma",
+    "group": "ㅁ",
+    "group_romanization": "m",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "머",
+    "order_index": 2,
+    "level": 1,
+    "hangeul_romanization": "me",
+    "group": "ㅁ",
+    "group_romanization": "m",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "모",
+    "order_index": 3,
+    "level": 1,
+    "hangeul_romanization": "mo",
+    "group": "ㅁ",
+    "group_romanization": "m",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "무",
+    "order_index": 4,
+    "level": 1,
+    "hangeul_romanization": "mwu",
+    "group": "ㅁ",
+    "group_romanization": "m",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "므",
+    "order_index": 5,
+    "level": 1,
+    "hangeul_romanization": "mu",
+    "group": "ㅁ",
+    "group_romanization": "m",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "미",
+    "order_index": 6,
+    "level": 1,
+    "hangeul_romanization": "mi",
+    "group": "ㅁ",
+    "group_romanization": "m",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "나무",
+    "order_index": 7,
+    "level": 1,
+    "hangeul_romanization": "namwu",
+    "group": "나무",
+    "group_romanization": "namwu",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "아이",
+    "order_index": 1,
+    "level": 1,
+    "hangeul_romanization": "ai",
+    "group": "아이",
+    "group_romanization": "ai",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "오",
+    "order_index": 4,
+    "level": 1,
+    "hangeul_romanization": "o",
+    "group": "오",
+    "group_romanization": "o",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "오이",
+    "order_index": 5,
+    "level": 1,
+    "hangeul_romanization": "oi",
+    "group": "오이",
+    "group_romanization": "oi",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "이",
+    "order_index": 2,
+    "level": 1,
+    "hangeul_romanization": "i",
+    "group": "이",
+    "group_romanization": "i",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "이마",
+    "order_index": 3,
+    "level": 1,
+    "hangeul_romanization": "ima",
+    "group": "이마",
+    "group_romanization": "ima",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "이모",
+    "order_index": 6,
+    "level": 1,
+    "hangeul_romanization": "imo",
+    "group": "이모",
+    "group_romanization": "imo",
+    "group_order": 1
+  },
+  {
+    "category": "vowel",
+    "hangeul": "아",
+    "order_index": 1,
+    "level": 1,
+    "hangeul_romanization": "a",
+    "group": "아",
+    "group_romanization": "a",
+    "group_order": 1
+  },
+  {
+    "category": "vowel",
+    "hangeul": "어",
+    "order_index": 2,
+    "level": 1,
+    "hangeul_romanization": "e",
+    "group": "어",
+    "group_romanization": "e",
+    "group_order": 2
+  },
+  {
+    "category": "vowel",
+    "hangeul": "오",
+    "order_index": 3,
+    "level": 1,
+    "hangeul_romanization": "o",
+    "group": "오",
+    "group_romanization": "o",
+    "group_order": 3
+  },
+  {
+    "category": "vowel",
+    "hangeul": "우",
+    "order_index": 4,
+    "level": 1,
+    "hangeul_romanization": "wu",
+    "group": "우",
+    "group_romanization": "wu",
+    "group_order": 4
+  },
+  {
+    "category": "vowel",
+    "hangeul": "으",
+    "order_index": 5,
+    "level": 1,
+    "hangeul_romanization": "u",
+    "group": "으",
+    "group_romanization": "u",
+    "group_order": 5
+  },
+  {
+    "category": "vowel",
+    "hangeul": "이",
+    "order_index": 6,
+    "level": 1,
+    "hangeul_romanization": "i",
+    "group": "이",
+    "group_romanization": "i",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "가",
+    "order_index": 1,
+    "level": 2,
+    "hangeul_romanization": "ka",
+    "group": "ㄱ",
+    "group_romanization": "k",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "거",
+    "order_index": 2,
+    "level": 2,
+    "hangeul_romanization": "ke",
+    "group": "ㄱ",
+    "group_romanization": "k",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "고",
+    "order_index": 3,
+    "level": 2,
+    "hangeul_romanization": "ko",
+    "group": "ㄱ",
+    "group_romanization": "k",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "구",
+    "order_index": 4,
+    "level": 2,
+    "hangeul_romanization": "kwu",
+    "group": "ㄱ",
+    "group_romanization": "k",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "그",
+    "order_index": 5,
+    "level": 2,
+    "hangeul_romanization": "ku",
+    "group": "ㄱ",
+    "group_romanization": "k",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "기",
+    "order_index": 6,
+    "level": 2,
+    "hangeul_romanization": "ki",
+    "group": "ㄱ",
+    "group_romanization": "k",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "다",
+    "order_index": 1,
+    "level": 2,
+    "hangeul_romanization": "ta",
+    "group": "ㄷ",
+    "group_romanization": "t",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "더",
+    "order_index": 2,
+    "level": 2,
+    "hangeul_romanization": "te",
+    "group": "ㄷ",
+    "group_romanization": "t",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "디",
+    "order_index": 6,
+    "level": 2,
+    "hangeul_romanization": "ti",
+    "group": "ㄷ",
+    "group_romanization": "t",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "도",
+    "order_index": 3,
+    "level": 2,
+    "hangeul_romanization": "to",
+    "group": "ㄷ",
+    "group_romanization": "t",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "드",
+    "order_index": 5,
+    "level": 2,
+    "hangeul_romanization": "tu",
+    "group": "ㄷ",
+    "group_romanization": "t",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "두",
+    "order_index": 4,
+    "level": 2,
+    "hangeul_romanization": "twu",
+    "group": "ㄷ",
+    "group_romanization": "t",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "바",
+    "order_index": 1,
+    "level": 2,
+    "hangeul_romanization": "pa",
+    "group": "ㅂ",
+    "group_romanization": "p",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "버",
+    "order_index": 2,
+    "level": 2,
+    "hangeul_romanization": "pe",
+    "group": "ㅂ",
+    "group_romanization": "p",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "비",
+    "order_index": 6,
+    "level": 2,
+    "hangeul_romanization": "pi",
+    "group": "ㅂ",
+    "group_romanization": "p",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "보",
+    "order_index": 3,
+    "level": 2,
+    "hangeul_romanization": "po",
+    "group": "ㅂ",
+    "group_romanization": "p",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "브",
+    "order_index": 5,
+    "level": 2,
+    "hangeul_romanization": "pu",
+    "group": "ㅂ",
+    "group_romanization": "p",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "부",
+    "order_index": 4,
+    "level": 2,
+    "hangeul_romanization": "pwu",
+    "group": "ㅂ",
+    "group_romanization": "p",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "발",
+    "order_index": 1,
+    "level": 2,
+    "hangeul_romanization": "pal",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "밤",
+    "order_index": 2,
+    "level": 2,
+    "hangeul_romanization": "pam",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "반",
+    "order_index": 3,
+    "level": 2,
+    "hangeul_romanization": "pan",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "방",
+    "order_index": 4,
+    "level": 2,
+    "hangeul_romanization": "pang",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "사",
+    "order_index": 1,
+    "level": 2,
+    "hangeul_romanization": "sa",
+    "group": "ㅅ",
+    "group_romanization": "s",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "서",
+    "order_index": 2,
+    "level": 2,
+    "hangeul_romanization": "se",
+    "group": "ㅅ",
+    "group_romanization": "s",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "시",
+    "order_index": 6,
+    "level": 2,
+    "hangeul_romanization": "si",
+    "group": "ㅅ",
+    "group_romanization": "s",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "소",
+    "order_index": 3,
+    "level": 2,
+    "hangeul_romanization": "so",
+    "group": "ㅅ",
+    "group_romanization": "s",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "스",
+    "order_index": 5,
+    "level": 2,
+    "hangeul_romanization": "su",
+    "group": "ㅅ",
+    "group_romanization": "s",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "수",
+    "order_index": 4,
+    "level": 2,
+    "hangeul_romanization": "swu",
+    "group": "ㅅ",
+    "group_romanization": "s",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "자",
+    "order_index": 1,
+    "level": 2,
+    "hangeul_romanization": "ca",
+    "group": "ㅈ",
+    "group_romanization": "c",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "저",
+    "order_index": 2,
+    "level": 2,
+    "hangeul_romanization": "ce",
+    "group": "ㅈ",
+    "group_romanization": "c",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "지",
+    "order_index": 6,
+    "level": 2,
+    "hangeul_romanization": "ci",
+    "group": "ㅈ",
+    "group_romanization": "c",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "조",
+    "order_index": 3,
+    "level": 2,
+    "hangeul_romanization": "co",
+    "group": "ㅈ",
+    "group_romanization": "c",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "즈",
+    "order_index": 5,
+    "level": 2,
+    "hangeul_romanization": "cu",
+    "group": "ㅈ",
+    "group_romanization": "c",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "주",
+    "order_index": 4,
+    "level": 2,
+    "hangeul_romanization": "cwu",
+    "group": "ㅈ",
+    "group_romanization": "c",
+    "group_order": 5
+  },
+  {
+    "category": "practice",
+    "hangeul": "가수",
+    "order_index": 18,
+    "level": 2,
+    "hangeul_romanization": "kaswu",
+    "group": "가수",
+    "group_romanization": "kaswu",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "감",
+    "order_index": 24,
+    "level": 2,
+    "hangeul_romanization": "kam",
+    "group": "감",
+    "group_romanization": "kam",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "고구마",
+    "order_index": 7,
+    "level": 2,
+    "hangeul_romanization": "kokwuma",
+    "group": "고구마",
+    "group_romanization": "kokwuma",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "고기",
+    "order_index": 6,
+    "level": 2,
+    "hangeul_romanization": "koki",
+    "group": "고기",
+    "group_romanization": "koki",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "구",
+    "order_index": 4,
+    "level": 2,
+    "hangeul_romanization": "kwu",
+    "group": "구",
+    "group_romanization": "kwu",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "구두",
+    "order_index": 9,
+    "level": 2,
+    "hangeul_romanization": "kwutwu",
+    "group": "구두",
+    "group_romanization": "kwutwu",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "귤",
+    "order_index": 26,
+    "level": 2,
+    "hangeul_romanization": "kyul",
+    "group": "귤",
+    "group_romanization": "kyul",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "나비",
+    "order_index": 14,
+    "level": 2,
+    "hangeul_romanization": "napi",
+    "group": "나비",
+    "group_romanization": "napi",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "다리",
+    "order_index": 8,
+    "level": 2,
+    "hangeul_romanization": "tali",
+    "group": "다리",
+    "group_romanization": "tali",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "두유",
+    "order_index": 10,
+    "level": 2,
+    "hangeul_romanization": "twuyu",
+    "group": "두유",
+    "group_romanization": "twuyu",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "라디오",
+    "order_index": 11,
+    "level": 2,
+    "hangeul_romanization": "latio",
+    "group": "라디오",
+    "group_romanization": "latio",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "모자",
+    "order_index": 20,
+    "level": 2,
+    "hangeul_romanization": "moca",
+    "group": "모자",
+    "group_romanization": "moca",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "바다",
+    "order_index": 12,
+    "level": 2,
+    "hangeul_romanization": "pata",
+    "group": "바다",
+    "group_romanization": "pata",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "바지",
+    "order_index": 22,
+    "level": 2,
+    "hangeul_romanization": "paci",
+    "group": "바지",
+    "group_romanization": "paci",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "버스",
+    "order_index": 19,
+    "level": 2,
+    "hangeul_romanization": "pesu",
+    "group": "버스",
+    "group_romanization": "pesu",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "비",
+    "order_index": 13,
+    "level": 2,
+    "hangeul_romanization": "pi",
+    "group": "비",
+    "group_romanization": "pi",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "비누",
+    "order_index": 15,
+    "level": 2,
+    "hangeul_romanization": "pinwu",
+    "group": "비누",
+    "group_romanization": "pinwu",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "사",
+    "order_index": 16,
+    "level": 2,
+    "hangeul_romanization": "sa",
+    "group": "사",
+    "group_romanization": "sa",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "산",
+    "order_index": 25,
+    "level": 2,
+    "hangeul_romanization": "san",
+    "group": "산",
+    "group_romanization": "san",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "아버지",
+    "order_index": 23,
+    "level": 2,
+    "hangeul_romanization": "apeci",
+    "group": "아버지",
+    "group_romanization": "apeci",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "야구",
+    "order_index": 5,
+    "level": 2,
+    "hangeul_romanization": "yakwu",
+    "group": "야구",
+    "group_romanization": "yakwu",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "여우",
+    "order_index": 2,
+    "level": 2,
+    "hangeul_romanization": "yewu",
+    "group": "여우",
+    "group_romanization": "yewu",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "요리",
+    "order_index": 3,
+    "level": 2,
+    "hangeul_romanization": "yoli",
+    "group": "요리",
+    "group_romanization": "yoli",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "용",
+    "order_index": 27,
+    "level": 2,
+    "hangeul_romanization": "yong",
+    "group": "용",
+    "group_romanization": "yong",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "우유",
+    "order_index": 1,
+    "level": 2,
+    "hangeul_romanization": "wuyu",
+    "group": "우유",
+    "group_romanization": "wuyu",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "의사",
+    "order_index": 17,
+    "level": 2,
+    "hangeul_romanization": "uysa",
+    "group": "의사",
+    "group_romanization": "uysa",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "의자",
+    "order_index": 21,
+    "level": 2,
+    "hangeul_romanization": "uyca",
+    "group": "의자",
+    "group_romanization": "uyca",
+    "group_order": 3
+  },
+  {
+    "category": "vowel",
+    "hangeul": "야",
+    "order_index": 1,
+    "level": 2,
+    "hangeul_romanization": "ya",
+    "group": "야",
+    "group_romanization": "ya",
+    "group_order": 1
+  },
+  {
+    "category": "vowel",
+    "hangeul": "여",
+    "order_index": 2,
+    "level": 2,
+    "hangeul_romanization": "ye",
+    "group": "여",
+    "group_romanization": "ye",
+    "group_order": 2
+  },
+  {
+    "category": "vowel",
+    "hangeul": "요",
+    "order_index": 3,
+    "level": 2,
+    "hangeul_romanization": "yo",
+    "group": "요",
+    "group_romanization": "yo",
+    "group_order": 3
+  },
+  {
+    "category": "vowel",
+    "hangeul": "유",
+    "order_index": 4,
+    "level": 2,
+    "hangeul_romanization": "yu",
+    "group": "유",
+    "group_romanization": "yu",
+    "group_order": 4
+  },
+  {
+    "category": "vowel",
+    "hangeul": "의",
+    "order_index": 5,
+    "level": 2,
+    "hangeul_romanization": "uy",
+    "group": "의",
+    "group_romanization": "uy",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "각",
+    "order_index": 1,
+    "level": 3,
+    "hangeul_romanization": "kak",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "갑",
+    "order_index": 2,
+    "level": 3,
+    "hangeul_romanization": "kap",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "갇",
+    "order_index": 3,
+    "level": 3,
+    "hangeul_romanization": "kat",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "갓",
+    "order_index": 4,
+    "level": 3,
+    "hangeul_romanization": "kas",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "갖",
+    "order_index": 5,
+    "level": 3,
+    "hangeul_romanization": "kac",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "자",
+    "order_index": 1,
+    "level": 3,
+    "hangeul_romanization": "ca",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "저",
+    "order_index": 3,
+    "level": 3,
+    "hangeul_romanization": "ce",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "조",
+    "order_index": 5,
+    "level": 3,
+    "hangeul_romanization": "co",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "주",
+    "order_index": 7,
+    "level": 3,
+    "hangeul_romanization": "cwu",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "즈",
+    "order_index": 9,
+    "level": 3,
+    "hangeul_romanization": "cu",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "지",
+    "order_index": 11,
+    "level": 3,
+    "hangeul_romanization": "ci",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "차",
+    "order_index": 2,
+    "level": 3,
+    "hangeul_romanization": "cha",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "처",
+    "order_index": 4,
+    "level": 3,
+    "hangeul_romanization": "che",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "초",
+    "order_index": 6,
+    "level": 3,
+    "hangeul_romanization": "cho",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "추",
+    "order_index": 8,
+    "level": 3,
+    "hangeul_romanization": "chwu",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "츠",
+    "order_index": 10,
+    "level": 3,
+    "hangeul_romanization": "chu",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "치",
+    "order_index": 12,
+    "level": 3,
+    "hangeul_romanization": "chi",
+    "group": "ㅊ",
+    "group_romanization": "ch",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "가",
+    "order_index": 1,
+    "level": 3,
+    "hangeul_romanization": "ka",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "카",
+    "order_index": 2,
+    "level": 3,
+    "hangeul_romanization": "kha",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "거",
+    "order_index": 3,
+    "level": 3,
+    "hangeul_romanization": "ke",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "커",
+    "order_index": 4,
+    "level": 3,
+    "hangeul_romanization": "khe",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "고",
+    "order_index": 5,
+    "level": 3,
+    "hangeul_romanization": "ko",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "코",
+    "order_index": 6,
+    "level": 3,
+    "hangeul_romanization": "kho",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "구",
+    "order_index": 7,
+    "level": 3,
+    "hangeul_romanization": "kwu",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "쿠",
+    "order_index": 8,
+    "level": 3,
+    "hangeul_romanization": "khwu",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "그",
+    "order_index": 9,
+    "level": 3,
+    "hangeul_romanization": "ku",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "크",
+    "order_index": 10,
+    "level": 3,
+    "hangeul_romanization": "khu",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "기",
+    "order_index": 11,
+    "level": 3,
+    "hangeul_romanization": "ki",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "키",
+    "order_index": 12,
+    "level": 3,
+    "hangeul_romanization": "khi",
+    "group": "ㅋ",
+    "group_romanization": "kh",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "다",
+    "order_index": 1,
+    "level": 3,
+    "hangeul_romanization": "ta",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "타",
+    "order_index": 2,
+    "level": 3,
+    "hangeul_romanization": "tha",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "더",
+    "order_index": 3,
+    "level": 3,
+    "hangeul_romanization": "te",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "터",
+    "order_index": 4,
+    "level": 3,
+    "hangeul_romanization": "the",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "도",
+    "order_index": 5,
+    "level": 3,
+    "hangeul_romanization": "to",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "토",
+    "order_index": 6,
+    "level": 3,
+    "hangeul_romanization": "tho",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "두",
+    "order_index": 7,
+    "level": 3,
+    "hangeul_romanization": "twu",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "투",
+    "order_index": 8,
+    "level": 3,
+    "hangeul_romanization": "thwu",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "드",
+    "order_index": 9,
+    "level": 3,
+    "hangeul_romanization": "tu",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "트",
+    "order_index": 10,
+    "level": 3,
+    "hangeul_romanization": "thu",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "디",
+    "order_index": 11,
+    "level": 3,
+    "hangeul_romanization": "ti",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "티",
+    "order_index": 12,
+    "level": 3,
+    "hangeul_romanization": "thi",
+    "group": "ㅌ",
+    "group_romanization": "th",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "바",
+    "order_index": 1,
+    "level": 3,
+    "hangeul_romanization": "pa",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "파",
+    "order_index": 2,
+    "level": 3,
+    "hangeul_romanization": "pha",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "버",
+    "order_index": 3,
+    "level": 3,
+    "hangeul_romanization": "pe",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "퍼",
+    "order_index": 4,
+    "level": 3,
+    "hangeul_romanization": "phe",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "보",
+    "order_index": 5,
+    "level": 3,
+    "hangeul_romanization": "po",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "포",
+    "order_index": 6,
+    "level": 3,
+    "hangeul_romanization": "pho",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "부",
+    "order_index": 7,
+    "level": 3,
+    "hangeul_romanization": "pwu",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "푸",
+    "order_index": 8,
+    "level": 3,
+    "hangeul_romanization": "phwu",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "브",
+    "order_index": 9,
+    "level": 3,
+    "hangeul_romanization": "pu",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "프",
+    "order_index": 10,
+    "level": 3,
+    "hangeul_romanization": "phu",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "비",
+    "order_index": 11,
+    "level": 3,
+    "hangeul_romanization": "pi",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "피",
+    "order_index": 12,
+    "level": 3,
+    "hangeul_romanization": "phi",
+    "group": "ㅍ",
+    "group_romanization": "ph",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "하",
+    "order_index": 1,
+    "level": 3,
+    "hangeul_romanization": "ha",
+    "group": "ㅎ",
+    "group_romanization": "h",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "허",
+    "order_index": 2,
+    "level": 3,
+    "hangeul_romanization": "he",
+    "group": "ㅎ",
+    "group_romanization": "h",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "호",
+    "order_index": 3,
+    "level": 3,
+    "hangeul_romanization": "ho",
+    "group": "ㅎ",
+    "group_romanization": "h",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "후",
+    "order_index": 4,
+    "level": 3,
+    "hangeul_romanization": "hwu",
+    "group": "ㅎ",
+    "group_romanization": "h",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "흐",
+    "order_index": 5,
+    "level": 3,
+    "hangeul_romanization": "hu",
+    "group": "ㅎ",
+    "group_romanization": "h",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "히",
+    "order_index": 6,
+    "level": 3,
+    "hangeul_romanization": "hi",
+    "group": "ㅎ",
+    "group_romanization": "h",
+    "group_order": 5
+  },
+  {
+    "category": "practice",
+    "hangeul": "가게",
+    "order_index": 2,
+    "level": 3,
+    "hangeul_romanization": "kakey",
+    "group": "가게",
+    "group_romanization": "kakey",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "곧",
+    "order_index": 37,
+    "level": 3,
+    "hangeul_romanization": "kot",
+    "group": "곧",
+    "group_romanization": "kot",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "공항",
+    "order_index": 29,
+    "level": 3,
+    "hangeul_romanization": "konghang",
+    "group": "공항",
+    "group_romanization": "konghang",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "기차",
+    "order_index": 23,
+    "level": 3,
+    "hangeul_romanization": "kicha",
+    "group": "기차",
+    "group_romanization": "kicha",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "김밥",
+    "order_index": 42,
+    "level": 3,
+    "hangeul_romanization": "kimpap",
+    "group": "김밥",
+    "group_romanization": "kimpap",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "낮",
+    "order_index": 39,
+    "level": 3,
+    "hangeul_romanization": "nac",
+    "group": "낮",
+    "group_romanization": "nac",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "돼지",
+    "order_index": 3,
+    "level": 3,
+    "hangeul_romanization": "twayci",
+    "group": "돼지",
+    "group_romanization": "twayci",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "배",
+    "order_index": 1,
+    "level": 3,
+    "hangeul_romanization": "pay",
+    "group": "배",
+    "group_romanization": "pay",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "복숭아",
+    "order_index": 41,
+    "level": 3,
+    "hangeul_romanization": "pokswunga",
+    "group": "복숭아",
+    "group_romanization": "pokswunga",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "볼펜",
+    "order_index": 18,
+    "level": 3,
+    "hangeul_romanization": "polpheyn",
+    "group": "볼펜",
+    "group_romanization": "polpheyn",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "비행기",
+    "order_index": 31,
+    "level": 3,
+    "hangeul_romanization": "pihayngki",
+    "group": "비행기",
+    "group_romanization": "pihayngki",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "사탕",
+    "order_index": 12,
+    "level": 3,
+    "hangeul_romanization": "sathang",
+    "group": "사탕",
+    "group_romanization": "sathang",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "숟가락",
+    "order_index": 43,
+    "level": 3,
+    "hangeul_romanization": "swutkalak",
+    "group": "숟가락",
+    "group_romanization": "swutkalak",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "스케이트",
+    "order_index": 16,
+    "level": 3,
+    "hangeul_romanization": "sukheyithu",
+    "group": "스케이트",
+    "group_romanization": "sukheyithu",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "스키",
+    "order_index": 9,
+    "level": 3,
+    "hangeul_romanization": "sukhi",
+    "group": "스키",
+    "group_romanization": "sukhi",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "연필",
+    "order_index": 21,
+    "level": 3,
+    "hangeul_romanization": "yenphil",
+    "group": "연필",
+    "group_romanization": "yenphil",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "옷",
+    "order_index": 38,
+    "level": 3,
+    "hangeul_romanization": "os",
+    "group": "옷",
+    "group_romanization": "os",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "왼손",
+    "order_index": 5,
+    "level": 3,
+    "hangeul_romanization": "oynson",
+    "group": "왼손",
+    "group_romanization": "oynson",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "웨딩드레스",
+    "order_index": 4,
+    "level": 3,
+    "hangeul_romanization": "weytingtuleysu",
+    "group": "웨딩드레스",
+    "group_romanization": "weytingtuleysu",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "자동차",
+    "order_index": 24,
+    "level": 3,
+    "hangeul_romanization": "catongcha",
+    "group": "자동차",
+    "group_romanization": "catongcha",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "젓가락",
+    "order_index": 44,
+    "level": 3,
+    "hangeul_romanization": "ceskalak",
+    "group": "젓가락",
+    "group_romanization": "ceskalak",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "젓소",
+    "order_index": 45,
+    "level": 3,
+    "hangeul_romanization": "cesso",
+    "group": "젓소",
+    "group_romanization": "cesso",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "집",
+    "order_index": 36,
+    "level": 3,
+    "hangeul_romanization": "cip",
+    "group": "집",
+    "group_romanization": "cip",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "책",
+    "order_index": 35,
+    "level": 3,
+    "hangeul_romanization": "chayk",
+    "group": "책",
+    "group_romanization": "chayk",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "초콜릿",
+    "order_index": 46,
+    "level": 3,
+    "hangeul_romanization": "chokhollis",
+    "group": "초콜릿",
+    "group_romanization": "chokhollis",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "치마",
+    "order_index": 25,
+    "level": 3,
+    "hangeul_romanization": "chima",
+    "group": "치마",
+    "group_romanization": "chima",
+    "group_order": 3
+  },
+
+  {
+    "category": "practice",
+    "hangeul": "친구",
+    "order_index": 26,
+    "level": 3,
+    "hangeul_romanization": "chinkwu",
+    "group": "친구",
+    "group_romanization": "chinkwu",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "칠",
+    "order_index": 27,
+    "level": 3,
+    "hangeul_romanization": "chil",
+    "group": "칠",
+    "group_romanization": "chil",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "카드",
+    "order_index": 6,
+    "level": 3,
+    "hangeul_romanization": "khatu",
+    "group": "카드",
+    "group_romanization": "khatu",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "카메라",
+    "order_index": 7,
+    "level": 3,
+    "hangeul_romanization": "khameyla",
+    "group": "카메라",
+    "group_romanization": "khameyla",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "커튼",
+    "order_index": 11,
+    "level": 3,
+    "hangeul_romanization": "khethun",
+    "group": "커튼",
+    "group_romanization": "khethun",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "커피",
+    "order_index": 20,
+    "level": 3,
+    "hangeul_romanization": "khephi",
+    "group": "커피",
+    "group_romanization": "khephi",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "케이크",
+    "order_index": 10,
+    "level": 3,
+    "hangeul_romanization": "kheyikhu",
+    "group": "케이크",
+    "group_romanization": "kheyikhu",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "코",
+    "order_index": 8,
+    "level": 3,
+    "hangeul_romanization": "kho",
+    "group": "코",
+    "group_romanization": "kho",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "택시",
+    "order_index": 40,
+    "level": 3,
+    "hangeul_romanization": "thayksi",
+    "group": "택시",
+    "group_romanization": "thayksi",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "테니스",
+    "order_index": 13,
+    "level": 3,
+    "hangeul_romanization": "theynisu",
+    "group": "테니스",
+    "group_romanization": "theynisu",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "텔레비전",
+    "order_index": 14,
+    "level": 3,
+    "hangeul_romanization": "theylleypicen",
+    "group": "텔레비전",
+    "group_romanization": "theylleypicen",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "토마토",
+    "order_index": 15,
+    "level": 3,
+    "hangeul_romanization": "thomatho",
+    "group": "토마토",
+    "group_romanization": "thomatho",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "팔",
+    "order_index": 17,
+    "level": 3,
+    "hangeul_romanization": "phal",
+    "group": "팔",
+    "group_romanization": "phal",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "푸들",
+    "order_index": 22,
+    "level": 3,
+    "hangeul_romanization": "phwutul",
+    "group": "푸들",
+    "group_romanization": "phwutul",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "피자",
+    "order_index": 19,
+    "level": 3,
+    "hangeul_romanization": "phica",
+    "group": "피자",
+    "group_romanization": "phica",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "핸드폰",
+    "order_index": 30,
+    "level": 3,
+    "hangeul_romanization": "hayntuphon",
+    "group": "핸드폰",
+    "group_romanization": "hayntuphon",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "허리",
+    "order_index": 32,
+    "level": 3,
+    "hangeul_romanization": "heli",
+    "group": "허리",
+    "group_romanization": "heli",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "후추",
+    "order_index": 34,
+    "level": 3,
+    "hangeul_romanization": "hwuchwu",
+    "group": "후추",
+    "group_romanization": "hwuchwu",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "휴지",
+    "order_index": 33,
+    "level": 3,
+    "hangeul_romanization": "hyuci",
+    "group": "휴지",
+    "group_romanization": "hyuci",
+    "group_order": 4
+  },
+  {
+    "category": "vowel",
+    "hangeul": "애",
+    "order_index": 1,
+    "level": 3,
+    "hangeul_romanization": "ay",
+    "group": "애",
+    "group_romanization": "ay",
+    "group_order": 1
+  },
+  {
+    "category": "vowel",
+    "hangeul": "에",
+    "order_index": 2,
+    "level": 3,
+    "hangeul_romanization": "ey",
+    "group": "에",
+    "group_romanization": "ey",
+    "group_order": 2
+  },
+  {
+    "category": "vowel",
+    "hangeul": "왜",
+    "order_index": 3,
+    "level": 3,
+    "hangeul_romanization": "way",
+    "group": "왜",
+    "group_romanization": "way",
+    "group_order": 3
+  },
+  {
+    "category": "vowel",
+    "hangeul": "외",
+    "order_index": 5,
+    "level": 3,
+    "hangeul_romanization": "oy",
+    "group": "외",
+    "group_romanization": "oy",
+    "group_order": 4
+  },
+  {
+    "category": "vowel",
+    "hangeul": "웨",
+    "order_index": 4,
+    "level": 3,
+    "hangeul_romanization": "wey",
+    "group": "웨",
+    "group_romanization": "wey",
+    "group_order": 5
+  },
+  {
+    "category": "vowel",
+    "hangeul": "얘",
+    "order_index": 1,
+    "level": 4,
+    "hangeul_romanization": "yay",
+    "group": "얘",
+    "group_romanization": "yay",
+    "group_order": 1
+  },
+  {
+    "category": "vowel",
+    "hangeul": "예",
+    "order_index": 2,
+    "level": 4,
+    "hangeul_romanization": "yey",
+    "group": "예",
+    "group_romanization": "yey",
+    "group_order": 2
+  },
+  {
+    "category": "vowel",
+    "hangeul": "와",
+    "order_index": 3,
+    "level": 4,
+    "hangeul_romanization": "wa",
+    "group": "와",
+    "group_romanization": "wa",
+    "group_order": 3
+  },
+  {
+    "category": "vowel",
+    "hangeul": "워",
+    "order_index": 5,
+    "level": 4,
+    "hangeul_romanization": "we",
+    "group": "워",
+    "group_romanization": "we",
+    "group_order": 4
+  },
+  {
+    "category": "vowel",
+    "hangeul": "위",
+    "order_index": 4,
+    "level": 4,
+    "hangeul_romanization": "wi",
+    "group": "위",
+    "group_romanization": "wi",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "카",
+    "order_index": 1,
+    "level": 4,
+    "hangeul_romanization": "kha",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "커",
+    "order_index": 3,
+    "level": 4,
+    "hangeul_romanization": "khe",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "코",
+    "order_index": 5,
+    "level": 4,
+    "hangeul_romanization": "kho",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "쿠",
+    "order_index": 7,
+    "level": 4,
+    "hangeul_romanization": "khwu",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "크",
+    "order_index": 9,
+    "level": 4,
+    "hangeul_romanization": "khu",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "키",
+    "order_index": 11,
+    "level": 4,
+    "hangeul_romanization": "khi",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "까",
+    "order_index": 2,
+    "level": 4,
+    "hangeul_romanization": "kka",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "꺼",
+    "order_index": 4,
+    "level": 4,
+    "hangeul_romanization": "kke",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "꼬",
+    "order_index": 6,
+    "level": 4,
+    "hangeul_romanization": "kko",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "꾸",
+    "order_index": 8,
+    "level": 4,
+    "hangeul_romanization": "kkwu",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "끄",
+    "order_index": 10,
+    "level": 4,
+    "hangeul_romanization": "kku",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "끼",
+    "order_index": 12,
+    "level": 4,
+    "hangeul_romanization": "kki",
+    "group": "ㄲ",
+    "group_romanization": "kk",
+    "group_order": 1
+  },
+  {
+    "category": "consonant",
+    "hangeul": "타",
+    "order_index": 1,
+    "level": 4,
+    "hangeul_romanization": "tha",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "터",
+    "order_index": 3,
+    "level": 4,
+    "hangeul_romanization": "the",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "토",
+    "order_index": 5,
+    "level": 4,
+    "hangeul_romanization": "tho",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "투",
+    "order_index": 7,
+    "level": 4,
+    "hangeul_romanization": "thwu",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "트",
+    "order_index": 9,
+    "level": 4,
+    "hangeul_romanization": "thu",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "티",
+    "order_index": 11,
+    "level": 4,
+    "hangeul_romanization": "thi",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "따",
+    "order_index": 2,
+    "level": 4,
+    "hangeul_romanization": "tta",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "떠",
+    "order_index": 4,
+    "level": 4,
+    "hangeul_romanization": "tte",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "또",
+    "order_index": 6,
+    "level": 4,
+    "hangeul_romanization": "tto",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "뚜",
+    "order_index": 8,
+    "level": 4,
+    "hangeul_romanization": "ttwu",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "뜨",
+    "order_index": 10,
+    "level": 4,
+    "hangeul_romanization": "ttu",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "띠",
+    "order_index": 12,
+    "level": 4,
+    "hangeul_romanization": "tti",
+    "group": "ㄸ",
+    "group_romanization": "tt",
+    "group_order": 2
+  },
+  {
+    "category": "consonant",
+    "hangeul": "파",
+    "order_index": 1,
+    "level": 4,
+    "hangeul_romanization": "pha",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "퍼",
+    "order_index": 3,
+    "level": 4,
+    "hangeul_romanization": "phe",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "포",
+    "order_index": 5,
+    "level": 4,
+    "hangeul_romanization": "pho",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "푸",
+    "order_index": 7,
+    "level": 4,
+    "hangeul_romanization": "phwu",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "프",
+    "order_index": 9,
+    "level": 4,
+    "hangeul_romanization": "phu",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "피",
+    "order_index": 11,
+    "level": 4,
+    "hangeul_romanization": "phi",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "빠",
+    "order_index": 2,
+    "level": 4,
+    "hangeul_romanization": "ppa",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "뻐",
+    "order_index": 4,
+    "level": 4,
+    "hangeul_romanization": "ppe",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "뽀",
+    "order_index": 6,
+    "level": 4,
+    "hangeul_romanization": "ppo",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "뿌",
+    "order_index": 8,
+    "level": 4,
+    "hangeul_romanization": "ppwu",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "쁘",
+    "order_index": 10,
+    "level": 4,
+    "hangeul_romanization": "ppu",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "삐",
+    "order_index": 12,
+    "level": 4,
+    "hangeul_romanization": "ppi",
+    "group": "ㅃ",
+    "group_romanization": "pp",
+    "group_order": 3
+  },
+  {
+    "category": "consonant",
+    "hangeul": "사",
+    "order_index": 1,
+    "level": 4,
+    "hangeul_romanization": "sa",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "서",
+    "order_index": 3,
+    "level": 4,
+    "hangeul_romanization": "se",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "소",
+    "order_index": 5,
+    "level": 4,
+    "hangeul_romanization": "so",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "수",
+    "order_index": 7,
+    "level": 4,
+    "hangeul_romanization": "swu",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "스",
+    "order_index": 9,
+    "level": 4,
+    "hangeul_romanization": "su",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "시",
+    "order_index": 11,
+    "level": 4,
+    "hangeul_romanization": "si",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "싸",
+    "order_index": 2,
+    "level": 4,
+    "hangeul_romanization": "ssa",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "써",
+    "order_index": 4,
+    "level": 4,
+    "hangeul_romanization": "sse",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "쏘",
+    "order_index": 6,
+    "level": 4,
+    "hangeul_romanization": "sso",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "쑤",
+    "order_index": 8,
+    "level": 4,
+    "hangeul_romanization": "sswu",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "쓰",
+    "order_index": 10,
+    "level": 4,
+    "hangeul_romanization": "ssu",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "씨",
+    "order_index": 12,
+    "level": 4,
+    "hangeul_romanization": "ssi",
+    "group": "ㅆ",
+    "group_romanization": "ss",
+    "group_order": 4
+  },
+  {
+    "category": "consonant",
+    "hangeul": "차",
+    "order_index": 1,
+    "level": 4,
+    "hangeul_romanization": "cha",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "처",
+    "order_index": 3,
+    "level": 4,
+    "hangeul_romanization": "che",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "초",
+    "order_index": 5,
+    "level": 4,
+    "hangeul_romanization": "cho",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "추",
+    "order_index": 7,
+    "level": 4,
+    "hangeul_romanization": "chwu",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "츠",
+    "order_index": 9,
+    "level": 4,
+    "hangeul_romanization": "chu",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "치",
+    "order_index": 11,
+    "level": 4,
+    "hangeul_romanization": "chi",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "짜",
+    "order_index": 2,
+    "level": 4,
+    "hangeul_romanization": "cca",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "쩌",
+    "order_index": 4,
+    "level": 4,
+    "hangeul_romanization": "cce",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "쪼",
+    "order_index": 6,
+    "level": 4,
+    "hangeul_romanization": "cco",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "쭈",
+    "order_index": 8,
+    "level": 4,
+    "hangeul_romanization": "ccwu",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "쯔",
+    "order_index": 10,
+    "level": 4,
+    "hangeul_romanization": "ccu",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "찌",
+    "order_index": 12,
+    "level": 4,
+    "hangeul_romanization": "cci",
+    "group": "ㅉ",
+    "group_romanization": "cc",
+    "group_order": 5
+  },
+  {
+    "category": "consonant",
+    "hangeul": "갘",
+    "order_index": 1,
+    "level": 4,
+    "hangeul_romanization": "kakh",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "갚",
+    "order_index": 2,
+    "level": 4,
+    "hangeul_romanization": "kaph",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "같",
+    "order_index": 3,
+    "level": 4,
+    "hangeul_romanization": "kath",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "갗",
+    "order_index": 4,
+    "level": 4,
+    "hangeul_romanization": "kach",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "consonant",
+    "hangeul": "갛",
+    "order_index": 5,
+    "level": 4,
+    "hangeul_romanization": "kah",
+    "group": "받침",
+    "group_romanization": "Final",
+    "group_order": 6
+  },
+  {
+    "category": "practice",
+    "hangeul": "얘기",
+    "order_index": 1,
+    "level": 4,
+    "hangeul_romanization": "yayki",
+    "group": "얘기",
+    "group_romanization": "yayki",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "시계",
+    "order_index": 2,
+    "level": 4,
+    "hangeul_romanization": "sikyey",
+    "group": "시계",
+    "group_romanization": "sikyey",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "화장실",
+    "order_index": 3,
+    "level": 4,
+    "hangeul_romanization": "hwacangsil",
+    "group": "화장실",
+    "group_romanization": "hwacangsil",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "더워요",
+    "order_index": 4,
+    "level": 4,
+    "hangeul_romanization": "teweyo",
+    "group": "더워요",
+    "group_romanization": "teweyo",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "가위",
+    "order_index": 5,
+    "level": 4,
+    "hangeul_romanization": "kawi",
+    "group": "가위",
+    "group_romanization": "kawi",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "까만색",
+    "order_index": 6,
+    "level": 4,
+    "hangeul_romanization": "kkamansayk",
+    "group": "까만색",
+    "group_romanization": "kkamansayk",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "어깨",
+    "order_index": 7,
+    "level": 4,
+    "hangeul_romanization": "ekkay",
+    "group": "어깨",
+    "group_romanization": "ekkay",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "꿀",
+    "order_index": 8,
+    "level": 4,
+    "hangeul_romanization": "kkwul",
+    "group": "꿀",
+    "group_romanization": "kkwul",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "꿈",
+    "order_index": 9,
+    "level": 4,
+    "hangeul_romanization": "kkwum",
+    "group": "꿈",
+    "group_romanization": "kkwum",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "토끼",
+    "order_index": 10,
+    "level": 4,
+    "hangeul_romanization": "thokki",
+    "group": "토끼",
+    "group_romanization": "thokki",
+    "group_order": 1
+  },
+  {
+    "category": "practice",
+    "hangeul": "딸기",
+    "order_index": 11,
+    "level": 4,
+    "hangeul_romanization": "ttalki",
+    "group": "딸기",
+    "group_romanization": "ttalki",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "떡",
+    "order_index": 12,
+    "level": 4,
+    "hangeul_romanization": "ttek",
+    "group": "떡",
+    "group_romanization": "ttek",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "똑똑",
+    "order_index": 13,
+    "level": 4,
+    "hangeul_romanization": "ttokttok",
+    "group": "똑똑",
+    "group_romanization": "ttokttok",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "뚜껑",
+    "order_index": 14,
+    "level": 4,
+    "hangeul_romanization": "ttwukkeng",
+    "group": "뚜껑",
+    "group_romanization": "ttwukkeng",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "뜨거워요",
+    "order_index": 15,
+    "level": 4,
+    "hangeul_romanization": "ttukeweyo",
+    "group": "뜨거워요",
+    "group_romanization": "ttukeweyo",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "바빠요",
+    "order_index": 16,
+    "level": 4,
+    "hangeul_romanization": "pappayo",
+    "group": "바빠요",
+    "group_romanization": "pappayo",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "빨대",
+    "order_index": 17,
+    "level": 4,
+    "hangeul_romanization": "ppaltay",
+    "group": "빨대",
+    "group_romanization": "ppaltay",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "빨간색",
+    "order_index": 18,
+    "level": 4,
+    "hangeul_romanization": "ppalkansayk",
+    "group": "빨간색",
+    "group_romanization": "ppalkansayk",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "빵",
+    "order_index": 19,
+    "level": 4,
+    "hangeul_romanization": "ppang",
+    "group": "빵",
+    "group_romanization": "ppang",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "예뻐요",
+    "order_index": 20,
+    "level": 4,
+    "hangeul_romanization": "yeyppeyo",
+    "group": "예뻐요",
+    "group_romanization": "yeyppeyo",
+    "group_order": 2
+  },
+  {
+    "category": "practice",
+    "hangeul": "싸요",
+    "order_index": 21,
+    "level": 4,
+    "hangeul_romanization": "ssayo",
+    "group": "싸요",
+    "group_romanization": "ssayo",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "비싸요",
+    "order_index": 22,
+    "level": 4,
+    "hangeul_romanization": "pissayo",
+    "group": "비싸요",
+    "group_romanization": "pissayo",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "써요",
+    "order_index": 23,
+    "level": 4,
+    "hangeul_romanization": "sseyo",
+    "group": "써요",
+    "group_romanization": "sseyo",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "쓰레기통",
+    "order_index": 24,
+    "level": 4,
+    "hangeul_romanization": "ssuleykithong",
+    "group": "쓰레기통",
+    "group_romanization": "ssuleykithong",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "날씨",
+    "order_index": 25,
+    "level": 4,
+    "hangeul_romanization": "nalssi",
+    "group": "날씨",
+    "group_romanization": "nalssi",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "날짜",
+    "order_index": 26,
+    "level": 4,
+    "hangeul_romanization": "nalcca",
+    "group": "날짜",
+    "group_romanization": "nalcca",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "오른쪽",
+    "order_index": 27,
+    "level": 4,
+    "hangeul_romanization": "olunccok",
+    "group": "오른쪽",
+    "group_romanization": "olunccok",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "왼쪽",
+    "order_index": 28,
+    "level": 4,
+    "hangeul_romanization": "oynccok",
+    "group": "왼쪽",
+    "group_romanization": "oynccok",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "팔찌",
+    "order_index": 29,
+    "level": 4,
+    "hangeul_romanization": "phalcci",
+    "group": "팔찌",
+    "group_romanization": "phalcci",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "찜질방",
+    "order_index": 30,
+    "level": 4,
+    "hangeul_romanization": "ccimcilpang",
+    "group": "찜질방",
+    "group_romanization": "ccimcilpang",
+    "group_order": 3
+  },
+  {
+    "category": "practice",
+    "hangeul": "키읔",
+    "order_index": 31,
+    "level": 4,
+    "hangeul_romanization": "khiukh",
+    "group": "키읔",
+    "group_romanization": "khiukh",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "잎",
+    "order_index": 32,
+    "level": 4,
+    "hangeul_romanization": "iph",
+    "group": "잎",
+    "group_romanization": "iph",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "솥",
+    "order_index": 33,
+    "level": 4,
+    "hangeul_romanization": "soth",
+    "group": "솥",
+    "group_romanization": "soth",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "꽃",
+    "order_index": 34,
+    "level": 4,
+    "hangeul_romanization": "kkoch",
+    "group": "꽃",
+    "group_romanization": "kkoch",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "히읗",
+    "order_index": 35,
+    "level": 4,
+    "hangeul_romanization": "hiuh",
+    "group": "히읗",
+    "group_romanization": "hiuh",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "부엌",
+    "order_index": 36,
+    "level": 4,
+    "hangeul_romanization": "pwuekh",
+    "group": "부엌",
+    "group_romanization": "pwuekh",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "무릎",
+    "order_index": 37,
+    "level": 4,
+    "hangeul_romanization": "mwuluph",
+    "group": "무릎",
+    "group_romanization": "mwuluph",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "팥빙수",
+    "order_index": 38,
+    "level": 4,
+    "hangeul_romanization": "phathpingswu",
+    "group": "팥빙수",
+    "group_romanization": "phathpingswu",
+    "group_order": 4
+  },
+  {
+    "category": "practice",
+    "hangeul": "숯불",
+    "order_index": 39,
+    "level": 4,
+    "hangeul_romanization": "swuchpwul",
+    "group": "숯불",
+    "group_romanization": "swuchpwul",
+    "group_order": 4
+  }
+]
