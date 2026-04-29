@@ -11,10 +11,6 @@ export default {
     scheme: "ucsbhangeul",
     userInterfaceStyle: "automatic",
     newArchEnabled: true,
-    extra: {
-      supabaseUrl: process.env.SUPABASE_URL,
-      supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
-    },
 
     ios: {
       supportsTablet: true,
@@ -22,12 +18,12 @@ export default {
     },
 
     android: {
+      package: "com.katskt.ucsbhangeul",
       adaptiveIcon: {
         backgroundColor: "#E6F4FE",
         foregroundImage: "./assets/images/android-icon-foreground.png",
         backgroundImage: "./assets/images/android-icon-background.png",
         monochromeImage: "./assets/images/android-icon-monochrome.png",
-        package: "com.katskt.ucsbhangeul"
       },
       edgeToEdgeEnabled: true,
       predictiveBackGestureEnabled: false,
@@ -61,6 +57,8 @@ export default {
       reactCompiler: true,
     },
     extra: {
+      supabaseUrl: process.env.SUPABASE_URL,
+      supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
       eas: {
         projectId: "541c7f4b-50fe-4c2e-bcb7-a6c63717ec31",
       },
