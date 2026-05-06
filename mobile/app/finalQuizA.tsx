@@ -1,10 +1,8 @@
 // App.js
 import QuizA from "@/components/QuizA";
-import { usePathname } from "expo-router";
 import React from "react";
 import { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { useQuizLessons } from "@/hooks/useQuizLessons";
 import BlueScreen from "@/components/BlueScreen";
 import quizData from "@/app/data/quizzes_rows.json";
 import { Quiz } from "@/types/quiz";
@@ -13,9 +11,10 @@ const App = () => {
   const [quizQuestion, setQuizQuestion] = useState<Quiz[]>([]);
   useEffect(() => {
     const quizzes = quizData
-      .filter((q) => Number(q.level) === 1)
-      .filter((q) => Number(q.quiz) === 5)
+      .filter((q) => Number(q.level) === 5)
+      .filter((q) => Number(q.quiz) === 1)
       .sort();
+
     if (quizzes) {
       // Shuffle the data
       const shuffledData = [...quizzes]; // create a copy

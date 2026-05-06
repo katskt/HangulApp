@@ -1,4 +1,4 @@
-import { lessonAudio } from "@/lib/lessonAudio";
+import { quizAudio } from "@/lib/quizAudio";
 import {
   AudioModule,
   setAudioModeAsync,
@@ -19,7 +19,7 @@ export function useQuizAudio() {
   // ---- core function ----
   const playAudio = (character: string | null) => {
     if (character == null) return;
-    const audio = lessonAudio[character];
+    const audio = quizAudio[character];
 
     if (!audio) {
       console.warn("No audio found for:", character);

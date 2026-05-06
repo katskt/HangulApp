@@ -11,12 +11,12 @@ const App = () => {
   const [quizQuestion, setQuizQuestion] = useState<Quiz[]>([]);
   useEffect(() => {
     const quizzes = quizData
-      .filter((q) => Number(q.level) === 1)
-      .filter((q) => Number(q.quiz) === 5)
+      .filter((q) => Number(q.level) === 5)
+      .filter((q) => Number(q.quiz) === 1)
       .sort();
     if (quizzes) {
       // Shuffle the data
-      const shuffledData = [...quizzes]; // create a copy
+      const shuffledData = [...quizzes];
       for (let i = shuffledData.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffledData[i], shuffledData[j]] = [shuffledData[j], shuffledData[i]];

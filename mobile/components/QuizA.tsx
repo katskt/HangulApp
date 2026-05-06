@@ -31,7 +31,6 @@ const QuizA = ({ level, quizNum, quizQuestion }: QuizAProps) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [shuffledAnswer, setShuffledAnswers] = useState(0); // Shuffles answers
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [currentAudio, setCurrentAudio] = useState<string | null>(null);
 
   // keeps track of wrong answers for flashcards
   const [wrongAnswers, setWrongAnswers] = useState<number[]>([]);
@@ -62,7 +61,6 @@ const QuizA = ({ level, quizNum, quizQuestion }: QuizAProps) => {
     setSelectedAnswer(selectedOption);
     if (selectedOption === quizQuestion[currentQuestion].correct_audio) {
       playCorrect();
-      setCurrentAudio(currentQuiz!.correct_audio);
 
       // Move to next question after a short delay (so user can see correct highlight)
       setTimeout(() => {
