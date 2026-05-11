@@ -15,6 +15,9 @@ export default {
     ios: {
       supportsTablet: true,
       bundleIdentifier: "com.katskt.ucsbhangeul",
+      infoPlist: {
+      ITSAppUsesNonExemptEncryption: false
+    }
     },
 
     android: {
@@ -23,7 +26,6 @@ export default {
         backgroundColor: "#E6F4FE",
         foregroundImage: "./assets/images/android-icon-foreground.png",
         backgroundImage: "./assets/images/android-icon-background.png",
-        monochromeImage: "./assets/images/android-icon-monochrome.png",
       },
       edgeToEdgeEnabled: true,
       predictiveBackGestureEnabled: false,
@@ -57,8 +59,8 @@ export default {
       reactCompiler: true,
     },
     extra: {
-      supabaseUrl: process.env.SUPABASE_URL,
-      supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
+      supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL,
+      supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
       eas: {
         projectId: "541c7f4b-50fe-4c2e-bcb7-a6c63717ec31",
       },

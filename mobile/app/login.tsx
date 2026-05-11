@@ -29,6 +29,7 @@ export default function Login() {
   // login
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [retypePassword, setRetypePassword] = useState("");
 
   // signup
   const [classCode, setClassCode] = useState("");
@@ -91,9 +92,12 @@ export default function Login() {
     setLoading(false);
   };
   const handleSignUp = async () => {
-    if (!firstName || !lastName || !email || !password) {
+    if (!firstName || !lastName || !email || !password || !retypePassword) {
       Alert.alert("Please fill in all fields");
       return;
+    }
+    if (password != retypePassword) {
+      Alert.alert("Please ensure password matches");
     }
 
     setLoading(true);
@@ -236,7 +240,6 @@ export default function Login() {
         </Text>
         <TextInput
           style={[styles.input, styles.codeInput, { color: colors.text }]}
-          placeholder="e.g. ABC123"
           value={classCode}
           onChangeText={setClassCode}
           autoCapitalize="characters"
@@ -341,6 +344,13 @@ export default function Login() {
           placeholder="Password"
           value={password}
           onChangeText={setPassword}
+          secureTextEntry
+        />
+        <TextInput
+          style={[styles.input, { color: colors.text }]}
+          placeholder="Retype Password"
+          value={retypePassword}
+          onChangeText={setRetypePassword}
           secureTextEntry
         />
 

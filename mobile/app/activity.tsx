@@ -1,10 +1,10 @@
-import { ScrollView, StyleSheet, Text, View } from "react-native";
 import BlueScreen from "@/components/BlueScreen";
 import { supabase } from "@/supabaseConfig";
 import { FontSizes, FontWeights } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
-import { useEffect, useState } from "react";
 import { useResponsive } from "@/utils/responsive";
+import { useEffect, useState } from "react";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 interface ProgressRow {
   id: string;
   level: number;
@@ -14,12 +14,11 @@ interface ProgressRow {
 }
 
 const getLabel = (item: ProgressRow) => {
-  if (item.category === "quiz") return `Quiz ${item.level} · Set ${item.group}`;
+  if (item.category === "quiz") return `한글 ${item.level} · ${item.group}`;
   if (item.category === "consonant")
-    return `Consonant ${item.level} · ${item.group}`;
-  if (item.category === "vowel") return `Vowel ${item.level} · ${item.group}`;
-  if (item.category === "practice")
-    return `Practice ${item.level} · Set ${item.group}`;
+    return `한글 ${item.level} · ${item.group}`;
+  if (item.category === "vowel") return `한글 ${item.level} · ${item.group}`;
+  if (item.category === "practice") return `한글 ${item.level} · ${item.group}`;
   return item.category;
 };
 
