@@ -92,7 +92,7 @@ export default function LessonAudioPanel({
                 alignSelf: "center",
                 borderWidth: 10,
                 borderColor:
-                  hasListened == true ? colors.select : colors.unselect,
+                  hasListened === true ? colors.select : colors.unselect,
                 borderRadius: 50,
               }}
               onPress={() => {
@@ -112,7 +112,7 @@ export default function LessonAudioPanel({
                 style={{
                   height: hp(15),
                   borderColor:
-                    hasRecorded == true ? colors.select : colors.unselect,
+                    hasRecorded === true ? colors.select : colors.unselect,
                 }}
                 onPressIn={handlePressIn}
                 onPressOut={handlePressOut}
@@ -129,7 +129,7 @@ export default function LessonAudioPanel({
                 style={{
                   height: hp(15),
                   borderColor:
-                    hasPlayedRecording == true
+                    hasPlayedRecording === true
                       ? colors.select
                       : colors.unselect,
                 }}

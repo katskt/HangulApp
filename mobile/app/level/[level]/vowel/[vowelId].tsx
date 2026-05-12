@@ -8,7 +8,7 @@ import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import Loading from "@components/Loading";
 import { Ionicons } from "@expo/vector-icons";
-import { router, Stack, usePathname } from "expo-router";
+import { router, Stack } from "expo-router";
 import React, { useEffect, useState } from "react";
 import { useRouteParams } from "@/hooks/useRouteParams";
 import {
@@ -30,9 +30,7 @@ interface Lesson {
 }
 
 export default function LessonPage() {
-  const parts = usePathname().split("/").filter(Boolean);
-
-  const { wp, hp } = useResponsive();
+  const { wp } = useResponsive();
   const { level, category, id } = useRouteParams();
 
   const [lessons, setLessons] = useState<Lesson[]>([]);
@@ -80,23 +78,7 @@ export default function LessonPage() {
           ),
         }}
       />
-      <View
-        style={{
-          alignItems: "flex-end",
-          backgroundColor: colors.background,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 25,
-            paddingHorizontal: 10,
-            fontWeight: "bold",
-            color: "gray",
-          }}
-        >
-          LISTEN & COMPARE
-        </Text>
-      </View>
+
       <ScrollView
         scrollEventThrottle={16}
         horizontal

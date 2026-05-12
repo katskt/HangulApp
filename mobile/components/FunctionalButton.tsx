@@ -24,7 +24,7 @@ const MyButton = ({
   style,
 }: ButtonProps) => {
   const colors = useThemeColors();
-  const { wp, hp } = useResponsive();
+  const { wp } = useResponsive();
   const styles = StyleSheet.create({
     button: {
       alignItems: "center",

@@ -81,23 +81,6 @@ export default function LessonPage() {
           ),
         }}
       />
-      <View
-        style={{
-          alignItems: "flex-end",
-          backgroundColor: colors.background,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 25,
-            paddingHorizontal: 10,
-            fontWeight: "bold",
-            color: "gray",
-          }}
-        >
-          LISTEN & COMPARE
-        </Text>
-      </View>
       <ScrollView
         // Add onScroll to ScrollView:
         scrollEventThrottle={16}

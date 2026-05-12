@@ -180,14 +180,14 @@ const QuizB = ({ level, quizNum, quizQuestion }: QuizBProps) => {
               style={[styles.option]}
               onPress={() => {
                 handleCheck(
-                  shuffledAnswer == 1
+                  shuffledAnswer === 1
                     ? currentQuiz!.correct_audio
                     : currentQuiz!.wrong_audio,
                 );
               }}
             >
               <Text style={styles.answers}>
-                {shuffledAnswer == 1
+                {shuffledAnswer === 1
                   ? currentQuiz!.correct_hangeul
                   : currentQuiz!.wrong_hangeul}
               </Text>
@@ -197,14 +197,14 @@ const QuizB = ({ level, quizNum, quizQuestion }: QuizBProps) => {
               style={styles.option}
               onPress={() => {
                 handleCheck(
-                  shuffledAnswer == 1
+                  shuffledAnswer === 1
                     ? currentQuiz!.wrong_audio
                     : currentQuiz!.correct_audio,
                 );
               }}
             >
               <Text style={styles.answers}>
-                {shuffledAnswer == 1
+                {shuffledAnswer === 1
                   ? currentQuiz!.wrong_hangeul
                   : currentQuiz!.correct_hangeul}
               </Text>

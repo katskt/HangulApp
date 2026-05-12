@@ -140,7 +140,7 @@ const QuizA = ({ level, quizNum, quizQuestion }: QuizAProps) => {
                 ]}
                 onPress={() => {
                   playAudio(
-                    shuffledAnswer == 1
+                    shuffledAnswer === 1
                       ? currentQuiz!.correct_audio
                       : currentQuiz!.wrong_audio,
                   );
@@ -152,7 +152,7 @@ const QuizA = ({ level, quizNum, quizQuestion }: QuizAProps) => {
                 style={styles.option}
                 onPress={() => {
                   handleCheck(
-                    shuffledAnswer == 1
+                    shuffledAnswer === 1
                       ? currentQuiz!.correct_audio
                       : currentQuiz!.wrong_audio,
                   );
@@ -172,7 +172,7 @@ const QuizA = ({ level, quizNum, quizQuestion }: QuizAProps) => {
                 ]}
                 onPress={() => {
                   playAudio(
-                    shuffledAnswer == 1
+                    shuffledAnswer === 1
                       ? currentQuiz!.wrong_audio
                       : currentQuiz!.correct_audio,
                   );
@@ -184,7 +184,7 @@ const QuizA = ({ level, quizNum, quizQuestion }: QuizAProps) => {
                 style={styles.option}
                 onPress={() => {
                   handleCheck(
-                    shuffledAnswer == 1
+                    shuffledAnswer === 1
                       ? currentQuiz!.wrong_audio
                       : currentQuiz!.correct_audio,
                   );

@@ -31,7 +31,7 @@ interface Lesson {
 }
 
 export default function LessonPage() {
-  const { wp, hp } = useResponsive();
+  const { wp } = useResponsive();
   const router = useRouter();
   const { level, category, id } = useRouteParams();
   const [lessons, setLessons] = useState<Lesson[]>([]);
@@ -55,11 +55,11 @@ export default function LessonPage() {
         (l) =>
           Number(l.level) === Number(level) &&
           l.category === category &&
-          l.group_order == Number(id),
+          l.group_order === Number(id),
       )
       .sort((a, b) => a.order_index - b.order_index);
     setLessons(data);
-  }, [level, category]);
+  }, [id, level, category]);
 
   if (!lessons.length) return <Loading />;
   return (
@@ -81,23 +81,7 @@ export default function LessonPage() {
           ),
         }}
       />
-      <View
-        style={{
-          alignItems: "flex-end",
-          backgroundColor: colors.background,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 25,
-            paddingHorizontal: 10,
-            fontWeight: "bold",
-            color: "gray",
-          }}
-        >
-          LISTEN & COMPARE
-        </Text>
-      </View>
+
       <ScrollView
         // Add onScroll to ScrollView:
         scrollEventThrottle={16}

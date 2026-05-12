@@ -39,7 +39,7 @@ export default function CanvasPage({
       style={{
         position: "relative",
         borderWidth: wp(2),
-        borderColor: paths.length != 0 ? colors.select : colors.unselect,
+        borderColor: paths.length !== 0 ? colors.select : colors.unselect,
         borderRadius: 10,
       }}
     >

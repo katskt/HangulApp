@@ -33,7 +33,7 @@ export default function ProgressBar({
       duration: 300,
       useNativeDriver: false, // must be false for width
     }).start();
-  }, [currentQuestionNumber]);
+  }, [currentQuestionNumber, totalQuizNumber]);
 
   return (
     <View style={styles.progressContainer}>

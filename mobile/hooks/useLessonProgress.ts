@@ -52,7 +52,7 @@ export function useLessonProgress(
       level: Number(level),
       category,
       group:
-        category == "practice"
+        category === "practice"
           ? String(lessons[0]?.group_order)
           : String(lessons[0]?.group),
       completed_at: new Date().toISOString(),
@@ -69,7 +69,7 @@ export function useLessonProgress(
       isCharacterComplete(l.hangeul_romanization),
     );
     if (allComplete) saveProgress();
-  }, [completedPages]);
+  }, [completedPages, lessons]);
 
   // reset on unmount
   useEffect(() => {

@@ -1,13 +1,13 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+
+import { useThemeColors } from "@/theme/useThemeColors";
 
 type SplashTemplateProps = {
   topContent?: React.ReactNode; // Content over the whiteSplash
   bottomContent?: React.ReactNode; // Content over the Color.background
   topHeightRatio?: number; // Fraction of screen for top (default 1/3)
 };
-
-import { useThemeColors } from "@/theme/useThemeColors";
 
 export default function SplashTemplate({
   topContent,

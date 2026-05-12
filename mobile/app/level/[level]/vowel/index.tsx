@@ -5,8 +5,9 @@ import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { usePathname, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { ScrollView, TouchableOpacity } from "react-native";
+import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import { useResponsive } from "@/utils/responsive";
+
 interface Lesson {
   category: string;
   hangeul: string;
@@ -18,10 +19,9 @@ interface Lesson {
   group_order: number;
 }
 
-import { Text, View } from "react-native";
-export default function vowelPage() {
+export default function VowelPage() {
   // check page
-  const { wp, hp } = useResponsive();
+  const { wp } = useResponsive();
   const router = useRouter();
   const colors = useThemeColors();
   const pathname = usePathname();

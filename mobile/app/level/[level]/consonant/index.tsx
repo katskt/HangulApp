@@ -2,16 +2,13 @@ import lessonsData from "@/app/data/lessons_rows.json";
 import BlueScreen from "@/components/BlueScreen";
 import MyButton from "@/components/FunctionalButton";
 import { FontSizes, FontWeights, Typography } from "@/theme/typography";
-import { usePathname, useRouter } from "expo-router";
+import { usePathname, useRouter, Stack } from "expo-router";
 import { useEffect, useState } from "react";
-import { ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity, Text, View } from "react-native";
 import { useResponsive } from "@/utils/responsive";
-// Go back button
-
 import { sharedStyles } from "@/theme/sharedStyles";
 import { Ionicons } from "@expo/vector-icons";
-import { Stack } from "expo-router";
-
+import { useThemeColors } from "@/theme/useThemeColors";
 interface Lesson {
   category: string;
   hangeul: string;
@@ -23,11 +20,9 @@ interface Lesson {
   group_order: number;
 }
 
-import { useThemeColors } from "@/theme/useThemeColors";
-import { Text, View } from "react-native";
-export default function vowelPage() {
+export default function VowelPage() {
   // check page
-  const { wp, hp } = useResponsive();
+  const { wp } = useResponsive();
   const router = useRouter();
   const colors = useThemeColors();
   const pathname = usePathname();

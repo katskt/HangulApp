@@ -32,7 +32,7 @@ export function useQuizLessons() {
     };
 
     fetchQuizzes();
-  }, [level]);
+  }, [level, id, category]);
 
   return { level, category, id, quizQuestion };
 }

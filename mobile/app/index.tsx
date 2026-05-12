@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
-  const { wp, hp } = useResponsive();
+  const { wp } = useResponsive();
   const router = useRouter();
   const colors = useThemeColors();
   const [name, setName] = useState("");

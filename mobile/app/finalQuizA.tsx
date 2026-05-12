@@ -1,7 +1,6 @@
 // App.js
 import QuizA from "@/components/QuizA";
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import BlueScreen from "@/components/BlueScreen";
 import quizData from "@/app/data/quizzes_rows.json";

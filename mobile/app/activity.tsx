@@ -4,6 +4,7 @@ import { FontSizes, FontWeights } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import { useEffect, useState } from "react";
+import Loading from "@/components/Loading";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 interface ProgressRow {
   id: string;
@@ -22,13 +23,8 @@ const getLabel = (item: ProgressRow) => {
   return item.category;
 };
 
-const inLast = (item: ProgressRow, hours: number) => {
-  const cutoff = Date.now() - hours * 60 * 60 * 1000;
-  return new Date(item.completed_at).getTime() > cutoff;
-};
-
 export default function ActivityPage() {
-  const { wp, hp } = useResponsive();
+  const { hp } = useResponsive();
   const colors = useThemeColors();
   const [progress, setProgress] = useState<ProgressRow[]>([]);
 
@@ -170,11 +166,7 @@ export default function ActivityPage() {
           {Object.entries(olderByDay).map(([date, items]) =>
             renderSection(date, items),
           )}
-          {progress.length === 0 && (
-            <Text style={[styles.empty, { color: colors.text }]}>
-              Fetching...
-            </Text>
-          )}
+          {progress.length === 0 && <Loading />}
         </ScrollView>
       }
     />

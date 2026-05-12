@@ -96,7 +96,7 @@ export default function Login() {
       Alert.alert("Please fill in all fields");
       return;
     }
-    if (password != retypePassword) {
+    if (password !== retypePassword) {
       Alert.alert("Please ensure password matches");
     }
 
@@ -214,7 +214,7 @@ export default function Login() {
         </MyButton>
         <TouchableOpacity onPress={() => setStep("signup_code")}>
           <Text style={[styles.switchText, { color: colors.text }]}>
-            Don't have an account? Sign Up
+            Don&apos;t have an account? Sign Up
           </Text>
         </TouchableOpacity>
         {loading && <Loading />}
@@ -285,7 +285,7 @@ export default function Login() {
           onPress={() => setStep("signup_details")}
         >
           <Text style={[styles.buttonText, { color: colors.text }]}>
-            Yes, that's my teacher!
+            Yes, that&apos;s my teacher!
           </Text>
         </TouchableOpacity>
         <TouchableOpacity

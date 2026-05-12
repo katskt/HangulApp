@@ -1,7 +1,7 @@
 import { useResponsive } from "@/utils/responsive";
 import { Text, View } from "react-native";
 export default function Hint({ children }: { children: React.ReactNode }) {
-  const { wp, hp } = useResponsive();
+  const { wp } = useResponsive();
   return (
     <View
       style={{

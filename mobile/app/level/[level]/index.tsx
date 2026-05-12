@@ -3,21 +3,20 @@ import lessonData from "@/app/data/lessons_rows.json";
 import quizData from "@/app/data/quizzes_rows.json";
 import BlueScreen from "@/components/BlueScreen";
 import MyButton from "@/components/FunctionalButton";
-import { getLevelImage } from "@/lib/levelAssets";
 import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import { useRouter } from "expo-router";
 import { useRouteParams } from "@/hooks/useRouteParams";
 import { useEffect, useState } from "react";
-import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function LevelPage() {
   const colors = useThemeColors();
   const router = useRouter();
 
   // Type your params for TypeScript
-  const { wp, hp } = useResponsive();
+  const { hp } = useResponsive();
   const [quizLevels, setQuizLevels] = useState<number[]>([]);
   const [practiceLevels, setPracticeLevels] = useState<(string | number)[]>([]);
   const { level } = useRouteParams();
@@ -29,7 +28,7 @@ export default function LevelPage() {
       .filter((v, i, a) => a.indexOf(v) === i) // unique values
       .sort();
     setQuizLevels(quizzes);
-  }, [Number(level)]);
+  }, [level]);
 
   useEffect(() => {
     const practices = lessonData
@@ -38,7 +37,7 @@ export default function LevelPage() {
       .filter((v, i, a) => a.indexOf(v) === i) // unique values
       .sort();
     setPracticeLevels(practices);
-  }, [Number(level)]);
+  }, [level]);
 
   const styles = StyleSheet.create({
     buttonText: {
