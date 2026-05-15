@@ -12,20 +12,23 @@ export default function LessonAudioPanel({
   character,
   canvas,
   image,
+  goToNext,
+  goToPrev,
   onAudioPlayed,
+  totalPages,
+  currentPage,
 }: {
   character: string;
   canvas: React.ReactNode;
   image?: boolean;
+  goToNext?: () => void;
+  goToPrev?: () => void;
   onAudioPlayed?: () => void;
+  totalPages: number;
+  currentPage: number;
 }) {
-  const {
-    playCurrentAudio,
-    startRecording,
-    stopRecording,
-    playRecording,
-    hasRecording,
-  } = useLessonAudio(character);
+  const { playCurrentAudio, startRecording, stopRecording } =
+    useLessonAudio(character);
   const { wp, hp } = useResponsive();
   const colors = useThemeColors();
   const [showRecordHint, setShowRecordHint] = useState(false);
@@ -33,7 +36,6 @@ export default function LessonAudioPanel({
   const [pressListenHint, setPressListenHint] = useState(false);
   const [hasListened, setHasListened] = useState(false);
   const [hasRecorded, setHasRecorded] = useState(false);
-  const [hasPlayedRecording, setHasPlayedRecording] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
   const recordingStart = useRef<number>(0);
 
@@ -42,7 +44,6 @@ export default function LessonAudioPanel({
     recordingStart.current = Date.now();
     await startRecording();
   };
-
   const handlePressOut = async () => {
     setIsPressed(false);
 
@@ -59,10 +60,10 @@ export default function LessonAudioPanel({
   };
 
   useEffect(() => {
-    if (hasListened && hasRecorded && hasPlayedRecording) {
+    if (hasListened && hasRecorded) {
       onAudioPlayed?.();
     }
-  }, [hasListened, hasRecorded, hasPlayedRecording]);
+  }, [hasListened, hasRecorded]);
 
   return (
     <BlueScreen
@@ -90,7 +91,7 @@ export default function LessonAudioPanel({
                 width: wp(40),
                 height: hp(10),
                 alignSelf: "center",
-                borderWidth: 10,
+                borderWidth: wp(2),
                 borderColor:
                   hasListened === true ? colors.select : colors.unselect,
                 borderRadius: 50,
@@ -111,6 +112,8 @@ export default function LessonAudioPanel({
               <MyButton
                 style={{
                   height: hp(15),
+                  borderWidth: wp(2),
+
                   borderColor:
                     hasRecorded === true ? colors.select : colors.unselect,
                 }}
@@ -124,27 +127,35 @@ export default function LessonAudioPanel({
                 )}
               </MyButton>
             </View>
+          </View>
+          <View style={[styles.containerSideBySide, { marginTop: "auto" }]}>
             <View style={styles.itemSideBySide}>
-              <MyButton
-                style={{
-                  height: hp(15),
-                  borderColor:
-                    hasPlayedRecording === true
-                      ? colors.select
-                      : colors.unselect,
-                }}
-                onPressIn={() => {
-                  playRecording();
-                  setPressListenHint(true);
-                  if (hasRecorded) {
-                    setHasPlayedRecording(true);
-                  }
-                }}
-                onPressOut={() => setPressListenHint(false)}
-                disabled={!hasRecording}
-              >
-                {<Icon name="happy" size={100} />}
-              </MyButton>
+              {currentPage > 0 && (
+                <MyButton
+                  style={{
+                    height: hp(10),
+                    borderWidth: wp(2),
+                    borderColor: colors.unselect,
+                  }}
+                  onPress={goToPrev}
+                >
+                  <Icon name="arrow-back" size={40} color="black" />
+                </MyButton>
+              )}
+            </View>
+            <View style={styles.itemSideBySide}>
+              {currentPage !== totalPages - 1 && (
+                <MyButton
+                  style={{
+                    height: hp(10),
+                    borderWidth: wp(2),
+                    borderColor: colors.unselect,
+                  }}
+                  onPress={goToNext}
+                >
+                  <Icon name="arrow-forward" size={40} color="black" />
+                </MyButton>
+              )}
             </View>
           </View>
           {showRecordHint && <Hint>Press and Hold to Record</Hint>}

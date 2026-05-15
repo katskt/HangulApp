@@ -255,8 +255,8 @@
     "order_index": 1,
     "level": 1,
     "hangeul_romanization": "a",
-    "group": "아",
-    "group_romanization": "a",
+    "group": "ㅇ",
+    "group_romanization": "ng",
     "group_order": 1
   },
   {
@@ -265,9 +265,9 @@
     "order_index": 2,
     "level": 1,
     "hangeul_romanization": "e",
-    "group": "어",
-    "group_romanization": "e",
-    "group_order": 2
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -275,9 +275,9 @@
     "order_index": 3,
     "level": 1,
     "hangeul_romanization": "o",
-    "group": "오",
-    "group_romanization": "o",
-    "group_order": 3
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -285,9 +285,9 @@
     "order_index": 4,
     "level": 1,
     "hangeul_romanization": "wu",
-    "group": "우",
-    "group_romanization": "wu",
-    "group_order": 4
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -295,9 +295,9 @@
     "order_index": 5,
     "level": 1,
     "hangeul_romanization": "u",
-    "group": "으",
-    "group_romanization": "u",
-    "group_order": 5
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -305,9 +305,9 @@
     "order_index": 6,
     "level": 1,
     "hangeul_romanization": "i",
-    "group": "이",
-    "group_romanization": "i",
-    "group_order": 6
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "consonant",
@@ -925,8 +925,8 @@
     "order_index": 1,
     "level": 2,
     "hangeul_romanization": "ya",
-    "group": "야",
-    "group_romanization": "ya",
+    "group": "ㅇ",
+    "group_romanization": "ng",
     "group_order": 1
   },
   {
@@ -935,9 +935,9 @@
     "order_index": 2,
     "level": 2,
     "hangeul_romanization": "ye",
-    "group": "여",
-    "group_romanization": "ye",
-    "group_order": 2
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -945,9 +945,9 @@
     "order_index": 3,
     "level": 2,
     "hangeul_romanization": "yo",
-    "group": "요",
-    "group_romanization": "yo",
-    "group_order": 3
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -955,9 +955,9 @@
     "order_index": 4,
     "level": 2,
     "hangeul_romanization": "yu",
-    "group": "유",
-    "group_romanization": "yu",
-    "group_order": 4
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -965,9 +965,9 @@
     "order_index": 5,
     "level": 2,
     "hangeul_romanization": "uy",
-    "group": "의",
-    "group_romanization": "uy",
-    "group_order": 5
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "consonant",
@@ -1819,7 +1819,16 @@
     "group_romanization": "chima",
     "group_order": 3
   },
-
+  {
+    "category": "practice",
+    "hangeul": "치마",
+    "order_index": 28,
+    "level": 3,
+    "hangeul_romanization": "chima",
+    "group": "치마",
+    "group_romanization": "chima",
+    "group_order": 3
+  },
   {
     "category": "practice",
     "hangeul": "친구",
@@ -2016,8 +2025,8 @@
     "order_index": 1,
     "level": 3,
     "hangeul_romanization": "ay",
-    "group": "애",
-    "group_romanization": "ay",
+    "group": "ㅇ",
+    "group_romanization": "ng",
     "group_order": 1
   },
   {
@@ -2026,9 +2035,9 @@
     "order_index": 2,
     "level": 3,
     "hangeul_romanization": "ey",
-    "group": "에",
-    "group_romanization": "ey",
-    "group_order": 2
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -2036,9 +2045,9 @@
     "order_index": 3,
     "level": 3,
     "hangeul_romanization": "way",
-    "group": "왜",
-    "group_romanization": "way",
-    "group_order": 3
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -2046,9 +2055,9 @@
     "order_index": 5,
     "level": 3,
     "hangeul_romanization": "oy",
-    "group": "외",
-    "group_romanization": "oy",
-    "group_order": 4
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -2056,9 +2065,9 @@
     "order_index": 4,
     "level": 3,
     "hangeul_romanization": "wey",
-    "group": "웨",
-    "group_romanization": "wey",
-    "group_order": 5
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -2066,8 +2075,8 @@
     "order_index": 1,
     "level": 4,
     "hangeul_romanization": "yay",
-    "group": "얘",
-    "group_romanization": "yay",
+    "group": "ㅇ",
+    "group_romanization": "ng",
     "group_order": 1
   },
   {
@@ -2076,9 +2085,9 @@
     "order_index": 2,
     "level": 4,
     "hangeul_romanization": "yey",
-    "group": "예",
-    "group_romanization": "yey",
-    "group_order": 2
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -2086,9 +2095,9 @@
     "order_index": 3,
     "level": 4,
     "hangeul_romanization": "wa",
-    "group": "와",
-    "group_romanization": "wa",
-    "group_order": 3
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -2096,9 +2105,9 @@
     "order_index": 5,
     "level": 4,
     "hangeul_romanization": "we",
-    "group": "워",
-    "group_romanization": "we",
-    "group_order": 4
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "vowel",
@@ -2106,9 +2115,9 @@
     "order_index": 4,
     "level": 4,
     "hangeul_romanization": "wi",
-    "group": "위",
-    "group_romanization": "wi",
-    "group_order": 5
+    "group": "ㅇ",
+    "group_romanization": "ng",
+    "group_order": 1
   },
   {
     "category": "consonant",

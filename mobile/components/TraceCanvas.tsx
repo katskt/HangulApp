@@ -1,4 +1,3 @@
-import MyButton from "@/components/FunctionalButton";
 import useCanvasPaths from "@/hooks/useLessonCanvas";
 import { lessonStroke } from "@/lib/lessonStroke";
 import { useThemeColors } from "@/theme/useThemeColors";
@@ -6,7 +5,6 @@ import { useResponsive } from "@/utils/responsive";
 import React from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
 import { Path, Svg } from "react-native-svg";
-import Icon from "react-native-vector-icons/Ionicons";
 // THIS PAGE NEEDS STROKE ORDER IMAGE.
 
 interface CanvasPageProps {
@@ -90,19 +88,6 @@ export default function CanvasPage({
           </View>
         </ImageBackground>
       </View>
-      <MyButton
-        style={{
-          position: "absolute",
-          top: 0,
-          right: 0,
-          height: hp(5),
-          width: hp(5),
-          backgroundColor: "(0, 0, 0, 0)",
-        }}
-        onPress={handleClear}
-      >
-        <Icon name="trash-outline" size={24} color="black" />
-      </MyButton>
     </View>
   );
 }

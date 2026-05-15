@@ -93,11 +93,11 @@ export default function Login() {
   };
   const handleSignUp = async () => {
     if (!firstName || !lastName || !email || !password || !retypePassword) {
-      Alert.alert("Please fill in all fields");
+      Alert.alert("Error", "Please fill in all fields");
       return;
     }
     if (password !== retypePassword) {
-      Alert.alert("Please ensure password matches");
+      Alert.alert("Error", "Please ensure password matches");
     }
 
     setLoading(true);

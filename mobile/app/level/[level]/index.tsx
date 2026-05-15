@@ -97,7 +97,7 @@ export default function LevelPage() {
           <Text style={styles.header}>LESSON</Text>
           <MyButton
             style={styles.button}
-            onPress={() => router.push(`/level/${Number(level)}/vowel`)}
+            onPress={() => router.push(`/level/${level}/vowel/ng`)}
           >
             <Text style={styles.buttonText}>VOWEL</Text>
           </MyButton>

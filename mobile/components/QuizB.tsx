@@ -35,9 +35,6 @@ const QuizB = ({ level, quizNum, quizQuestion }: QuizBProps) => {
     currentQuestion !== undefined ? quizQuestion[currentQuestion] : null;
   const correct_audio = currentQuiz?.correct_audio ?? null;
 
-  useEffect(() => {
-    playAudio(correct_audio);
-  }, [correct_audio]);
   const { saveProgress } = useQuizProgress(Number(level), Number(quizNum), "B");
 
   useEffect(() => {

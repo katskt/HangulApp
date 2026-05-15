@@ -9,15 +9,9 @@ import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import { Ionicons } from "@expo/vector-icons";
 import { Stack, useRouter } from "expo-router";
-import React, { useEffect, useState } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useRouteParams } from "@/hooks/useRouteParams";
-import {
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-  Text,
-} from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 
 interface Lesson {
   category: string;
@@ -35,7 +29,6 @@ export default function LessonPage() {
   const router = useRouter();
   const { level, category, id } = useRouteParams();
   const [lessons, setLessons] = useState<Lesson[]>([]);
-  const [scrollEnabled, setScrollEnabled] = useState(true);
 
   const colors = useThemeColors();
 
@@ -47,6 +40,36 @@ export default function LessonPage() {
     category, // "consonant", "vowel", or "practice"
   );
 
+  // Scrolling
+  const scrollViewRef = useRef<ScrollView>(null);
+
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const goToNextPage = () => {
+    const nextPage = currentPage + 1;
+
+    if (nextPage < totalPages) {
+      scrollViewRef.current?.scrollTo({
+        x: nextPage * wp(100),
+        animated: false,
+      });
+
+      setCurrentPage(nextPage);
+    }
+  };
+
+  const goToPrevPage = () => {
+    const prevPage = currentPage - 1;
+
+    if (prevPage >= 0) {
+      scrollViewRef.current?.scrollTo({
+        x: prevPage * wp(100),
+        animated: false,
+      });
+
+      setCurrentPage(prevPage);
+    }
+  };
   // Fetch lessons
   useEffect(() => {
     if (!level || !category) return;
@@ -87,8 +110,9 @@ export default function LessonPage() {
         scrollEventThrottle={16}
         horizontal
         pagingEnabled
+        ref={scrollViewRef}
         showsHorizontalScrollIndicator={false}
-        scrollEnabled={scrollEnabled}
+        scrollEnabled={false}
         style={{ flex: 1, backgroundColor: colors.background }}
       >
         {lessons.map((lesson) => (
@@ -96,13 +120,15 @@ export default function LessonPage() {
             {/* Page */}
             <View style={[styles.page, { width: wp(100) }]}>
               <LessonAudioPanel
+                currentPage={currentPage}
+                totalPages={totalPages}
+                goToNext={goToNextPage}
+                goToPrev={goToPrevPage}
                 character={lesson.hangeul_romanization}
                 canvas={
                   <CanvasPage
                     character={lesson.hangeul_romanization}
-                    onTouchStart={() => setScrollEnabled(false)}
                     onTouchEnd={() => {
-                      setScrollEnabled(true);
                       markComplete(lesson.hangeul_romanization, "trace");
                     }}
                     image={true}
