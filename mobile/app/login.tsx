@@ -179,7 +179,9 @@ export default function Login() {
 
   // ---- LOGIN ----
   if (step === "login") {
-    return (
+    return loading ? (
+      <Loading />
+    ) : (
       <View style={[styles.container, { backgroundColor: colors.background }]}>
         <TouchableOpacity
           onPress={() => setStep("landing")}
@@ -217,14 +219,15 @@ export default function Login() {
             Don&apos;t have an account? Sign Up
           </Text>
         </TouchableOpacity>
-        {loading && <Loading />}
       </View>
     );
   }
 
   // ---- SIGNUP STEP 1: CLASS CODE ----
   if (step === "signup_code") {
-    return (
+    return loading ? (
+      <Loading />
+    ) : (
       <View style={[styles.container, { backgroundColor: colors.background }]}>
         <TouchableOpacity
           onPress={() => setStep("landing")}
@@ -249,13 +252,9 @@ export default function Login() {
           onPress={handleVerifyCode}
           disabled={loading}
         >
-          {loading ? (
-            <Loading />
-          ) : (
-            <Text style={[styles.buttonText, { color: colors.text }]}>
-              Continue
-            </Text>
-          )}
+          <Text style={[styles.buttonText, { color: colors.text }]}>
+            Continue
+          </Text>
         </TouchableOpacity>
       </View>
     );
@@ -302,7 +301,9 @@ export default function Login() {
 
   // ---- SIGNUP STEP 3: DETAILS ----
   if (step === "signup_details") {
-    return (
+    return loading ? (
+      <Loading />
+    ) : (
       <ScrollView
         contentContainerStyle={[
           styles.container,
@@ -359,13 +360,9 @@ export default function Login() {
           onPress={handleSignUp}
           disabled={loading}
         >
-          {loading ? (
-            <Loading />
-          ) : (
-            <Text style={[styles.buttonText, { color: colors.buttonText }]}>
-              Create Account
-            </Text>
-          )}
+          <Text style={[styles.buttonText, { color: colors.buttonText }]}>
+            Create Account
+          </Text>
         </MyButton>
       </ScrollView>
     );

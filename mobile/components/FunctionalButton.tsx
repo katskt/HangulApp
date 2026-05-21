@@ -2,7 +2,13 @@ import { FontSizes, FontWeights } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import React from "react";
-import { Pressable, StyleProp, StyleSheet, ViewStyle } from "react-native";
+import {
+  Pressable,
+  StyleProp,
+  StyleSheet,
+  ViewStyle,
+  Text,
+} from "react-native";
 type ButtonProps = {
   children: React.ReactNode;
   color?: string;
@@ -24,7 +30,7 @@ const MyButton = ({
   style,
 }: ButtonProps) => {
   const colors = useThemeColors();
-  const { wp } = useResponsive();
+  const { hp, wp } = useResponsive();
   const styles = StyleSheet.create({
     button: {
       alignItems: "center",
@@ -37,13 +43,6 @@ const MyButton = ({
     },
     buttonPressed: {
       opacity: 0.7,
-    },
-    text: {
-      fontSize: FontSizes.header,
-      lineHeight: 0,
-      fontWeight: FontWeights.semibold,
-      letterSpacing: 0.25,
-      color: "#000",
     },
   });
   return (

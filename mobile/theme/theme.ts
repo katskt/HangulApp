@@ -35,7 +35,7 @@ export const Colors: Record<ColorScheme, ThemeColors> = {
   },
   dark: {
     background: "#256a56",
-    foreground: "#e7ffe7",
+    foreground: "#ffffff",
     text: "#ffffff",
     tint: "rgb(214, 214, 214)",
     select: "#71b4ff",

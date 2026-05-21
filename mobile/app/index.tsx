@@ -2,19 +2,18 @@
 import MyButton from "@/components/FunctionalButton";
 import SplashTemplate from "@/components/TemplateScreen"; // adjust path to your template
 import { getLevelImage } from "@/lib/levelAssets";
-import { supabase } from "@/supabaseConfig";
 import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import { useRouter } from "expo-router";
-import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
+import { useGetUser } from "@/hooks/useGetUser";
 
 export default function HomeScreen() {
   const { wp } = useResponsive();
   const router = useRouter();
   const colors = useThemeColors();
-  const [name, setName] = useState("");
+  const { firstName } = useGetUser();
 
   const levels = [
     { level_number: 1, title: "HANGEUL 1" },
@@ -22,26 +21,6 @@ export default function HomeScreen() {
     { level_number: 3, title: "HANGEUL 3" },
     { level_number: 4, title: "HANGEUL 4" },
   ];
-
-  useEffect(() => {
-    const loadProfile = async () => {
-      const { data: userData } = await supabase.auth.getUser();
-
-      if (!userData?.user) return;
-
-      const { data } = await supabase
-        .from("profiles")
-        .select("first_name")
-        .eq("id", userData.user.id)
-        .single();
-
-      if (data) {
-        setName(data.first_name);
-      }
-    };
-
-    loadProfile();
-  }, []);
 
   const styles = StyleSheet.create({
     container: {
@@ -77,7 +56,7 @@ export default function HomeScreen() {
               color: colors.text,
             }}
           >
-            안녕하세요 {name}!
+            안녕하세요 {firstName}!
           </Text>
         </View>
       }

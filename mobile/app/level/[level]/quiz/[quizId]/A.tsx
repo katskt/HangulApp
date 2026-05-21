@@ -1,21 +1,24 @@
 // App.js
 import QuizA from "@/components/QuizA";
-import { usePathname } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useQuizLessons } from "@/hooks/useQuizLessons";
 import BlueScreen from "@/components/BlueScreen";
+import { useRouteParams } from "@/hooks/useRouteParams";
 
 const App = () => {
   // fetch path:
-  const parts = usePathname().split("/").filter(Boolean);
+  const { level: levelName, id } = useRouteParams();
+
   const { level, id: quizNum, quizQuestion } = useQuizLessons();
 
   return (
     <BlueScreen
       header={
         <View>
-          <Text style={styles.grayed}>{parts.join(" ").toUpperCase()}</Text>
+          <Text style={styles.grayed}>
+            한글 {levelName} QUIZ {id}A
+          </Text>
         </View>
       }
       content={

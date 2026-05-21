@@ -68,15 +68,15 @@ export default function LessonAudioPanel({
   return (
     <BlueScreen
       content={
-        <View style={{ height: hp(70) }}>
-          <View style={[styles.containerSideBySide, { marginBottom: "auto" }]}>
+        <View style={{ height: hp(80) }}>
+          <View style={[styles.containerSideBySide, { marginTop: "auto" }]}>
             {image && (
               <View style={styles.container}>
                 {
                   <Image
                     style={{
-                      width: wp(20),
-                      height: wp(20),
+                      width: wp(30),
+                      height: wp(30),
                       margin: wp(2),
                       borderRadius: wp(1),
                     }}
@@ -111,7 +111,7 @@ export default function LessonAudioPanel({
             <View style={styles.itemSideBySide}>
               <MyButton
                 style={{
-                  height: hp(15),
+                  height: hp(12),
                   borderWidth: wp(2),
 
                   borderColor:
@@ -121,9 +121,9 @@ export default function LessonAudioPanel({
                 onPressOut={handlePressOut}
               >
                 {isPressed ? (
-                  <Icon name="square" size={100} color="red" />
+                  <Icon name="square" size={70} color="red" />
                 ) : (
-                  <Icon name="mic" size={100} color="red" />
+                  <Icon name="mic" size={70} color="red" />
                 )}
               </MyButton>
             </View>

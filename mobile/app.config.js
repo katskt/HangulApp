@@ -16,7 +16,16 @@ export default {
       supportsTablet: true,
       bundleIdentifier: "com.katskt.ucsbhangeul",
       infoPlist: {
-      ITSAppUsesNonExemptEncryption: false
+      ITSAppUsesNonExemptEncryption: false,
+      requireFullScreen: true,
+      plugins: [
+      [
+        "expo-screen-orientation",
+        {
+          initialOrientation: "PORTRAIT"
+        }
+      ]
+    ]
     }
     },
 

@@ -7,7 +7,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { router, Stack } from "expo-router";
 import React, { useRef, useEffect, useState } from "react";
 import { useRouteParams } from "@/hooks/useRouteParams";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Text,
+} from "react-native";
 
 import LessonAudioPanel from "@/components/LessonAudioPanel";
 import CanvasPage from "@/components/TraceCanvas";
@@ -86,6 +92,19 @@ export default function LessonPage() {
 
   return (
     <>
+      <View style={{ backgroundColor: colors.background }}>
+        <Text
+          style={{
+            fontSize: 25,
+            paddingHorizontal: 10,
+            fontWeight: "bold",
+            color: "gray",
+            alignSelf: "flex-end",
+          }}
+        >
+          한글 {level} - CONSONANT
+        </Text>
+      </View>
       <Stack.Screen
         options={{
           headerShown: true,

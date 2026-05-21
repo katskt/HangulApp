@@ -1,11 +1,15 @@
 import BlueScreen from "@/components/BlueScreen";
-import { supabase } from "@/supabaseConfig";
-import { FontSizes, FontWeights } from "@/theme/typography";
+import { supabase, signOut } from "@/supabaseConfig";
+import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import { useEffect, useState } from "react";
 import Loading from "@/components/Loading";
+import { useGetUser } from "@/hooks/useGetUser";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import MyButton from "@/components/FunctionalButton";
+import { router } from "expo-router";
+
 interface ProgressRow {
   id: string;
   level: number;
@@ -26,8 +30,14 @@ const getLabel = (item: ProgressRow) => {
 export default function ActivityPage() {
   const { hp } = useResponsive();
   const colors = useThemeColors();
+  const { firstName, lastName } = useGetUser();
   const [progress, setProgress] = useState<ProgressRow[]>([]);
 
+  const logOut = async () => {
+    await signOut();
+    router.dismissAll(); // clears stacked routes (important)
+    router.replace("/login");
+  };
   useEffect(() => {
     const fetch = async () => {
       const {
@@ -139,7 +149,9 @@ export default function ActivityPage() {
     );
   };
 
-  return (
+  return progress.length === 0 ? (
+    <Loading />
+  ) : (
     <BlueScreen
       header={
         <Text
@@ -152,7 +164,7 @@ export default function ActivityPage() {
             },
           ]}
         >
-          ACTIVITY
+          {firstName} {lastName}'s Activity
         </Text>
       }
       content={
@@ -166,7 +178,20 @@ export default function ActivityPage() {
           {Object.entries(olderByDay).map(([date, items]) =>
             renderSection(date, items),
           )}
-          {progress.length === 0 && <Loading />}
+          <MyButton onPress={logOut}>
+            <Text
+              style={{
+                fontSize: FontSizes.header,
+                lineHeight: 0,
+                fontWeight: FontWeights.semibold,
+                letterSpacing: 0.25,
+                color: colors.buttonText,
+                fontFamily: Typography.english,
+              }}
+            >
+              Log out
+            </Text>
+          </MyButton>
         </ScrollView>
       }
     />

@@ -43,7 +43,7 @@ export default function CanvasPage({
     >
       <View
         style={{
-          height: Math.min(wp(85), hp(50)),
+          height: Math.min(wp(75), hp(50)),
           width: Math.min(wp(85), hp(50)),
           /* backgroundColor: "white", */
           borderRadius: 40,
@@ -101,7 +101,6 @@ const styles = StyleSheet.create({
   backgroundImage: {
     flex: 1, // This ensures the background fills the whole screen
     overflow: "hidden",
-    borderRadius: 5,
     resizeMode: "cover", // Default behavior, can be 'contain', 'repeat', etc.
     justifyContent: "center", // Centers children vertically
     alignItems: "center", // Centers children horizontally

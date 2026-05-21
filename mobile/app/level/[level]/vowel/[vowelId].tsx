@@ -91,6 +91,19 @@ export default function LessonPage() {
   if (!lessons.length) return <Loading />;
   return (
     <>
+      <View style={{ backgroundColor: colors.background }}>
+        <Text
+          style={{
+            fontSize: 25,
+            paddingHorizontal: 10,
+            fontWeight: "bold",
+            color: "gray",
+            alignSelf: "flex-end",
+          }}
+        >
+          한글 {level} - VOWEL
+        </Text>
+      </View>
       <Stack.Screen
         options={{
           headerShown: true,

@@ -5,3 +5,4 @@ export function useThemeColors() {
   const scheme = useColorScheme() as ColorScheme;
   return Colors[scheme ?? "light"];
 }
+

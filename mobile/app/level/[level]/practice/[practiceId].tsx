@@ -11,7 +11,13 @@ import { Ionicons } from "@expo/vector-icons";
 import { Stack, useRouter } from "expo-router";
 import React, { useRef, useEffect, useState } from "react";
 import { useRouteParams } from "@/hooks/useRouteParams";
-import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Text,
+} from "react-native";
 
 interface Lesson {
   category: string;
@@ -87,6 +93,19 @@ export default function LessonPage() {
   if (!lessons.length) return <Loading />;
   return (
     <>
+      <View style={{ backgroundColor: colors.background }}>
+        <Text
+          style={{
+            fontSize: 25,
+            paddingHorizontal: 10,
+            fontWeight: "bold",
+            color: "gray",
+            alignSelf: "flex-end",
+          }}
+        >
+          힌글 {level} {category.toUpperCase()} {id}
+        </Text>
+      </View>
       <Stack.Screen
         options={{
           headerShown: true,
