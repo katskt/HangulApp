@@ -103,7 +103,7 @@ export default function LessonPage() {
             alignSelf: "flex-end",
           }}
         >
-          힌글 {level} {category.toUpperCase()} {id}
+          한글 {level} {category.toUpperCase()} {id}
         </Text>
       </View>
       <Stack.Screen
