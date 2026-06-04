@@ -11,7 +11,7 @@ export function useQuizAudio() {
 
   // ---- core function ----
   const playAudio = async (character: string | null) => {
-    if (character == null) {console.log("charactr is null, returning"); return};
+    if (character == null) {console.log("character is null, returning"); return};
     const audio = quizAudio[character];
 
     if (!audio) {

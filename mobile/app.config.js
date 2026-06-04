@@ -10,10 +10,10 @@ export default {
     icon: "./assets/images/icon.png",
     scheme: "ucsbhangeul",
     userInterfaceStyle: "automatic",
-    newArchEnabled: true,
+    newArchEnabled: false,
 
     ios: {
-      supportsTablet: true,
+      supportsTablet: false,
       bundleIdentifier: "com.katskt.ucsbhangeul",
       infoPlist: {
       ITSAppUsesNonExemptEncryption: false,
@@ -49,6 +49,7 @@ export default {
       "expo-audio",
       "expo-router",
       "expo-font",
+      "expo-asset",
       [
         "expo-splash-screen",
         {

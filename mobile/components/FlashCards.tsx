@@ -1,5 +1,5 @@
 // components/FlashCards.tsx
-import { useLessonAudio } from "@/hooks/useLessonAudio";
+import { useQuizAudio } from "@/hooks/useQuizAudio";
 import { useResponsive } from "@/utils/responsive";
 import React, { useEffect, useRef, useState } from "react";
 import { Animated, PanResponder, StyleSheet, Text, View } from "react-native";
@@ -21,10 +21,10 @@ export default function FlashCards({ cards }: FlashCardsProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [nextIndex, setNextIndex] = useState(1);
   const [currentAudio, setCurrentAudio] = useState<string | null>(null);
-  const { playCurrentAudio } = useLessonAudio(currentAudio);
+  const { playAudio } = useQuizAudio();
 
   useEffect(() => {
-    playCurrentAudio();
+    playAudio(currentAudio);
   }, [currentAudio]);
 
   const translateX = useRef(new Animated.Value(0)).current;
@@ -162,7 +162,7 @@ export default function FlashCards({ cards }: FlashCardsProps) {
         <Icon
           onPress={() => {
             setCurrentAudio(cards[currentIndex].audio);
-            playCurrentAudio();
+            playAudio(currentAudio);
           }}
           name="volume-high"
           size={40}

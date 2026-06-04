@@ -225,6 +225,8 @@ export const quizAudio: Record<string, any> = {
   chokhollip: require("@/assets/buckets/quizAudio/chokhollip.mp3"),
   chokhollis: require("@/assets/buckets/quizAudio/chokhollis.mp3"),
   pwutul: require("@/assets/buckets/quizAudio/pwutul.mp3"),
+  phwutul: require("@/assets/buckets/quizAudio/phwutul.mp3"),
+
   yo: require("@/assets/buckets/quizAudio/yo.mp3"),
   phwuchwu: require("@/assets/buckets/quizAudio/phwuchwu.mp3"),
 

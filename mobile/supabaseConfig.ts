@@ -1,11 +1,8 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createClient } from "@supabase/supabase-js";
-import Constants from "expo-constants";
 
-const { supabaseUrl, supabaseAnonKey } = Constants.expoConfig!.extra as {
-  supabaseUrl: string;
-  supabaseAnonKey: string;
-};
+const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY!;
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
   auth: {
@@ -15,6 +12,10 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     detectSessionInUrl: false,
   },
 });
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error("Missing Supabase env vars");
+}
 
 export async function signOut() {
   const { error } = await supabase.auth.signOut({

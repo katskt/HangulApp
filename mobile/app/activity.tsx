@@ -182,11 +182,11 @@ export default function ActivityPage() {
             <Text
               style={{
                 fontSize: FontSizes.header,
-                lineHeight: 0,
                 fontWeight: FontWeights.semibold,
                 letterSpacing: 0.25,
                 color: colors.buttonText,
                 fontFamily: Typography.english,
+                padding: hp(1),
               }}
             >
               Log out

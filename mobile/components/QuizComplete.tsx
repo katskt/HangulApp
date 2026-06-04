@@ -7,6 +7,7 @@ import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import Icon from "react-native-vector-icons/Ionicons";
 import { StyleSheet, Text, View } from "react-native";
+import SwipeHint from "@/components/SwipeHint";
 
 interface Quiz {
   correct_hangeul: string;
@@ -41,7 +42,6 @@ export default function QuizComplete({
       <Text style={[styles.displayMessage, { color: colors.text }]}>
         Quiz Complete!
       </Text>
-
       <AnimatedImage
         style={{ zIndex: 4, alignSelf: "center" }}
         source={imagey}
@@ -72,13 +72,31 @@ export default function QuizComplete({
       </Text>
 
       {wrongAnswers.length !== 0 && (
-        <FlashCards
-          cards={wrongAnswers.map((l) => ({
-            hangeul: quizQuestion[l].correct_hangeul,
-            audio: quizQuestion[l].correct_audio,
-            question: l + 1,
-          }))}
-        />
+        <View style={{ position: "relative" }}>
+          <FlashCards
+            cards={wrongAnswers.map((l) => ({
+              hangeul: quizQuestion[l].correct_hangeul,
+              audio: quizQuestion[l].correct_audio,
+              question: l + 1,
+            }))}
+          />
+          <View
+            style={{
+              position: "absolute",
+              top: 10,
+              left: 0,
+              right: 0,
+              pointerEvents: "none",
+
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 999,
+              elevation: 999,
+            }}
+          >
+            <SwipeHint />
+          </View>
+        </View>
       )}
     </View>
   );

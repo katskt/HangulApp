@@ -407,7 +407,6 @@ export const lessonAudio: Record<string, any> = {
   palchi: require("@/assets/buckets/lessonAudio/palchi.mp3"),
   pwueng: require("@/assets/buckets/lessonAudio/pwueng.mp3"),
   mwulul: require("@/assets/buckets/lessonAudio/mwulul.mp3"),
-  phangphingswu: require("@/assets/buckets/lessonAudio/phangphingswu.mp3"),
   swungpwul: require("@/assets/buckets/lessonAudio/swungpwul.mp3"),
   oppa: require("@/assets/buckets/lessonAudio/oppa.mp3"),
   appa: require("@/assets/buckets/lessonAudio/appa.mp3"),

@@ -78,7 +78,6 @@ export default function HomeScreen() {
                   height: wp(35),
                   justifyContent: "flex-start",
                   alignItems: "center",
-                  borderRadius: 20,
                 }}
                 onPress={() => router.push(`/level/${level.level_number}`)}
               >
@@ -88,8 +87,9 @@ export default function HomeScreen() {
                     position: "absolute",
                     width: "100%",
                     height: "100%",
+                    borderRadius: 5,
                   }}
-                  resizeMode="cover"
+                  resizeMode="contain"
                 />
                 <Text style={styles.buttonText}>{level.title}</Text>
               </MyButton>

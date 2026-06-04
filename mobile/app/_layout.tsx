@@ -8,21 +8,24 @@ import { router, Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
 export default function Layout() {
   const insets = useSafeAreaInsets();
   const colors = useThemeColors();
-  const [fontsLoaded] = useFonts({
-    Jua: require("@/assets/fonts/Jua/Jua-Regular.ttf"),
-    AsapCondensedSemiBold: require("@/assets/fonts/AsapCondensed/AsapCondensed-SemiBold.ttf"),
-    AsapCondensedBold: require("@/assets/fonts/AsapCondensed/AsapCondensed-Bold.ttf"),
-  });
-
   const [session, setSession] = useState<Session | null>(null);
   const [authReady, setAuthReady] = useState(false);
 
   // -----------------------------
   // CLASS ACCESS CHECK
   // -----------------------------
+  // Change this line:
+
+  const [fontsLoaded, fontError] = useFonts({
+    Jua: require("@/assets/fonts/Jua/Jua-Regular.ttf"),
+    AsapCondensedSemiBold: require("@/assets/fonts/AsapCondensed/AsapCondensed-SemiBold.ttf"),
+    AsapCondensedBold: require("@/assets/fonts/AsapCondensed/AsapCondensed-Bold.ttf"),
+  });
+
   const checkClassAccess = async (userId: string) => {
     const { data: user, error: userError } = await supabase
       .from("profiles")
@@ -50,13 +53,48 @@ export default function Layout() {
   // -----------------------------
   useEffect(() => {
     const init = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+      try {
+        const timeout = new Promise((_, reject) =>
+          setTimeout(() => reject(new Error("Session timeout")), 5000),
+        );
 
-      setSession(session);
-      setAuthReady(true);
+        const sessionPromise = supabase.auth.getSession();
+
+        const {
+          data: { session },
+        } = (await Promise.race([sessionPromise, timeout])) as any;
+        setSession(session);
+      } catch (e) {
+        console.warn("Session fetch failed or timed out:", e);
+        setSession(null); // treat as logged out
+      } finally {
+        setAuthReady(true); // ALWAYS unblock the loading screen
+      }
     };
+
+    // const init = async () => {
+    //   console.log("=== STEP 1: init started ===");
+    //   console.log(
+    //     "=== STEP 2: supabase url:",
+    //     process.env.EXPO_PUBLIC_SUPABASE_URL,
+    //   );
+    //   console.log("=== STEP 3: calling getSession ===");
+
+    //   try {
+    //     const result = await supabase.auth.getSession();
+    //     console.log(
+    //       "=== STEP 4: getSession returned ===",
+    //       JSON.stringify(result),
+    //     );
+    //     setSession(result.data.session);
+    //   } catch (e) {
+    //     console.log("=== STEP 4: getSession THREW ERROR ===", e);
+    //     setSession(null);
+    //   } finally {
+    //     console.log("=== STEP 5: setting authReady true ===");
+    //     setAuthReady(true);
+    //   }
+    // };
 
     init();
 
@@ -107,7 +145,8 @@ export default function Layout() {
   // -----------------------------
   // LOADING
   // -----------------------------
-  if (!fontsLoaded || !authReady) return <Loading />;
+
+  if (!fontsLoaded && !fontError) return <Loading />;
 
   return (
     <GestureHandlerRootView

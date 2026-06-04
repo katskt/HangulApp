@@ -29,7 +29,7 @@ const App = () => {
     <BlueScreen
       header={
         <View>
-          <Text style={styles.grayed}>Final Quiz</Text>
+          <Text style={styles.grayed}>Final Quiz A</Text>
         </View>
       }
       content={<QuizA level={"5"} quizNum={"1"} quizQuestion={quizQuestion} />}
