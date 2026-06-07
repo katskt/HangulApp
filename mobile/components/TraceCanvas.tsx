@@ -43,16 +43,15 @@ export default function CanvasPage({
     >
       <View
         style={{
-          height: Math.min(wp(75), hp(50)),
+          height: Math.min(wp(70), hp(40)),
           width: Math.min(wp(85), hp(50)),
-          /* backgroundColor: "white", */
           borderRadius: 40,
         }}
-        onTouchStart={onTouchStart} //
+        onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={() => {
           finishStroke();
-          onTouchEnd?.(); //
+          onTouchEnd?.();
         }}
       >
         <ImageBackground

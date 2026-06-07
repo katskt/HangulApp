@@ -101,7 +101,7 @@ export default function LessonAudioPanel({
                 setHasListened(true);
               }}
             >
-              {<Icon name="volume-high" size={40} />}
+              {<Icon name="volume-high" size={hp(4)} />}
             </MyButton>
           </View>
           <View>
@@ -111,7 +111,7 @@ export default function LessonAudioPanel({
             <View style={styles.itemSideBySide}>
               <MyButton
                 style={{
-                  height: hp(12),
+                  height: hp(11),
                   borderWidth: wp(2),
 
                   borderColor:
@@ -121,9 +121,9 @@ export default function LessonAudioPanel({
                 onPressOut={handlePressOut}
               >
                 {isPressed ? (
-                  <Icon name="square" size={70} color="red" />
+                  <Icon name="square" size={hp(8)} color="red" />
                 ) : (
-                  <Icon name="mic" size={70} color="red" />
+                  <Icon name="mic" size={hp(8)} color="red" />
                 )}
               </MyButton>
             </View>
@@ -139,7 +139,7 @@ export default function LessonAudioPanel({
                   }}
                   onPress={goToPrev}
                 >
-                  <Icon name="arrow-back" size={40} color="black" />
+                  <Icon name="arrow-back" size={hp(5)} color="black" />
                 </MyButton>
               )}
             </View>
@@ -153,7 +153,7 @@ export default function LessonAudioPanel({
                   }}
                   onPress={goToNext}
                 >
-                  <Icon name="arrow-forward" size={40} color="black" />
+                  <Icon name="arrow-forward" size={hp(5)} color="black" />
                 </MyButton>
               )}
             </View>

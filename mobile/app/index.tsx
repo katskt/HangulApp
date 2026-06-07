@@ -37,7 +37,7 @@ export default function HomeScreen() {
     },
     buttonText: {
       padding: 20,
-      fontSize: 18,
+      fontSize: FontSizes.h3,
       opacity: 0.5,
       fontFamily: Typography.english,
     },

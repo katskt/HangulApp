@@ -37,7 +37,11 @@ export default function BlueScreen({ header, content }: BlueScreenProps) {
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => {
-                router.back();
+                if (router.canGoBack?.()) {
+                  router.back();
+                } else {
+                  router.replace("/");
+                }
               }}
               style={sharedStyles.iconButton}
             >

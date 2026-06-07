@@ -2,6 +2,7 @@ import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import React, { useEffect, useRef } from "react";
 import { Animated, StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import BlueScreen from "./BlueScreen";
 
 type LoadingProps = {
   style?: StyleProp<ViewStyle>;
@@ -43,11 +44,15 @@ export default function Loading({ style }: LoadingProps) {
   });
 
   return (
-    <View style={[styles.container, style]}>
-      <Animated.Image
-        source={require("@/assets/images/storke.png")}
-        style={[styles.image, { transform: [{ rotate }] }]}
-      />
-    </View>
+    <BlueScreen
+      content={
+        <View style={[styles.container, style]}>
+          <Animated.Image
+            source={require("@/assets/images/storke.png")}
+            style={[styles.image, { transform: [{ rotate }] }]}
+          />
+        </View>
+      }
+    ></BlueScreen>
   );
 }

@@ -4,7 +4,6 @@ import { FontSizes, FontWeights, Typography } from "@/theme/typography";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { useResponsive } from "@/utils/responsive";
 import { useEffect, useState } from "react";
-import Loading from "@/components/Loading";
 import { useGetUser } from "@/hooks/useGetUser";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import MyButton from "@/components/FunctionalButton";
@@ -150,7 +149,67 @@ export default function ActivityPage() {
   };
 
   return progress.length === 0 ? (
-    <Loading />
+    <BlueScreen
+      header={
+        <Text
+          style={[
+            styles.heading,
+            {
+              fontSize: FontSizes.header,
+              fontWeight: FontWeights.bold,
+              color: colors.text,
+            },
+          ]}
+        >
+          {firstName} {lastName}'s Activity
+        </Text>
+      }
+      content={
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={styles.container}
+        >
+          <Text
+            style={[
+              styles.heading,
+              {
+                fontSize: FontSizes.body,
+                fontWeight: FontWeights.bold,
+                color: colors.text,
+              },
+            ]}
+          >
+            No activities yet
+          </Text>
+          <Text
+            style={[
+              styles.heading,
+              {
+                fontSize: FontSizes.body,
+                fontWeight: FontWeights.regular,
+                color: colors.text,
+              },
+            ]}
+          >
+            Complete an activity to get started.
+          </Text>
+          <MyButton onPress={logOut}>
+            <Text
+              style={{
+                fontSize: FontSizes.header,
+                fontWeight: FontWeights.semibold,
+                letterSpacing: 0.25,
+                color: colors.buttonText,
+                fontFamily: Typography.english,
+                padding: hp(1),
+              }}
+            >
+              Log out
+            </Text>
+          </MyButton>
+        </ScrollView>
+      }
+    />
   ) : (
     <BlueScreen
       header={

@@ -10,8 +10,8 @@ const normalize = (size: number) => {
 };
 
 export const FontSizes = {
-  header: normalize(28),
-  h2: normalize(22),
+  header: normalize(25),
+  h2: normalize(20),
   h3: normalize(18),
   body: normalize(16),
   caption: normalize(13),
