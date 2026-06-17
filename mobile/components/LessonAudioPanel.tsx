@@ -76,8 +76,8 @@ export default function LessonAudioPanel({
                   <Image
                     style={{
                       width: wp(30),
-                      height: wp(30),
-                      margin: wp(2),
+                      height: hp(15),
+                      margin: hp(1),
                       borderRadius: wp(1),
                     }}
                     source={practiceImages[character]}
@@ -114,8 +114,11 @@ export default function LessonAudioPanel({
                   height: hp(11),
                   borderWidth: wp(2),
 
-                  borderColor:
-                    hasRecorded === true ? colors.select : colors.unselect,
+                  borderColor: isPressed
+                    ? "red"
+                    : hasRecorded
+                      ? colors.select
+                      : colors.unselect,
                 }}
                 onPressIn={handlePressIn}
                 onPressOut={handlePressOut}

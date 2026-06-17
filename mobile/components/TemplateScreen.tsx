@@ -12,7 +12,7 @@ type SplashTemplateProps = {
 export default function SplashTemplate({
   topContent,
   bottomContent,
-  topHeightRatio = 0.2,
+  topHeightRatio = 0.1,
 }: SplashTemplateProps) {
   const colors = useThemeColors();
   const styles = StyleSheet.create({
@@ -22,14 +22,12 @@ export default function SplashTemplate({
     },
     top: {
       position: "relative",
-      justifyContent: "center",
-      alignItems: "center",
       backgroundColor: colors.background,
+      alignItems: "center",
     },
     topContent: {
       zIndex: 1,
-      /*       justifyContent: "center",
-      alignItems: "center", commented out, lets see if this breaks anything*/
+      width: "90%",
     },
     bottom: {
       position: "relative",

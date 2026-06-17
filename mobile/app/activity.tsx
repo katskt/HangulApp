@@ -32,11 +32,6 @@ export default function ActivityPage() {
   const { firstName, lastName } = useGetUser();
   const [progress, setProgress] = useState<ProgressRow[]>([]);
 
-  const logOut = async () => {
-    await signOut();
-    router.dismissAll(); // clears stacked routes (important)
-    router.replace("/login");
-  };
   useEffect(() => {
     const fetch = async () => {
       const {
@@ -193,20 +188,6 @@ export default function ActivityPage() {
           >
             Complete an activity to get started.
           </Text>
-          <MyButton onPress={logOut}>
-            <Text
-              style={{
-                fontSize: FontSizes.header,
-                fontWeight: FontWeights.semibold,
-                letterSpacing: 0.25,
-                color: colors.buttonText,
-                fontFamily: Typography.english,
-                padding: hp(1),
-              }}
-            >
-              Log out
-            </Text>
-          </MyButton>
         </ScrollView>
       }
     />
@@ -237,20 +218,6 @@ export default function ActivityPage() {
           {Object.entries(olderByDay).map(([date, items]) =>
             renderSection(date, items),
           )}
-          <MyButton onPress={logOut}>
-            <Text
-              style={{
-                fontSize: FontSizes.header,
-                fontWeight: FontWeights.semibold,
-                letterSpacing: 0.25,
-                color: colors.buttonText,
-                fontFamily: Typography.english,
-                padding: hp(1),
-              }}
-            >
-              Log out
-            </Text>
-          </MyButton>
         </ScrollView>
       }
     />

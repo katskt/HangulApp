@@ -5,7 +5,6 @@ import { useResponsive } from "@/utils/responsive";
 import React from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
 import { Path, Svg } from "react-native-svg";
-// THIS PAGE NEEDS STROKE ORDER IMAGE.
 
 interface CanvasPageProps {
   character: string;
@@ -24,8 +23,6 @@ export default function CanvasPage({
     currentPath,
     onTouchMove,
     onTouchEnd: finishStroke,
-    handleClear,
-    //strokeImageUrl,
   } = useCanvasPaths(character);
 
   const { wp, hp } = useResponsive();
@@ -92,11 +89,6 @@ export default function CanvasPage({
 }
 
 const styles = StyleSheet.create({
-  image: {
-    width: 180,
-    height: 180,
-  },
-
   backgroundImage: {
     flex: 1, // This ensures the background fills the whole screen
     overflow: "hidden",

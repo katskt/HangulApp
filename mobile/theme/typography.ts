@@ -1,9 +1,9 @@
 import { Dimensions, PixelRatio } from "react-native";
 
-const { width } = Dimensions.get("window");
+const { height } = Dimensions.get("window");
 
-// base width is 390 (iPhone 14 size)
-const scale = width / 390;
+// base height
+const scale = height / 800;
 
 const normalize = (size: number) => {
   return Math.round(PixelRatio.roundToNearestPixel(size * scale));
