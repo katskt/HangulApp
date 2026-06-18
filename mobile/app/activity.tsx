@@ -6,8 +6,6 @@ import { useResponsive } from "@/utils/responsive";
 import { useEffect, useState } from "react";
 import { useGetUser } from "@/hooks/useGetUser";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
-import MyButton from "@/components/FunctionalButton";
-import { router } from "expo-router";
 
 interface ProgressRow {
   id: string;

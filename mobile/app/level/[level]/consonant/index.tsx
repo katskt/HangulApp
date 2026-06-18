@@ -74,54 +74,35 @@ export default function VowelPage() {
         </View>
       }
       content={
-        <>
-          <Stack.Screen
-            options={{
-              headerShown: true,
-              headerTransparent: true,
-              headerTitle: "",
-              headerLeft: () => (
-                <TouchableOpacity
-                  onPress={() => {
-                    router.back();
-                  }}
-                  style={sharedStyles.iconButton}
+        <ScrollView>
+          <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+            {lessons.map((lesson) => (
+              <View
+                key={lesson.hangeul_romanization}
+                style={{ width: "50%", alignItems: "center" }}
+              >
+                <MyButton
+                  style={{ height: wp(35), width: wp(35) }}
+                  onPress={() =>
+                    router.push(
+                      `/level/${level}/${category}/${lesson.group_romanization}`,
+                    )
+                  }
                 >
-                  <Ionicons name="close" size={20} color="white" />
-                </TouchableOpacity>
-              ),
-            }}
-          />
-          <ScrollView>
-            <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-              {lessons.map((lesson) => (
-                <View
-                  key={lesson.hangeul_romanization}
-                  style={{ width: "50%", alignItems: "center" }}
-                >
-                  <MyButton
-                    style={{ height: wp(35), width: wp(35) }}
-                    onPress={() =>
-                      router.push(
-                        `/level/${level}/${category}/${lesson.group_romanization}`,
-                      )
-                    }
+                  <Text
+                    style={{
+                      fontSize: FontSizes.huge,
+                      fontWeight: FontWeights.semibold,
+                      fontFamily: Typography.default,
+                    }}
                   >
-                    <Text
-                      style={{
-                        fontSize: FontSizes.huge,
-                        fontWeight: FontWeights.semibold,
-                        fontFamily: Typography.default,
-                      }}
-                    >
-                      {lesson.group}
-                    </Text>
-                  </MyButton>
-                </View>
-              ))}
-            </View>
-          </ScrollView>
-        </>
+                    {lesson.group}
+                  </Text>
+                </MyButton>
+              </View>
+            ))}
+          </View>
+        </ScrollView>
       }
     />
   );

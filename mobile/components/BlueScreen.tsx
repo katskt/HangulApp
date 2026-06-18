@@ -1,7 +1,7 @@
 import { sharedStyles } from "@/theme/sharedStyles";
 import { useThemeColors } from "@/theme/useThemeColors";
 import { Ionicons } from "@expo/vector-icons";
-import { Stack, useRouter, usePathname } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 type BlueScreenProps = {
@@ -11,7 +11,6 @@ type BlueScreenProps = {
 
 export default function BlueScreen({ header, content }: BlueScreenProps) {
   const router = useRouter();
-  const pathname = usePathname(); // e.g. "/path/to/place"
   const colors = useThemeColors();
   const styles = StyleSheet.create({
     container: {
@@ -27,14 +26,6 @@ export default function BlueScreen({ header, content }: BlueScreenProps) {
     },
     content: { height: "80%", paddingHorizontal: 15 },
   });
-  const goBack = () => {
-    if (router.canGoBack?.()) {
-      router.back();
-    } else {
-      const parent = pathname.split("/").slice(0, -1).join("/") || "/";
-      router.replace(parent as any);
-    }
-  };
 
   return (
     <>
@@ -46,7 +37,11 @@ export default function BlueScreen({ header, content }: BlueScreenProps) {
           headerLeft: () => (
             <TouchableOpacity
               onPress={() => {
-                goBack();
+                if (router.canGoBack()) {
+                  router.dismiss();
+                } else {
+                  router.replace("/");
+                }
               }}
               style={sharedStyles.iconButton}
             >

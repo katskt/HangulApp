@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   StyleSheet,
-  SafeAreaView,
 } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 interface AppModalProps {
   visible: boolean;
@@ -38,7 +38,7 @@ export default function AppModal({
       </TouchableWithoutFeedback>
 
       {/* Modal card — sits above backdrop */}
-      <SafeAreaView style={styles.centeredView} pointerEvents="box-none">
+      <SafeAreaProvider style={styles.centeredView} pointerEvents="box-none">
         <View style={styles.card}>
           {(title || showCloseButton) && (
             <View style={styles.header}>
@@ -53,7 +53,7 @@ export default function AppModal({
 
           <View style={styles.body}>{children}</View>
         </View>
-      </SafeAreaView>
+      </SafeAreaProvider>
     </Modal>
   );
 }
